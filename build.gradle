@@ -1,0 +1,14 @@
+apply plugin: 'scala'
+
+ext {
+  scalaVersion = '2.12'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  compile 'org.scala-lang:scala-library:2.12.4'
+  testCompile "org.scalatest:scalatest_$scalaVersion:3.0.0"
+}
