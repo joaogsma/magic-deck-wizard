@@ -1,0 +1,96 @@
+Tatyova, Benthic Druid
+
+// Card Draw
+[1] Horn of Greed @cmc_3 @colorless @artifact @draw @political
+[1] Seer's Sundial @cmc_4 @colorless @artifact @draw
+[1] Intellectual Offering @cmc_5 Offering @blue @instant @draw @political
+[1] Urban Evolution @cmc_5 @blue @green @sorcery @draw @ramp @extra_land_drop
+[1] Minds Aglow @cmc_1 @blue @sorcery @draw @join_forces @political
+
+// Ramp
+[1] Sol Ring @cmc_1 @colorless @artifact @ramp
+[1] Llanowar Scout @cmc_2 @green @creature @ramp @extra_land_drop
+[1] Khalni Heart Expedition @cmc_2 @green @enchantment @ramp @land_to_battlefield
+[1] Cultivate @cmc_3 @green @sorcery @ramp @land_to_hand @land_to_battlefield
+[1] Kodama's Reach @cmc_3 @green @sorcery @ramp @land_to_hand @land_to_battlefield
+[1] Harrow @cmc_3 @green @sorcery @ramp @land_to_hand @land_to_battlefield
+[1] Spring to Mind @cmc_3 @green/blue @sorcery/instant @ramp @land_to_battlefield @draw
+[1] Yavimaya Dryad @cmc_3 @green @creature @ramp
+[1] Wayward Swordtooth @cmc_3 @green @creature @ramp @extra_land_drop
+[1] Explosive Vegetation @cmc_4 @green @ramp @sorcery @land_to_battlefield
+[1] Tempt With Discovery @cmc_4 @green @sorcery @land_to_battlefield @political
+
+// Board Wipe
+[1] Curse of the Swine @cmc_2 @blue @sorcery @wipe @creature_removal
+[1] Consign to Dust @cmc_3 @green @instant @wipe @artifact_removal @enchantment_removal
+[1] Ezuri's Predation @cmc_8 @green @sorcery @wipe @creature_removal @token_generator
+
+// Removal
+[1] Pongify @cmc_1 @blue @instant @creature_removal
+[1] Scavenging Ooze @cmc_2 @green @creature @graveyard_hate
+[1] Lignify cmc_2 @green @enchantment @creature_removal
+[1] Beast Within @cmc_3 @green @instant @creature_removal
+[1] Capsize @cmc_3 @blue @instant @bounce @buyback
+[1] Krosan Grip @cmc_3 @green @instant @artifact_removal @enchantment_removal
+[1] Acidic Slime @cmc_5 @green @creature @artifact_removal @enchantment_removal
+
+// Enablers
+[1] Swan Song @cmc_1 @blue @instant @counter
+[1] Conterspell @cmc_2 @blue @instant @counter
+[1] Deprive @cmc_2 @blue @instant @counter
+[1] Muddle the Mixture @cmc_2 @blue @instant @counter
+[1] Swiftfoot Boots @cmc_2 @colorless @artifact
+[1] Lightning Greaves @cmc_2 @colorless @artifact
+[1] Dissolve @cmc_3 @blue @instant @counter
+
+// Enhancers
+[1] Collective Voyage @cmc_1 @green @sorcery @join_forces @land_to_battlefield @political
+[1] Thaumatic Compass @cmc_2 @colorless @artifact @land_to_hand
+[1] Elfhame Sanctuary @cmc_2 @green @enchantment
+[1] Strionic Resonator @cmc_2 @colorless @artifact
+[1] Rites of Flourishing @cmc_3 @green @enchantment @draw @ramp @political @extra_land_drop
+[1] Courser of Kruphix @cmc_3 @green @creature @ramp
+[1] Mana Breach @cmc_3 @blue @enchantment
+[1] Abundance @cmc_4 @green @enchantment
+
+// Standalones
+[1] Kefnet the Mindful @cmc_3 @blue @creature @draw
+[1] Sylvan Offering @cmc_1 @green @sorcery @political @token_generator
+[1] Coiling Oracle @cmc_2 @blue @green @creature
+[1] Blackblade Reforged @cmc_2 @colorless @artifact
+[1] Nissa, Steward of Elements @cmc_2 @blue @green @planeswalker @scry @land_to_battlefield
+[1] Retreat to Kazandu @cmc_3 @green @enchantment @life_gain @landfall
+[1] Retreat to Coralhelm @cmc_3 @blue @enchantment @scry @landfall
+[1] Seed the Land @cmc_4 @green @enchantment @token_generator @landfall
+[1] Centaur Glade @cmc_5 @green @enchantment @token_generator @mana_sink
+[1] Venser's Journal @cmc_5 @colorless @artifact @life_gain
+[1] Future Sight @cmc_5 @blue @enchantment
+[1] Mystic Confluence @cmc_5 @blue @instant @draw @counter @bounce
+[1] Zendikar's Roil @cmc_5 @green @enchantment @landfall @token_generator
+[1] Seasons Past @cmc_6 @green @sorcery @graveyard_recursion
+[1] Multani, Yavimaya's Avatar @cmc_6 @green @creature
+[1] Rampaging Baloths @cmc_6 @green @creature @token_generator
+[1] Protean Hulk @cmc_6 @green @creature
+[1] Howl of the Night Pack @cmc_7 @green @sorcery @token_generator
+[1] Praetor's Counsel @cmc_8 @green @sorcery @graveyard_recursion
+
+// Lands
+[01] Myriad Landscape @land @mana_src_green @mana_src_blue @land_to_battlefield
+[01] Terramorphic Expanse @land @mana_src_green @mana_src_blue
+[01] Evolving Wilds @land @mana_src_green @mana_src_blue
+[01] Bant Panorama @land @mana_src_green @mana_src_blue
+[01] Esper Panorama @land @mana_src_blue
+[01] Grixis Panorama @land @mana_src_blue
+[01] Jund Panorama @land @mana_src_green
+[01] Naya Panorama @land @mana_src_green
+[01] Reliquary Tower @land
+[01] Rogue’s Passage @land @political
+[01] Command Tower @land @mana_src_green @mana_src_blue
+[01] Simic Growth Chamber @land @mana_src_green @mana_src_blue
+[01] Blighted Woodland @land @mana_src_green @mana_src_blue @land_to_battlefield
+[01] Yavimaya Coast @land @mana_src_green @mana_src_blue
+[01] Flooded Grove @land @mana_src_green @mana_src_blue
+[01] Hinterland Harbor @land @mana_src_green @mana_src_blue
+[01] Memorial to Genius @land @mana_src_blue
+[14] Forest @land @mana_src_green
+[08] Island @land @mana_src_blue
