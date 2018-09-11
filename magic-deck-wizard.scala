@@ -3,8 +3,10 @@ import scala.io.BufferedSource
 import scala.util.matching.Regex
 
 object Metrics extends App {
-  val CARD_COUNT_REGEX = "\\[\\d\\]".r
-  val TAG_REGEX = "@[^ @]+".r
+  val CARD_COUNT_REGEX = "^\\[\\d+\\]".r
+  val TAG_REGEX = "@[^ @]+$".r
+
+  private case class Card(count: Int, tags: Set[String])
 
   args.toList match {
     case List() => println("Pass the filename and tags as a command line parameters")
@@ -22,39 +24,55 @@ object Metrics extends App {
   }
 
   private def processFile(bufferedSource: BufferedSource): Unit = {
-    val deckLines = bufferedSource.getLines.toList.filter(_.nonEmpty)
-    val tags = deckLines.flatMap(line => TAG_REGEX.findAllIn(line)).toList.distinct
+    val deckLines: Iterator[String] = bufferedSource.getLines.filter(_.nonEmpty)
+    val cards: Seq[Card] = deckLines
+        .map(_.trim)
+        .map(getCard)
+        .filter(_.isDefined)
+        .map(_.get)
+        .toSeq
 
-    println(tags)
+    val result: StringBuilder = StringBuilder.newBuilder
 
-    val totalCardCount = deckLines.map(getCardCount).reduce(_ + _)
-    println(s"Total number of cards: $totalCardCount")
+    val tags: Seq[String] = cards.flatMap(_.tags).distinct
+    result.append("Tags found:\n")
+    tags.sorted.foreach(tag => result.append(s"  - $tag\n"))
 
-    val tagCounts = processTags(tags, deckLines)
-    println("Tags:")
-    val maxTagLength = tags.map(_.size).max
+    val totalCardCount: Int = cards.map(_.count).reduce(_ + _)
+    result.append(s"Total number of cards: $totalCardCount\n")
+
+    val tagCounts: Map[String, Int] = processTags(cards)
+    val maxTagLength: Int = tags.map(_.size).max
+    result.append("Tags:\n")
     tagCounts
+        .map { case (tag, count) => 
+          val countStr = if (count < 10) "0" + count.toString else count.toString
+          val ratioStr = f"${count.toDouble / totalCardCount}%.2f"
+          val padding = List.fill(maxTagLength - tag.size + 1)('=').mkString
+          s"  - $tag ${padding}> count = $countStr; ratio = $ratioStr\n"
+        }
         .toSeq
         .sorted
-        .foreach { case (tag, count) => 
-          val countStr = if (count < 10) "0" + count.toString else count.toString
-          val ratioStr = f"${count.toDouble/totalCardCount}%.2f"
-          val padding = (0 to maxTagLength - tag.size).map(_ => "=").reduce(_ ++ _)
-          println(s"  - $tag ${padding}> count = $countStr; ratio = $ratioStr")
-        }
+        .foreach(result.append)
+
+    println(result.toString)
   }
 
-  private def processTags(tags: Seq[String], deckLines: Seq[String]): Map[String, Int] = {
-    tags
-        .map(tag => {
-          val regex = tag.r
-          val count = deckLines
-              .filter(line => regex.findFirstIn(line).isDefined)
-              .map(getCardCount)
-              .reduce(_ + _)
-          (tag, count)
-        })
-        .toMap
+  private def getCard(line: String): Option[Card] = {
+    val count = getCardCount(line)
+    val tags = getCardTags(line)
+    Option(Card(count, tags)).filter(_.count > 0)
+  }
+
+  private def processTags(cards: Seq[Card]): Map[String, Int] = {
+    cards
+        .flatMap(card => card.tags.map(_ -> card.count))
+        .groupBy(_._1)
+        .mapValues(_.map(_._2).reduce(_ + _))
+  }
+
+  private def getCardTags(line: String) = {
+    TAG_REGEX.findAllIn(line).toSet[String].map(_.replaceFirst("@", ""))
   }
 
   private def getCardCount(line: String) = {
