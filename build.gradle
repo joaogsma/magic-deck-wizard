@@ -1,7 +1,11 @@
+import org.ajoberstar.grgit.Grgit
+
 plugins {
-  id 'com.github.johnrengelman.shadow' version '2.0.4'
-  id 'java'
   id 'scala'
+  id 'java'
+  id 'org.ajoberstar.grgit' version '1.7.2'
+  id 'org.ajoberstar.release-opinion' version '1.7.2'
+  id 'com.github.johnrengelman.shadow' version '2.0.4'
 }
 
 ext {
@@ -9,7 +13,13 @@ ext {
 }
 
 repositories {
-    mavenCentral()
+  mavenLocal()
+  mavenCentral()
+  jcenter()
+}
+
+release {
+  grgit = Grgit.open(currentDir: file('.'))
 }
 
 dependencies {
@@ -24,3 +34,5 @@ shadowJar {
     attributes 'Main-Class': 'DeckWizard'
   }
 }
+
+tasks.release.dependsOn build, shadowJar
