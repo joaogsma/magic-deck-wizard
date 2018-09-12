@@ -1,7 +1,7 @@
 import scala.io.BufferedSource
 import scala.io.Source
 
-object DeckWizard extends App {
+object MtgDeckWizard extends App {
   args.toList match {
     case List() => println("Pass the filename as a parameter")
     case List(filename) =>

@@ -31,7 +31,7 @@ shadowJar {
   version = project.version
 
   manifest {
-    attributes 'Main-Class': 'DeckWizard'
+    attributes 'Main-Class': 'MtgDeckWizard'
   }
 }
 
