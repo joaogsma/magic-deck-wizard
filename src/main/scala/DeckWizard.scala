@@ -1,10 +1,10 @@
-import scala.io.Source
 import scala.io.BufferedSource
+import scala.io.Source
 
-object Metrics extends App {
+object DeckWizard extends App {
   args.toList match {
     case List() => println("Pass the filename as a parameter")
-    case List(filename) => 
+    case List(filename) =>
       val bufferedSource = Source.fromFile(filename)
       val cards: Seq[Card] = usingFile(bufferedSource, readCards).toSeq
       print(metricsString(cards))
@@ -39,7 +39,7 @@ object Metrics extends App {
       val maxTagLength: Int = tagCount.keys.map(_.size).max
       result.append("Tags:\n")
       tagCount
-          .map { case (tag, count) => 
+          .map { case (tag, count) =>
             val countStr = if (count < 10) "0" + count.toString else count.toString
             val ratioStr = f"${count.toDouble / totalCardCount}%.2f"
             val padding = List.fill(maxTagLength - tag.size + 1)('=').mkString

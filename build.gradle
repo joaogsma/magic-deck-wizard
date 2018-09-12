@@ -1,4 +1,8 @@
-apply plugin: 'scala'
+plugins {
+  id 'com.github.johnrengelman.shadow' version '2.0.4'
+  id 'java'
+  id 'scala'
+}
 
 ext {
   scalaVersion = '2.12'
@@ -11,4 +15,12 @@ repositories {
 dependencies {
   compile 'org.scala-lang:scala-library:2.12.4'
   testCompile "org.scalatest:scalatest_$scalaVersion:3.0.0"
+}
+
+shadowJar {
+  version = project.version
+
+  manifest {
+    attributes 'Main-Class': 'DeckWizard'
+  }
 }

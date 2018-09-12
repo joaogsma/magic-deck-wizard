@@ -8,19 +8,24 @@ object Card {
         .map(Card(_, getTags(line)))
   }
 
-  private val CARD_COUNT_REGEX = "^\\[\\d+\\]".r
-  private val TAG_GROUP_REGEX = "(@[^ @]+( @[^ @]+)*)*$".r
-  private val CARD_TAG_REGEX = "@[^ @]+".r
+  private val CARD_COUNT_REGEX: Regex = "^\\[\\d+\\]".r
+  private val TAG_GROUP_REGEX: Regex = "(@[^ @]+( @[^ @]+)*)*$".r
+  private val CARD_TAG_REGEX: Regex = "@[^ @]+".r
 
-  private def getTags(line: String) = {
+  private def getTags(line: String): Set[String] = {
     TAG_GROUP_REGEX
         .findFirstIn(line)
         .filterNot(_.isEmpty)
-        .map(CARD_TAG_REGEX.findAllIn(_).toSet[String].map(_.replaceFirst("@", "")))
+        .map(
+          CARD_TAG_REGEX
+              .findAllIn(_)
+              .toSet[String]
+              .map(_.replaceFirst("@", ""))
+        )
         .getOrElse(Set.empty[String])
   }
 
-  private def getCount(line: String) = {
+  private def getCount(line: String): Int = {
     CARD_COUNT_REGEX
         .findFirstIn(line)
         .getOrElse("0")
