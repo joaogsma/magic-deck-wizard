@@ -1,0 +1,84 @@
+{
+  "object": "card",
+  "id": "d85892ae-dacd-4a55-a557-9db3c16017c7",
+  "oracle_id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+  "multiverse_ids": [
+
+  ],
+  "name": "Forest",
+  "lang": "en",
+  "uri": "https://api.scryfall.com/cards/d85892ae-dacd-4a55-a557-9db3c16017c7",
+  "scryfall_uri": "https://scryfall.com/card/grn/264/forest?utm_source=api",
+  "layout": "normal",
+  "highres_image": true,
+  "image_uris": {
+    "small": "https://img.scryfall.com/cards/small/en/grn/264.jpg?1535926445",
+    "normal": "https://img.scryfall.com/cards/normal/en/grn/264.jpg?1535926445",
+    "large": "https://img.scryfall.com/cards/large/en/grn/264.jpg?1535926445",
+    "png": "https://img.scryfall.com/cards/png/en/grn/264.png?1535926445",
+    "art_crop": "https://img.scryfall.com/cards/art_crop/en/grn/264.jpg?1535926445",
+    "border_crop": "https://img.scryfall.com/cards/border_crop/en/grn/264.jpg?1535926445"
+  },
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Forest",
+  "oracle_text": "({T}: Add {G}.)",
+  "colors": [
+
+  ],
+  "color_identity": [
+    "G"
+  ],
+  "legalities": {
+    "standard": "legal",
+    "future": "legal",
+    "frontier": "legal",
+    "modern": "legal",
+    "legacy": "legal",
+    "pauper": "legal",
+    "vintage": "legal",
+    "penny": "legal",
+    "commander": "legal",
+    "1v1": "legal",
+    "duel": "legal",
+    "brawl": "legal"
+  },
+  "reserved": false,
+  "foil": false,
+  "nonfoil": true,
+  "oversized": false,
+  "reprint": true,
+  "set": "grn",
+  "set_name": "Guilds of Ravnica",
+  "set_uri": "https://api.scryfall.com/sets/grn",
+  "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Agrn&unique=prints",
+  "scryfall_set_uri": "https://scryfall.com/sets/grn?utm_source=api",
+  "rulings_uri": "https://api.scryfall.com/cards/d85892ae-dacd-4a55-a557-9db3c16017c7/rulings",
+  "prints_search_uri": "https://api.scryfall.com/cards/search?order=set&q=%21%E2%80%9CForest%E2%80%9D+include%3Aextras&unique=prints",
+  "collector_number": "264",
+  "digital": false,
+  "rarity": "common",
+  "illustration_id": "1bd3c124-c4c5-43cc-9de0-89ec6cb2ba58",
+  "artist": "Richard Wright",
+  "frame": "2015",
+  "full_art": false,
+  "border_color": "black",
+  "timeshifted": false,
+  "colorshifted": false,
+  "futureshifted": false,
+  "related_uris": {
+    "tcgplayer_decks": "http://decks.tcgplayer.com/magic/deck/search?contains=Forest&page=1&partner=Scryfall",
+    "edhrec": "http://edhrec.com/route/?cc=Forest",
+    "mtgtop8": "http://mtgtop8.com/search?MD_check=1&SB_check=1&cards=Forest"
+  },
+  "purchase_uris": {
+    "amazon": "https://www.amazon.com/gp/search?ie=UTF8&index=toys-and-games&keywords=Forest&tag=scryfall-20",
+    "ebay": "http://rover.ebay.com/rover/1/711-53200-19255-0/1?campid=5337966903&icep_catId=19107&icep_ff3=10&icep_sortBy=12&icep_uq=Forest&icep_vectorid=229466&ipn=psmain&kw=lg&kwid=902099&mtid=824&pub=5575230669&toolid=10001",
+    "tcgplayer": "https://shop.tcgplayer.com/magic/product/show?ProductName=Forest&partner=Scryfall",
+    "magiccardmarket": "https://www.cardmarket.com/Magic?mainPage=showSearchResult&referrer=scryfall&searchFor=Forest",
+    "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Forest&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall",
+    "card_kingdom": "https://www.cardkingdom.com/catalog/search?filter%5Bname%5D=Forest&partner=scryfall&utm_campaign=affiliate&utm_medium=scryfall&utm_source=scryfall",
+    "mtgo_traders": "http://www.mtgotraders.com/store/search.php?q=Forest&referral=scryfall",
+    "coolstuffinc": "https://www.coolstuffinc.com/main_search.php?pa=searchOnName&page=1&q=Forest&resultsPerPage=50&utm_source=scryfall"
+  }
+}

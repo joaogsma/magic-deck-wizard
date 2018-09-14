@@ -1,7 +1,9 @@
 package org.joaogsma
 
-import org.joaogsma.models.DeckEntry
 import org.joaogsma.adapters.text.DeckEntryAdapter
+import org.joaogsma.models.DeckEntry
+import org.joaogsma.ports.files.usingFile
+
 import scala.io.BufferedSource
 import scala.io.Source
 
@@ -14,14 +16,6 @@ object MtgDeckWizard extends App
       val bufferedSource = Source.fromFile(filename)
       val cards: Seq[DeckEntry] = usingFile(bufferedSource, readCards)
       print(metricsString(cards))
-  }
-
-  private def usingFile[A](bufferedSource: BufferedSource, f: BufferedSource => A): A =
-  {
-    try
-      f(bufferedSource)
-    finally
-      bufferedSource.close()
   }
 
   private def readCards(bufferedSource: BufferedSource): Seq[DeckEntry] =

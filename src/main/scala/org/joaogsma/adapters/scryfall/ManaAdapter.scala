@@ -15,13 +15,13 @@ object ManaAdapter
         .filter(_.count > 0)
   }
 
-  private val GENERIC: Regex = "{\\d+}".r
-  private val COLORLESS: Regex = "{C}".r
-  private val WHITE: Regex = "{W}".r
-  private val BLUE: Regex = "{U}".r
-  private val BLACK: Regex = "{B}".r
-  private val RED: Regex = "{R}".r
-  private val GREEN: Regex = "{G}".r
+  private val GENERIC: Regex = "\\{\\d+\\}".r
+  private val COLORLESS: Regex = "\\{C\\}".r
+  private val WHITE: Regex = "\\{W\\}".r
+  private val BLUE: Regex = "\\{U\\}".r
+  private val BLACK: Regex = "\\{B\\}".r
+  private val RED: Regex = "\\{R\\}".r
+  private val GREEN: Regex = "\\{G\\}".r
 
   private def toMana(manaRegex: Regex, count: Int): Mana = manaRegex match
   {

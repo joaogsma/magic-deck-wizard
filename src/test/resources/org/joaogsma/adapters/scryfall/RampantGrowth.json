@@ -1,0 +1,92 @@
+{
+  "object": "card",
+  "id": "3ffbf716-9c3a-45aa-8fdb-632128cc97e2",
+  "oracle_id": "8539f295-5d58-4436-a73a-b9277c4c7795",
+  "multiverse_ids": [
+    4779
+  ],
+  "mtgo_id": 9547,
+  "mtgo_foil_id": 9548,
+  "name": "Rampant Growth",
+  "lang": "en",
+  "uri": "https://api.scryfall.com/cards/3ffbf716-9c3a-45aa-8fdb-632128cc97e2",
+  "scryfall_uri": "https://scryfall.com/card/tmp/245/rampant-growth?utm_source=api",
+  "layout": "normal",
+  "highres_image": true,
+  "image_uris": {
+    "small": "https://img.scryfall.com/cards/small/en/tmp/245.jpg?1517813031",
+    "normal": "https://img.scryfall.com/cards/normal/en/tmp/245.jpg?1517813031",
+    "large": "https://img.scryfall.com/cards/large/en/tmp/245.jpg?1517813031",
+    "png": "https://img.scryfall.com/cards/png/en/tmp/245.png?1517813031",
+    "art_crop": "https://img.scryfall.com/cards/art_crop/en/tmp/245.jpg?1517813031",
+    "border_crop": "https://img.scryfall.com/cards/border_crop/en/tmp/245.jpg?1517813031"
+  },
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Search your library for a basic land card and put that card onto the battlefield tapped. Then shuffle your library.",
+  "colors": [
+    "G"
+  ],
+  "color_identity": [
+    "G"
+  ],
+  "legalities": {
+    "standard": "not_legal",
+    "future": "not_legal",
+    "frontier": "not_legal",
+    "modern": "legal",
+    "legacy": "legal",
+    "pauper": "legal",
+    "vintage": "legal",
+    "penny": "legal",
+    "commander": "legal",
+    "1v1": "legal",
+    "duel": "legal",
+    "brawl": "not_legal"
+  },
+  "reserved": false,
+  "foil": false,
+  "nonfoil": true,
+  "oversized": false,
+  "reprint": true,
+  "set": "tmp",
+  "set_name": "Tempest",
+  "set_uri": "https://api.scryfall.com/sets/tmp",
+  "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Atmp&unique=prints",
+  "scryfall_set_uri": "https://scryfall.com/sets/tmp?utm_source=api",
+  "rulings_uri": "https://api.scryfall.com/cards/3ffbf716-9c3a-45aa-8fdb-632128cc97e2/rulings",
+  "prints_search_uri": "https://api.scryfall.com/cards/search?order=set&q=%21%E2%80%9CRampant+Growth%E2%80%9D+include%3Aextras&unique=prints",
+  "collector_number": "245",
+  "digital": false,
+  "rarity": "common",
+  "flavor_text": "Rath forces plants from its surface as one presses whey from cheese.",
+  "illustration_id": "76a720a9-0644-4e3b-8f16-ca5eefe5957e",
+  "artist": "Tom Kyffin",
+  "frame": "1997",
+  "full_art": false,
+  "border_color": "black",
+  "timeshifted": false,
+  "colorshifted": false,
+  "futureshifted": false,
+  "edhrec_rank": 108,
+  "usd": "0.20",
+  "tix": "0.04",
+  "eur": "0.11",
+  "related_uris": {
+    "gatherer": "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=4779",
+    "tcgplayer_decks": "http://decks.tcgplayer.com/magic/deck/search?contains=Rampant+Growth&page=1&partner=Scryfall",
+    "edhrec": "http://edhrec.com/route/?cc=Rampant+Growth",
+    "mtgtop8": "http://mtgtop8.com/search?MD_check=1&SB_check=1&cards=Rampant+Growth"
+  },
+  "purchase_uris": {
+    "amazon": "https://www.amazon.com/gp/search?ie=UTF8&index=toys-and-games&keywords=Rampant+Growth&tag=scryfall-20",
+    "ebay": "http://rover.ebay.com/rover/1/711-53200-19255-0/1?campid=5337966903&icep_catId=19107&icep_ff3=10&icep_sortBy=12&icep_uq=Rampant+Growth&icep_vectorid=229466&ipn=psmain&kw=lg&kwid=902099&mtid=824&pub=5575230669&toolid=10001",
+    "tcgplayer": "https://scryfall.com/s/tcgplayer/5679",
+    "magiccardmarket": "https://scryfall.com/s/mcm/8874",
+    "cardhoarder": "https://www.cardhoarder.com/cards/9547?affiliate_id=scryfall&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall",
+    "card_kingdom": "https://www.cardkingdom.com/catalog/item/28220?partner=scryfall&utm_campaign=affiliate&utm_medium=scryfall&utm_source=scryfall",
+    "mtgo_traders": "http://www.mtgotraders.com/deck/ref.php?id=9547&referral=scryfall",
+    "coolstuffinc": "https://scryfall.com/s/coolstuffinc/1507986"
+  }
+}
