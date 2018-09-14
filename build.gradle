@@ -9,7 +9,8 @@ plugins {
 }
 
 ext {
-  scalaVersion = '2.12'
+  scalaVersion = '2.12.4'
+  circleVersion = "0.9.3"
 }
 
 repositories {
@@ -22,9 +23,17 @@ release {
   grgit = Grgit.open(currentDir: file('.'))
 }
 
+static def removePatch(String str) {
+  return str.substring(0, str.lastIndexOf('.'))
+}
+
 dependencies {
-  compile 'org.scala-lang:scala-library:2.12.4'
-  testCompile "org.scalatest:scalatest_$scalaVersion:3.0.0"
+  compile "org.scala-lang:scala-library:$scalaVersion"
+  compile "io.circe:circe-core_${removePatch(scalaVersion)}:$circleVersion"
+  compile "io.circe:circe-generic_${removePatch(scalaVersion)}:$circleVersion"
+  compile "io.circe:circe-parser_${removePatch(scalaVersion)}:$circleVersion"
+
+  testCompile "org.scalatest:scalatest_${removePatch(scalaVersion)}:3.0.0"
 }
 
 shadowJar {
