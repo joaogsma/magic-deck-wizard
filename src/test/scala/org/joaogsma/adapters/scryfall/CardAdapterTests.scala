@@ -7,28 +7,28 @@ import org.joaogsma.models.Color
 import org.joaogsma.models.Mana
 import org.joaogsma.models.Type
 import org.joaogsma.ports.files.usingFile
-import org.scalatest.FunSpec
 import org.scalatest.Matchers
+import org.scalatest.WordSpec
 
 import scala.io.BufferedSource
 import scala.io.Source
 import scala.util.Try
 
-class CardAdapterTests extends FunSpec with Matchers
+class CardAdapterTests extends WordSpec with Matchers
 {
-  describe("jsonToCard")
+  "The jsonToCard function" when
   {
-    describe("(when the json is Json.Null)")
+    "applied to Json.Null" should
     {
-      it("must return a failure")
+      "return a failure" in
       {
-        val result = CardAdapter.jsonToCard(Json.Null)
+        CardAdapter.jsonToCard(Json.Null).isFailure shouldBe true
       }
     }
 
-    describe("(when the json is complete)")
+    "applied to a complete JSON)" should
     {
-      it("must read all the fields")
+      "read all the fields" in
       {
         val expectedCard: Card = Card(
           Seq(Mana.Generic(1), Mana.Green(1)),
@@ -41,9 +41,9 @@ class CardAdapterTests extends FunSpec with Matchers
       }
     }
 
-    describe("(when the mana cost is missing)")
+    "applied to a JSON missing th mana cost" should
     {
-      it("must return a Failure")
+      "return a Failure" in
       {
         val result = usingFileSource(
           "Bereavement.json",
@@ -53,9 +53,9 @@ class CardAdapterTests extends FunSpec with Matchers
       }
     }
 
-    describe("(when the colors are missing)")
+    "applied ot a JSON missing the colors" should
     {
-      it("must return a Failure")
+      "return a Failure" in
       {
         val result = usingFileSource(
           "CorpseAugur.json",
@@ -65,9 +65,9 @@ class CardAdapterTests extends FunSpec with Matchers
       }
     }
 
-    describe("(when the type line is missing)")
+    "applied to a JSON missing the type line" should
     {
-      it("must return a Failure")
+      "return a Failure" in
       {
         val result = usingFileSource(
           "CorpseAugur.json",

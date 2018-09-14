@@ -7,7 +7,7 @@ object TypeAdapter
   def parseSequence(str: String): Seq[Type] =
   {
     val orderedSeq = Seq(ENCHANTMENT, ARTIFACT, CREATURE, INSTANT, SORCERY, PLANESWALKER, LAND)
-    orderedSeq.filter(str.contains).map(TypeAdapter.toType)
+    orderedSeq.filter(str.contains).map(TypeAdapter.parse)
   }
 
   private val CREATURE: String = "Creature"
@@ -18,7 +18,7 @@ object TypeAdapter
   private val PLANESWALKER: String = "Planeswalker"
   private val LAND: String = "Land"
 
-  private def toType(typeStr: String): Type = typeStr match
+  private def parse(typeStr: String): Type = typeStr match
   {
     case ENCHANTMENT => Type.Enchantment
     case ARTIFACT => Type.Artifact

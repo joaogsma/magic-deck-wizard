@@ -1,9 +1,10 @@
 package org.joaogsma.ports.scryfall
 
-import org.joaogsma.ports.HttpPort
 import io.circe.parser.parse
 import org.joaogsma.adapters.scryfall.CardAdapter
 import org.joaogsma.models.Card
+import org.joaogsma.ports.HttpPort
+
 import scala.util.Try
 
 object ScryfallPort extends HttpPort

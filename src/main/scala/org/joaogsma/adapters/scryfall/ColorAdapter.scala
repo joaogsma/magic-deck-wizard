@@ -4,7 +4,7 @@ import org.joaogsma.models.Color
 
 object ColorAdapter
 {
-  def stringSeqToColorSeq(strSeq: Seq[String]): Seq[Color] = strSeq.map(parse)
+  def parseSequence(strSeq: Seq[String]): Seq[Color] = strSeq.map(parse).distinct
 
   private def parse(str: String): Color = str match
   {

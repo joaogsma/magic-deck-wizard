@@ -19,7 +19,7 @@ object CardAdapter
 
     Try(Card(
       ManaAdapter.parseSequence(manaCost.get),
-      ColorAdapter.stringSeqToColorSeq(colors.get),
+      ColorAdapter.parseSequence(colors.get),
       TypeAdapter.parseSequence(typeLine.get),
       cmc.get
     ))
