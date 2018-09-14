@@ -1,16 +1,25 @@
-package org.joaogsma
+package org.joaogsma.models
 
 import scala.util.matching.Regex
 
-case class Card(count: Int, tags: Set[String])
+case class DeckEntry(
+    count: Int,
+    card: Option[Card],
+    tags: Set[String]
+)
 
-object Card
+object DeckEntry
 {
-  def apply(line: String): Option[Card] =
+  def apply(count: Int, tags: Set[String]): DeckEntry =
+  {
+    DeckEntry(count, Option.empty, tags)
+  }
+
+  def parse(line: String): Option[DeckEntry] =
   {
     Option(getCount(line))
         .filter(_ > 0)
-        .map(Card(_, getTags(line)))
+        .map(DeckEntry(_, getTags(line)))
   }
 
   private val CARD_COUNT_REGEX: Regex = "^\\[\\d+\\]".r

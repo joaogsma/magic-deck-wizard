@@ -1,5 +1,7 @@
 package org.joaogsma
 
+import org.joaogsma.models.DeckEntry
+
 import scala.io.BufferedSource
 import scala.io.Source
 
@@ -10,7 +12,7 @@ object MtgDeckWizard extends App
     case List() => println("Pass the filename as a parameter")
     case List(filename) =>
       val bufferedSource = Source.fromFile(filename)
-      val cards: Seq[Card] = usingFile(bufferedSource, readCards)
+      val cards: Seq[DeckEntry] = usingFile(bufferedSource, readCards)
       print(metricsString(cards))
   }
 
@@ -22,18 +24,18 @@ object MtgDeckWizard extends App
       bufferedSource.close()
   }
 
-  private def readCards(bufferedSource: BufferedSource): Seq[Card] =
+  private def readCards(bufferedSource: BufferedSource): Seq[DeckEntry] =
   {
     val deckLines: Iterator[String] = bufferedSource.getLines.filter(_.nonEmpty)
     deckLines
         .map(_.trim)
-        .map(Card.apply)
+        .map(DeckEntry.parse)
         .filter(_.isDefined)
         .map(_.get)
         .toList
   }
 
-  private def metricsString(cards: Seq[Card]): String =
+  private def metricsString(cards: Seq[DeckEntry]): String =
   {
     val result: StringBuilder = StringBuilder.newBuilder
 
@@ -59,7 +61,7 @@ object MtgDeckWizard extends App
     result.toString
   }
 
-  private def countTags(cards: Seq[Card]): Map[String, Int] =
+  private def countTags(cards: Seq[DeckEntry]): Map[String, Int] =
   {
     cards
         .flatMap(card => card.tags.map(_ -> card.count))

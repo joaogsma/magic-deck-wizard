@@ -1,11 +1,11 @@
-package org.joaogsma.connectors
+package org.joaogsma.ports
 
 import java.net.HttpURLConnection
 import java.net.URL
 
 import scala.io.Source
 
-trait HttpConnector
+trait HttpPort
 {
   /**
     * Returns the text (content) from a REST URL as a String.
