@@ -1,7 +1,7 @@
 package org.joaogsma
 
 import org.joaogsma.models.DeckEntry
-
+import org.joaogsma.adapters.text.DeckEntryAdapter
 import scala.io.BufferedSource
 import scala.io.Source
 
@@ -29,7 +29,7 @@ object MtgDeckWizard extends App
     val deckLines: Iterator[String] = bufferedSource.getLines.filter(_.nonEmpty)
     deckLines
         .map(_.trim)
-        .map(DeckEntry.parse)
+        .map(DeckEntryAdapter.parse)
         .filter(_.isDefined)
         .map(_.get)
         .toList
