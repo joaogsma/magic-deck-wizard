@@ -1,0 +1,92 @@
+{
+  "object": "card",
+  "id": "7220aaa0-c457-4067-b1ff-360b161c34e5",
+  "oracle_id": "aa7714b0-2bfb-458a-8ebf-37ec2c53383e",
+  "multiverse_ids": [
+    438694
+  ],
+  "mtgo_id": 66135,
+  "mtgo_foil_id": 66136,
+  "name": "Fireball",
+  "lang": "en",
+  "uri": "https://api.scryfall.com/cards/7220aaa0-c457-4067-b1ff-360b161c34e5",
+  "scryfall_uri": "https://scryfall.com/card/ima/128/fireball?utm_source=api",
+  "layout": "normal",
+  "highres_image": true,
+  "image_uris": {
+    "small": "https://img.scryfall.com/cards/small/en/ima/128.jpg?1530592214",
+    "normal": "https://img.scryfall.com/cards/normal/en/ima/128.jpg?1530592214",
+    "large": "https://img.scryfall.com/cards/large/en/ima/128.jpg?1530592214",
+    "png": "https://img.scryfall.com/cards/png/en/ima/128.png?1530592214",
+    "art_crop": "https://img.scryfall.com/cards/art_crop/en/ima/128.jpg?1530592214",
+    "border_crop": "https://img.scryfall.com/cards/border_crop/en/ima/128.jpg?1530592214"
+  },
+  "mana_cost": "{X}{R}",
+  "cmc": 1.0,
+  "type_line": "Sorcery",
+  "oracle_text": "This spell costs {1} more to cast for each target beyond the first.\nFireball deals X damage divided evenly, rounded down, among any number of targets.",
+  "colors": [
+    "R"
+  ],
+  "color_identity": [
+    "R"
+  ],
+  "legalities": {
+    "standard": "not_legal",
+    "future": "not_legal",
+    "frontier": "not_legal",
+    "modern": "legal",
+    "legacy": "legal",
+    "pauper": "not_legal",
+    "vintage": "legal",
+    "penny": "legal",
+    "commander": "legal",
+    "1v1": "legal",
+    "duel": "legal",
+    "brawl": "not_legal"
+  },
+  "reserved": false,
+  "foil": true,
+  "nonfoil": true,
+  "oversized": false,
+  "reprint": true,
+  "set": "ima",
+  "set_name": "Iconic Masters",
+  "set_uri": "https://api.scryfall.com/sets/ima",
+  "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Aima&unique=prints",
+  "scryfall_set_uri": "https://scryfall.com/sets/ima?utm_source=api",
+  "rulings_uri": "https://api.scryfall.com/cards/7220aaa0-c457-4067-b1ff-360b161c34e5/rulings",
+  "prints_search_uri": "https://api.scryfall.com/cards/search?order=set&q=%21%E2%80%9CFireball%E2%80%9D+include%3Aextras&unique=prints",
+  "collector_number": "128",
+  "digital": false,
+  "rarity": "uncommon",
+  "flavor_text": "The spell fell upon the crowd like a dragon, ancient and full of death.",
+  "illustration_id": "bae72844-d1ea-457b-aa1a-195193f1436d",
+  "artist": "Dave Dorman",
+  "frame": "2015",
+  "full_art": false,
+  "border_color": "black",
+  "timeshifted": false,
+  "colorshifted": false,
+  "futureshifted": false,
+  "edhrec_rank": 2144,
+  "usd": "0.09",
+  "tix": "0.01",
+  "eur": "0.08",
+  "related_uris": {
+    "gatherer": "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=438694",
+    "tcgplayer_decks": "http://decks.tcgplayer.com/magic/deck/search?contains=Fireball&page=1&partner=Scryfall",
+    "edhrec": "http://edhrec.com/route/?cc=Fireball",
+    "mtgtop8": "http://mtgtop8.com/search?MD_check=1&SB_check=1&cards=Fireball"
+  },
+  "purchase_uris": {
+    "amazon": "https://www.amazon.com/gp/search?ie=UTF8&index=toys-and-games&keywords=Fireball&tag=scryfall-20",
+    "ebay": "http://rover.ebay.com/rover/1/711-53200-19255-0/1?campid=5337966903&icep_catId=19107&icep_ff3=10&icep_sortBy=12&icep_uq=Fireball&icep_vectorid=229466&ipn=psmain&kw=lg&kwid=902099&mtid=824&pub=5575230669&toolid=10001",
+    "tcgplayer": "https://scryfall.com/s/tcgplayer/145463",
+    "magiccardmarket": "https://scryfall.com/s/mcm/301474",
+    "cardhoarder": "https://www.cardhoarder.com/cards/66135?affiliate_id=scryfall&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall",
+    "card_kingdom": "https://www.cardkingdom.com/catalog/item/214799?partner=scryfall&utm_campaign=affiliate&utm_medium=scryfall&utm_source=scryfall",
+    "mtgo_traders": "http://www.mtgotraders.com/deck/ref.php?id=66135&referral=scryfall",
+    "coolstuffinc": "https://scryfall.com/s/coolstuffinc/4223257"
+  }
+}
