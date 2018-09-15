@@ -4,7 +4,7 @@ import org.joaogsma.models.Type
 
 object TypeAdapter
 {
-  def parseSequence(str: String): Seq[Type] =
+  def parseToSequence(str: String): Seq[Type] =
   {
     val orderedSeq = Seq(ENCHANTMENT, ARTIFACT, CREATURE, INSTANT, SORCERY, PLANESWALKER, LAND)
     orderedSeq.filter(str.contains).map(TypeAdapter.parse)

@@ -8,7 +8,7 @@ import scala.util.Random
 
 class ColorAdapterTests extends WordSpec with Matchers
 {
-  "The parseSequence function" when
+  "The parseToSequence function" when
   {
     "applied to a sequence with any combination of color strings" should
     {
@@ -21,8 +21,8 @@ class ColorAdapterTests extends WordSpec with Matchers
             .map(_.map(_.toString))
         val expectedCombinations: Seq[Seq[Color]] = (1 to 5).flatMap(colors.combinations)
 
-        val resultCombinations = inputCombinations.map(ColorAdapter.parseSequence)
-        resultCombinations should contain theSameElementsAs expectedCombinations
+        val resultCombinations = inputCombinations.map(ColorAdapter.parseToSequence)
+        resultCombinations should contain theSameElementsInOrderAs expectedCombinations
       }
     }
 
@@ -30,7 +30,7 @@ class ColorAdapterTests extends WordSpec with Matchers
     {
       "return an empty sequence" in
       {
-        ColorAdapter.parseSequence(Seq.empty) shouldBe empty
+        ColorAdapter.parseToSequence(Seq.empty) shouldBe empty
       }
     }
 
@@ -46,8 +46,8 @@ class ColorAdapterTests extends WordSpec with Matchers
             .map(combination => combination ++ randomSubset(combination))
         val expectedCombinations: Seq[Seq[Color]] = (1 to 5).flatMap(colors.combinations)
 
-        val resultCombinations = inputCombinations.map(ColorAdapter.parseSequence)
-        resultCombinations should contain theSameElementsAs expectedCombinations
+        val resultCombinations = inputCombinations.map(ColorAdapter.parseToSequence)
+        resultCombinations should contain theSameElementsInOrderAs expectedCombinations
       }
     }
   }

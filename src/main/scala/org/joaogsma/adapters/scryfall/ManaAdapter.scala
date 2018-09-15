@@ -8,7 +8,7 @@ import scala.util.matching.Regex
 object ManaAdapter
 {
   // TODO: ensure that the string contains nothing but the mana symbols
-  def parseSequence(str: String): Seq[Mana] =
+  def parseToSequence(str: String): Seq[Mana] =
   {
     val orderedSeq = Seq(X, GENERIC, COLORLESS, WHITE, BLUE, BLACK, RED, GREEN)
     orderedSeq

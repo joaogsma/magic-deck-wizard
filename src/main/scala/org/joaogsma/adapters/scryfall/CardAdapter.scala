@@ -18,9 +18,9 @@ object CardAdapter
     val colors: Try[Seq[String]] = cursor.get[Seq[String]](COLORS_FIELD).toTry
 
     Try(Card(
-      ManaAdapter.parseSequence(manaCost.get),
-      ColorAdapter.parseSequence(colors.get),
-      TypeAdapter.parseSequence(typeLine.get),
+      ManaAdapter.parseToSequence(manaCost.get),
+      ColorAdapter.parseToSequence(colors.get),
+      TypeAdapter.parseToSequence(typeLine.get),
       cmc.get
     ))
   }
