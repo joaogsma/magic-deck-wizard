@@ -6,12 +6,10 @@ import org.joaogsma.models.Card
 import org.joaogsma.models.Color
 import org.joaogsma.models.Mana
 import org.joaogsma.models.Type
-import org.joaogsma.ports.files.usingFile
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
 
 import scala.io.BufferedSource
-import scala.io.Source
 import scala.util.Try
 
 class CardAdapterTests extends WordSpec with Matchers
@@ -77,12 +75,9 @@ class CardAdapterTests extends WordSpec with Matchers
     }
   }
 
-  private val RESOURCES_DIRECTORY = "src/test/resources/org/joaogsma/adapters/scryfall"
-
   private def usingFileSource[A](filename: String, f: BufferedSource => A): A =
   {
-    val bs: BufferedSource = Source.fromFile(s"$RESOURCES_DIRECTORY/$filename")
-    usingFile(bs, f)
+    FilePortImpl.usingFile(s"$RESOURCES_DIRECTORY/$filename", f)
   }
 
   def parseAndTransformToCard(deleteField: Option[String])(bs: BufferedSource): Try[Card] =

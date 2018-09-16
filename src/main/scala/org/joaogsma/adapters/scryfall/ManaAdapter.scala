@@ -2,7 +2,6 @@ package org.joaogsma.adapters.scryfall
 
 import org.joaogsma.models.Mana
 
-import scala.util.Try
 import scala.util.matching.Regex
 
 object ManaAdapter

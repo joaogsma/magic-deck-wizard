@@ -2,12 +2,10 @@ package org.joaogsma.adapters.scryfall
 
 import io.circe.parser.parse
 import org.joaogsma.models.Mana
-import org.joaogsma.ports.files.usingFile
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
 
 import scala.io.BufferedSource
-import scala.io.Source
 
 class ManaAdapterTests extends WordSpec with Matchers
 {
@@ -61,12 +59,9 @@ class ManaAdapterTests extends WordSpec with Matchers
     }
   }
 
-  private val RESOURCES_DIRECTORY = "src/test/resources/org/joaogsma/adapters/scryfall"
-
   private def parseFileAndGetManaCost(filename: String): String =
   {
-    val bs: BufferedSource = Source.fromFile(s"$RESOURCES_DIRECTORY/$filename")
-    usingFile(bs, parseAndGetManaCost)
+    FilePortImpl.usingFile(s"$RESOURCES_DIRECTORY/$filename", parseAndGetManaCost)
   }
 
   private def parseAndGetManaCost(bs: BufferedSource): String =

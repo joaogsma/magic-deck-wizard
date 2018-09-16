@@ -13,7 +13,11 @@ class HttpPortTests extends WordSpec with Matchers
     {
       "connect successfully" in
       {
-        Test.get("https://httpbin.org/get").nonEmpty shouldBe true
+        val result = Test.get(
+          "https://httpbin.org/get",
+          readTimeout = 10000,
+          connectTimeout = 10000)
+        result.nonEmpty shouldBe true
       }
     }
   }
