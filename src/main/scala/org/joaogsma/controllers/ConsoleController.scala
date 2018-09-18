@@ -1,18 +1,24 @@
-package org.joaogsma
+package org.joaogsma.controllers
 
 import org.joaogsma.metrics.countCards
 import org.joaogsma.metrics.countTags
 import org.joaogsma.models.DeckEntry
 import org.joaogsma.ports.file.DeckListPort
 
-object MtgDeckWizard extends App
+import scala.util.Failure
+import scala.util.Success
+
+object ConsoleController extends App
 {
   args.toList match
   {
-    case List() => println("Pass the filename as a parameter")
-    case List(filename) =>
-      val cards: Seq[DeckEntry] = DeckListPort.readCards(filename)
-      print(metricsString(cards))
+    case filename :: Nil =>
+      DeckListPort.readCards(filename) match
+      {
+        case Success(cards) => print(metricsString(cards))
+        case Failure(exception) => println(s"[ERROR] ${exception.getMessage}")
+      }
+    case _ => println("[ERROR] Missing filename")
   }
 
   private def metricsString(cards: Seq[DeckEntry]): String =

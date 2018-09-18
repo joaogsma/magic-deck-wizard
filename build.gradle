@@ -3,10 +3,13 @@ import org.ajoberstar.grgit.Grgit
 plugins {
   id 'scala'
   id 'java'
+  id 'application'
   id 'org.ajoberstar.grgit' version '1.7.2'
   id 'org.ajoberstar.release-opinion' version '1.7.2'
   id 'com.github.johnrengelman.shadow' version '2.0.4'
 }
+
+mainClassName = 'org.joaogsma.controllers.ConsoleController'
 
 ext {
   scalaVersion = '2.12.4'
@@ -38,13 +41,7 @@ dependencies {
 
 shadowJar {
   version = project.version
-
-  manifest {
-    attributes 'Main-Class': 'MtgDeckWizard'
-  }
 }
-
-tasks.release.dependsOn build, shadowJar
 
 task scalaTest(dependsOn: ['testClasses'], type: JavaExec) {
   main = 'org.scalatest.tools.Runner'
@@ -52,4 +49,5 @@ task scalaTest(dependsOn: ['testClasses'], type: JavaExec) {
   classpath = sourceSets.test.runtimeClasspath
 }
 
-test.dependsOn scalaTest
+tasks.release.dependsOn build
+tasks.test.dependsOn scalaTest

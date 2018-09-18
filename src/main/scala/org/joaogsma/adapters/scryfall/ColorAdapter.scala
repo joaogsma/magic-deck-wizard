@@ -6,7 +6,7 @@ object ColorAdapter
 {
   def parseToSequence(strSeq: Seq[String]): Seq[Color] = strSeq.map(parse).distinct
 
-  private def parse(str: String): Color = str match
+  protected def parse(str: String): Color = str match
   {
     case "W" => Color.White
     case "U" => Color.Blue

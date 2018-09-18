@@ -39,7 +39,7 @@ class CardAdapterTests extends WordSpec with Matchers
       }
     }
 
-    "applied to a JSON missing th mana cost" should
+    "applied to a JSON missing the mana cost" should
     {
       "return a Failure" in
       {

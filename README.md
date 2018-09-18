@@ -1,31 +1,43 @@
 # MTG Deck Wizard
 MTG Deck Wizard is a simple command line tool for extracting metrics from magic the gathering deck lists.
 
-## Useful commands
-### Building a runnable jar
+## Installation
+To install the application, run:
+```
+./gradlew installShadowDist
+```
+This should install a distribution on the `build/install/mtg-deck-wizard-shadow` directory. To the
+installed distribution, first go to its directory, and then run:
+```
+# Unix
+bin/mtg-deck-wizard <filename>
+
+# Windows
+bin/mtg-deck-wizard.bat <filename>
+```
+where `<filename>` is a path for a deck list, such as `../../../examples/tatyova.txt`
 To build a runnable jar file, run:
 ```
-// On macOS, Linux
+# Unix
 ./gradlew shadowJar
 
-// On Windows
+# Windows
 ./gradlew.bat shadowJar
 ```
-The resulting file will be called `mtg-deck-wizard-<version>.jar` and will be available at the `build/libs/` directory.
 
-### Running the application
-To run the MTG Deck Wizard on the `examples/tatyova.txt` deck list, run:
+Alternatively, because the `lib/mtg-deck-wizard-<version>.jar` file is a runnable jar, you can also
+run the application with the command:
 ```
-java -jar build/libs/mtg-deck-wizard-<version>jar examples/tatyova.txt 
+java -jar lib/mtg-deck-wizard-<version>.jar <filename>
 ```
 
-### Releasing a new version
+## Releasing a new version
 To release a new version, run:
 ```
-// On macOS, Linux
+# Unix
 ./gradlew release -Prelease.scope=<scope> -Prelease.stage=final
 
-// On Windows
+# Windows
 ./gradlew.bat release -Prelease.scope=<scope> -Prelease.stage=final
 ```
 where the scope can be `patch`, `minor` or `major`. The `stage` should always be final for simplicity.

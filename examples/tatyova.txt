@@ -1,4 +1,4 @@
-Tatyova, Benthic Druid
+// Tatyova, Benthic Druid
 
 // Card Draw
 [1] Horn of Greed @cmc_3 @colorless @artifact @draw @political
