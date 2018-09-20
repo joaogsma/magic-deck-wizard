@@ -1,6 +1,7 @@
 package org.joaogsma.adapters.text
 
 import org.joaogsma.models.Color
+import org.joaogsma.models.Color.ColorOrdering
 
 import scala.util.Failure
 import scala.util.Try
@@ -24,16 +25,19 @@ object ColorAdapter
       Failure(new IllegalArgumentException(s"Malformed colors: $str"))
     else
     {
-      Try(str
-          .substring(1, str.length - 1)
-          .groupBy(c => COLORS.find(c.toString.matches))
-          .map
-          {
-            case (Some(colorStr), occurrences) if occurrences.length == 1 => toColor(colorStr)
-            case _ => throw new IllegalArgumentException(s"Malformed colors: $str")
-          }
-          .toList
-      )
+      Try
+      {
+        str
+            .substring(1, str.length - 1)
+            .groupBy(c => COLORS.find(c.toString.matches))
+            .map
+            {
+              case (Some(colorStr), occurrences) if occurrences.length == 1 => toColor(colorStr)
+              case _ => throw new IllegalArgumentException(s"Malformed colors: $str")
+            }
+            .toList
+            .sorted
+      }
     }
   }
 

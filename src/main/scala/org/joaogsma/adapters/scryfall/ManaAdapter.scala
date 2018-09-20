@@ -1,6 +1,7 @@
 package org.joaogsma.adapters.scryfall
 
 import org.joaogsma.models.Mana
+import org.joaogsma.models.Mana.ManaOrdering
 
 import scala.util.matching.Regex
 
@@ -21,6 +22,7 @@ object ManaAdapter
           toMana(regex, count)
         })
         .filter(_.count > 0)
+        .sorted
   }
 
   private val X: Regex = "\\{X\\}".r

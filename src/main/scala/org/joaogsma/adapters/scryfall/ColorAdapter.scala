@@ -1,10 +1,11 @@
 package org.joaogsma.adapters.scryfall
 
 import org.joaogsma.models.Color
+import org.joaogsma.models.Color.ColorOrdering
 
 object ColorAdapter
 {
-  def parseToSequence(strSeq: Seq[String]): Seq[Color] = strSeq.map(parse).distinct
+  def parseToSequence(strSeq: Seq[String]): Seq[Color] = strSeq.map(parse).distinct.sorted
 
   protected def parse(str: String): Color = str match
   {

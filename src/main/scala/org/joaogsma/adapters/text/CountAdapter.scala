@@ -1,5 +1,6 @@
 package org.joaogsma.adapters.text
 
+import scala.util.Failure
 import scala.util.Try
 import scala.util.matching.Regex
 
@@ -7,14 +8,15 @@ object CountAdapter
 {
   val COUNT_REGEX: Regex = "\\[\\d+\\]".r
 
-  def parseCount(str: String): Try[Int] =
+  def parse(str: String): Try[Int] =
   {
-    exactMatch(COUNT_REGEX, str)
-        .map(string => string.substring(1, string.length - 1).toInt)
-        .map
-        {
-          case n if n > 0 => n
-          case n => throw new IllegalArgumentException(s"Count must be positive, but found $n")
-        }
+    if (!str.matches(COUNT_REGEX.toString))
+      Failure(new IllegalArgumentException(s"Malformed count: $str"))
+    else
+    {
+      Try(str.substring(1, str.length - 1).toInt)
+          .filter(_ > 0)
+          .recoverWith { case _ => Failure(new IllegalArgumentException(s"Malformed count: $str")) }
+    }
   }
 }

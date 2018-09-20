@@ -11,4 +11,19 @@ object Type
   case object Enchantment extends Type
   case object Planeswalker extends Type
   case object Land extends Type
+
+  implicit object TypeOrdering extends Ordering[Type]
+  {
+    override def compare(a: Type, b: Type): Int = ORDERING_MAP(a) - ORDERING_MAP(b)
+
+    private val ORDERING_MAP: Map[Type, Int] = Map(
+      Enchantment -> 1,
+      Artifact -> 2,
+      Creature -> 3,
+      Instant -> 4,
+      Sorcery -> 5,
+      Planeswalker -> 6,
+      Land -> 7
+    )
+  }
 }

@@ -14,9 +14,17 @@ class CardAdapterTests extends WordSpec with Matchers
   {
     "applied to an empty string" should
     {
-      "return a failure" in
+      "return a Failure" in
       {
         CardAdapter.parse("").isFailure shouldBe true
+      }
+    }
+
+    "applied to \"{}\"" should
+    {
+      "return a Failure" in
+      {
+        CardAdapter.parse("{}").isFailure shouldBe true
       }
     }
 

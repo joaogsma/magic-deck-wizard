@@ -3,7 +3,7 @@
 // Card Draw
 [1] Horn of Greed @cmc_3 @colorless @artifact @draw @political
 [1] Seer's Sundial @cmc_4 @colorless @artifact @draw
-[1] Intellectual Offering @cmc_5 Offering @blue @instant @draw @political
+[1] Intellectual Offering @cmc_5 @blue @instant @draw @political
 [1] Urban Evolution @cmc_5 @blue @green @sorcery @draw @ramp @extra_land_drop
 [1] Minds Aglow @cmc_1 @blue @sorcery @draw @join_forces @political
 

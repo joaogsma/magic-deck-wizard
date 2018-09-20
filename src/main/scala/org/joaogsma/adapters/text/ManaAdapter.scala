@@ -1,6 +1,7 @@
 package org.joaogsma.adapters.text
 
 import org.joaogsma.models.Mana
+import org.joaogsma.models.Mana.ManaOrdering
 
 import scala.util.Failure
 import scala.util.Try
@@ -27,17 +28,21 @@ object ManaAdapter
       Failure(new IllegalArgumentException(s"Malformed mana cost: $str"))
     else
     {
-      Try(str
-          .substring(2, str.length - 2)
-          .split("\\}\\{")
-          .groupBy(string => MANA_SYMBOLS.find(string.matches))
-          .map
-          {
-            case (Some(GENERIC), values) => toMana(GENERIC, values.map(_.toInt).sum)
-            case (Some(manaSymbol), values) => toMana(manaSymbol, values.length)
-          }
-          .toList
-      )
+      Try
+      {
+        str
+            .replaceAll("(^\"\\{?)|(\\}?\"$)", "")
+            .split("\\}\\{")
+            .groupBy(string => MANA_SYMBOLS.find(string.matches))
+            .filterKeys(_.isDefined)
+            .map
+            {
+              case (Some(GENERIC), values) => toMana(GENERIC, values.map(_.toInt).sum)
+              case (key, values) => toMana(key.get, values.length)
+            }
+            .toList
+            .sorted
+      }
     }
   }
 
