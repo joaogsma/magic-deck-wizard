@@ -13,7 +13,7 @@ object ConsoleController extends App
   args.toList match
   {
     case filename :: Nil =>
-      DeckListPort.readCards(filename) match
+      DeckListPort.read(filename) match
       {
         case Success(cards) => print(metricsString(cards))
         case Failure(exception) => println(s"[ERROR] ${exception.getMessage}")

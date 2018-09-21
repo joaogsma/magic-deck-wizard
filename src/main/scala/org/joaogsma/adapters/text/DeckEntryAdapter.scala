@@ -19,7 +19,7 @@ object DeckEntryAdapter
   def parse(line: String): Try[DeckEntry] =
   {
     if (!line.matches(DECK_ENTRY_REGEX.toString))
-      Failure(new IllegalArgumentException(s"malformed line: $line"))
+      Failure(new IllegalArgumentException(s"Malformed line: $line"))
     else
     {
       Try
@@ -35,7 +35,7 @@ object DeckEntryAdapter
         val name: String = line.substring(count.end, nameEnd).trim
 
         if (name.isEmpty)
-          throw new IllegalArgumentException(s"malformed line: $line")
+          throw new IllegalArgumentException(s"Malformed line: $line")
 
         DeckEntry(
           CountAdapter.parse(count.matched).get,

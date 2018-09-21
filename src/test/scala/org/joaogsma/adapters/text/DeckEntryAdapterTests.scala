@@ -1,10 +1,10 @@
 package org.joaogsma.adapters.text
 
 import org.joaogsma.models.Card
+import org.joaogsma.models.DeckEntry
 import org.joaogsma.models.Type
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
-import org.joaogsma.models.DeckEntry
 
 import scala.util.Random
 import scala.util.Success

@@ -9,7 +9,7 @@
 
 // Ramp
 [1] Sol Ring @cmc_1 @colorless @artifact @ramp
-[1] Llanowar Scout @cmc_2 @green @creature @ramp @extra_land_drop
+1 Llanowar Scout @cmc_2 @green @creature @ramp @extra_land_drop
 [1] Khalni Heart Expedition @cmc_2 @green @enchantment @ramp @land_to_battlefield
 [1] Cultivate @cmc_3 @green @sorcery @ramp @land_to_hand @land_to_battlefield
 [1] Kodama's Reach @cmc_3 @green @sorcery @ramp @land_to_hand @land_to_battlefield

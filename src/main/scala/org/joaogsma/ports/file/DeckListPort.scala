@@ -9,7 +9,7 @@ import scala.util.Try
 
 object DeckListPort extends FilePort
 {
-  def readCards(filename: String): Try[List[DeckEntry]] =
+  def read(filename: String): Try[List[DeckEntry]] =
   {
     val deckLines: List[String] = usingFile(filename, _.getLines.toList)
     val parsedLines: List[(Try[DeckEntry], Int)] = deckLines
