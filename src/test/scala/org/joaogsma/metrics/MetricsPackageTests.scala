@@ -1,5 +1,6 @@
 package org.joaogsma.metrics
 
+import org.joaogsma.models.Color
 import org.joaogsma.ports.file.DeckListPort
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
@@ -68,6 +69,74 @@ class MetricsPackageTests extends WordSpec with Matchers
           "creature_removal" -> 5)
 
         countTags(input) shouldEqual expected
+      }
+    }
+  }
+
+  "The countColors function" when
+  {
+    "given an empty deck entry list" should
+    {
+      "return a zero count to each color" in
+      {
+        val expected: Map[Option[Color], Int] = Map(
+          None -> 0,
+          Some(Color.White) -> 0,
+          Some(Color.Blue) -> 0,
+          Some(Color.Black) -> 0,
+          Some(Color.Red) -> 0,
+          Some(Color.Green) -> 0
+        )
+        countColors(Seq.empty) shouldEqual expected
+      }
+    }
+
+    "given a valid deck entry list" should
+    {
+      "return the correct counts in a map" in
+      {
+        val expected: Map[Option[Color], Int] = Map(
+          None -> 2,
+          Some(Color.White) -> 0,
+          Some(Color.Blue) -> 6,
+          Some(Color.Black) -> 0,
+          Some(Color.Red) -> 0,
+          Some(Color.Green) -> 13
+        )
+        countColors(TestInputs.tatyovaStandaloneEntries) shouldEqual expected
+      }
+    }
+  }
+
+  "The countManaSymbols function" when
+  {
+    "given an empty deck entry list" should
+    {
+      "return a zero count to each color" in
+      {
+        val expected: Map[Color, Int] = Map(
+          Color.White -> 0,
+          Color.Blue -> 0,
+          Color.Black -> 0,
+          Color.Red -> 0,
+          Color.Green -> 0
+        )
+        countManaSymbols(Seq.empty) shouldEqual expected
+      }
+    }
+
+    "given a valid deck entry list" should
+    {
+      "return the correct counts in a map" in
+      {
+        val expected: Map[Color, Int] = Map(
+          Color.White -> 0,
+          Color.Blue -> 9,
+          Color.Black -> 0,
+          Color.Red -> 0,
+          Color.Green -> 22
+        )
+        countManaSymbols(TestInputs.tatyovaStandaloneEntries) shouldEqual expected
       }
     }
   }

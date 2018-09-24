@@ -1,6 +1,6 @@
 package org.joaogsma.models
 
-sealed trait Color
+sealed trait Color extends Product with Serializable
 
 object Color
 {

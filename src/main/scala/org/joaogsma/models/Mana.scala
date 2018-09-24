@@ -1,6 +1,6 @@
 package org.joaogsma.models
 
-sealed abstract class Mana(val count: Int)
+sealed abstract class Mana(val count: Int) extends Product with Serializable
 
 // TODO: add support for phyrexian, hybrid and generic/hybrid mana
 object Mana
