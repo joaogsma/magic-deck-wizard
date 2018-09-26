@@ -2,7 +2,7 @@ package org.joaogsma.models
 
 sealed abstract class Mana(val count: Int) extends Product with Serializable
 
-// TODO: add support for phyrexian, hybrid and generic/hybrid mana
+// TODO: add support for half, phyrexian, hybrid and generic/hybrid mana
 object Mana
 {
   case class X(override val count: Int) extends Mana(count)

@@ -4,6 +4,8 @@ import org.joaogsma.models.Color
 import org.joaogsma.models.DeckEntry
 import org.joaogsma.models.Mana
 
+import scala.math.max
+
 package object metrics
 {
   def countCards(entries: Seq[DeckEntry]): Int = entries.map(_.count).sum
@@ -65,5 +67,16 @@ package object metrics
 
     val keys = List(Color.White, Color.Blue, Color.Black, Color.Red, Color.Green)
     keys.map(key => key -> counts.getOrElse(key, 0)).toMap
+  }
+
+  def countManaCurve(entries: Seq[DeckEntry]): Map[Double, Int] =
+  {
+    val counts: Map[Double, Int] = entries
+        .ensuring(_.forall(_.card.isDefined))
+        .groupBy(_.card.get.cmc)
+        .mapValues(_.map(_.count).sum)
+
+    val maxKey = if (counts.isEmpty) 10.0 else max(counts.keys.max, 10.0)
+    (0.0 to (maxKey, 1.0)).map(key => key -> counts.getOrElse(key, 0)).toMap
   }
 }

@@ -259,7 +259,7 @@ class DeckListPortTests extends WordSpec with Matchers
           DeckEntry(
             1,
             "Protean Hulk",
-            Set("cmc_6", "green", "creature")),
+            Set("cmc_7", "green", "creature")),
           DeckEntry(
             1,
             "Howl of the Night Pack",

@@ -222,13 +222,13 @@ object TestInputs
       "Protean Hulk",
       Some(
         Card(
-          List(Mana.Generic(4), Mana.Green(2)),
+          List(Mana.Generic(5), Mana.Green(2)),
           List(Color.Green),
           List(Type.Creature),
-          6
+          7
         )
       ),
-      Set("cmc_6", "green", "creature")),
+      Set("cmc_7", "green", "creature")),
     DeckEntry(
       1,
       "Howl of the Night Pack",

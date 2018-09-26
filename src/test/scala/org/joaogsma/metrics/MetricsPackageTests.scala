@@ -40,7 +40,7 @@ class MetricsPackageTests extends WordSpec with Matchers
           "mana_src_blue" -> 21,
           "planeswalker" -> 1,
           "mana_src_green" -> 26,
-          "cmc_6" -> 4,
+          "cmc_6" -> 3,
           "graveyard_recursion" -> 2,
           "colorless" -> 9,
           "ramp" -> 13,
@@ -60,7 +60,7 @@ class MetricsPackageTests extends WordSpec with Matchers
           "sorcery" -> 15,
           "cmc_4" -> 5,
           "graveyard_hate" -> 1,
-          "cmc_7" -> 1,
+          "cmc_7" -> 2,
           "join_forces" -> 2,
           "token_generator" -> 7,
           "artifact" -> 9,
@@ -137,6 +137,39 @@ class MetricsPackageTests extends WordSpec with Matchers
           Color.Green -> 22
         )
         countManaSymbols(TestInputs.tatyovaStandaloneEntries) shouldEqual expected
+      }
+    }
+  }
+
+  "The countManaCurve function" when
+  {
+    "given an empty deck entry list" should
+    {
+      "return a zero count for each cmc" in
+      {
+        val expected = (0.0 to (10.0, 1.0)).map(_ -> 0).toMap
+        countManaCurve(Seq.empty) shouldEqual expected
+      }
+    }
+
+    "given a valid deck entry list" should
+    {
+      "return the correct count for each CMC" in
+      {
+        val expected = Map(
+          0.0 -> 0,
+          1.0 -> 1,
+          2.0 -> 3,
+          3.0 -> 3,
+          4.0 -> 1,
+          5.0 -> 5,
+          6.0 -> 3,
+          7.0 -> 2,
+          8.0 -> 1,
+          9.0 -> 0,
+          10.0 -> 0
+        )
+        countManaCurve(TestInputs.tatyovaStandaloneEntries) shouldEqual expected
       }
     }
   }

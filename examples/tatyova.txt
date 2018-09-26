@@ -70,7 +70,7 @@
 [1] Seasons Past @cmc_6 @green @sorcery @graveyard_recursion
 [1] Multani, Yavimaya's Avatar @cmc_6 @green @creature
 [1] Rampaging Baloths @cmc_6 @green @creature @token_generator
-[1] Protean Hulk @cmc_6 @green @creature
+[1] Protean Hulk @cmc_7 @green @creature
 [1] Howl of the Night Pack @cmc_7 @green @sorcery @token_generator
 [1] Praetor's Counsel @cmc_8 @green @sorcery @graveyard_recursion
 
