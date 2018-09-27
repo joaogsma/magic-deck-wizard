@@ -66,7 +66,7 @@ class DeckListPortTests extends WordSpec with Matchers
               "land_to_battlefield")),
           DeckEntry(
             1,
-            "Spring to Mind",
+            "Spring // Mind",
             Set("cmc_3", "blue", "green", "instant", "sorcery", "ramp",
               "land_to_battlefield", "draw")),
           DeckEntry(
@@ -135,7 +135,7 @@ class DeckListPortTests extends WordSpec with Matchers
             Set("cmc_1", "blue", "instant", "counter")),
           DeckEntry(
             1,
-            "Conterspell",
+            "Counterspell",
             Set("cmc_2", "blue", "instant", "counter")),
           DeckEntry(
             1,
@@ -164,7 +164,7 @@ class DeckListPortTests extends WordSpec with Matchers
               "political")),
           DeckEntry(
             1,
-            "Thaumatic Compass",
+            "Thaumatic Compass // Spires of Orazca",
             Set("cmc_2", "colorless", "artifact", "land_to_hand")),
           DeckEntry(
             1,

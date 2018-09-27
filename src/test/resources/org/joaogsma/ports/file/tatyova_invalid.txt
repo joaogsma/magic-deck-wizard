@@ -14,7 +14,7 @@
 [1] Cultivate @cmc_3 @green @sorcery @ramp @land_to_hand @land_to_battlefield
 [1] Kodama's Reach @cmc_3 @green @sorcery @ramp @land_to_hand @land_to_battlefield
 [1] Harrow @cmc_3 @green @sorcery @ramp @land_to_hand @land_to_battlefield
-[1] Spring to Mind @cmc_3 @blue @green @instant @sorcery @ramp @land_to_battlefield @draw
+[1] Spring // Mind @cmc_3 @blue @green @instant @sorcery @ramp @land_to_battlefield @draw
 [1] Yavimaya Dryad @cmc_3 @green @creature @ramp
 [1] Wayward Swordtooth @cmc_3 @green @creature @ramp @extra_land_drop
 [1] Explosive Vegetation @cmc_4 @green @ramp @sorcery @land_to_battlefield
@@ -36,7 +36,7 @@
 
 // Enablers
 [1] Swan Song @cmc_1 @blue @instant @counter
-[1] Conterspell @cmc_2 @blue @instant @counter
+[1] Counterspell @cmc_2 @blue @instant @counter
 [1] Deprive @cmc_2 @blue @instant @counter
 [1] Muddle the Mixture @cmc_2 @blue @instant @counter
 [1] Swiftfoot Boots @cmc_2 @colorless @artifact
@@ -45,7 +45,7 @@
 
 // Enhancers
 [1] Collective Voyage @cmc_1 @green @sorcery @join_forces @land_to_battlefield @political
-[1] Thaumatic Compass @cmc_2 @colorless @artifact @land_to_hand
+[1] Thaumatic Compass // Spires of Orazca @cmc_2 @colorless @artifact @land_to_hand
 [1] Elfhame Sanctuary @cmc_2 @green @enchantment
 [1] Strionic Resonator @cmc_2 @colorless @artifact
 [1] Rites of Flourishing @cmc_3 @green @enchantment @draw @ramp @political @extra_land_drop
