@@ -1,7 +1,6 @@
 package org.joaogsma.controllers
 
 import org.joaogsma.metrics.TestInputs
-import org.joaogsma.models.Card
 import org.joaogsma.models.DeckEntry
 import org.scalatest.Matchers
 import org.scalatest.WordSpec

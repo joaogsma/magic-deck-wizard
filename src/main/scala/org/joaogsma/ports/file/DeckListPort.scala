@@ -1,5 +1,7 @@
 package org.joaogsma.ports.file
 
+import java.io.BufferedWriter
+
 import org.joaogsma.adapters.text.DeckEntryAdapter
 import org.joaogsma.models.DeckEntry
 
@@ -29,5 +31,19 @@ object DeckListPort extends FilePort
               throw new RuntimeException(s"(line $lineNumber) ${exception.getMessage}")
           }
     )
+  }
+
+  def write(entries: Seq[DeckEntry], filename: String): Unit =
+  {
+    val sb = new StringBuilder()
+    entries
+        .map(DeckEntryAdapter.toString)
+        .foreach(str =>
+        {
+          sb.append(str)
+          sb.append('\n')
+        })
+
+    usingFile(filename, (_: BufferedWriter).write(sb.mkString))
   }
 }

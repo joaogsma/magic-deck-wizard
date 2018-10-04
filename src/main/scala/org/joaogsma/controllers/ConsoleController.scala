@@ -4,10 +4,10 @@ import org.joaogsma.metrics.countCards
 import org.joaogsma.metrics.countManaCurve
 import org.joaogsma.metrics.countTags
 import org.joaogsma.models.DeckEntry
-
 import org.joaogsma.ports.file.DeckListPort
 import org.joaogsma.ports.scryfall.ScryfallPort
 
+import scala.io.StdIn
 import scala.util.Failure
 import scala.util.Success
 
@@ -18,10 +18,17 @@ object ConsoleController extends App
     case filename :: Nil =>
       DeckListPort.read(filename) match
       {
-        case Success(entries) =>
-          val completeCards = entries.map(fillMissingField)
-          print(metricsString(completeCards))
         case Failure(exception) => println(s"[ERROR] ${exception.getMessage}")
+        case Success(entries) =>
+          val filledCards = entries.map(fillMissingField)
+          print(metricsString(filledCards))
+
+          if (entries.exists(_.card.isEmpty) && filledCards.forall(_.card.isDefined))
+          {
+            val answer = queryUser("Save filled deck list? [y/n]", Set("y", "n"))
+            if (answer.contains("y"))
+              writeFilledDeckList(filledCards, filename)
+          }
       }
     case _ => println("[ERROR] Missing filename")
   }
@@ -30,15 +37,33 @@ object ConsoleController extends App
   {
     case Some(_) => entry
     case None =>
+      print(s""" Searching Scryfall for missing information on card "${entry.name}"...""")
       ScryfallPort.searchCardName(entry.name) match
       {
-        case Success(card) => entry.copy(card = Some(card))
+        case Success(card) =>
+          println("done")
+          entry.copy(card = Some(card))
         case Failure(_) =>
           println(
-            s"[ERROR] Could not get missing information of the card ${entry.name} from Scryfall."
+            s"\n[ERROR] Could not get missing information of the card ${entry.name} from Scryfall."
           )
           entry
       }
+  }
+
+  def writeFilledDeckList(filledCards: Seq[DeckEntry], filename: String): Unit =
+  {
+    val filledDeckListFilename =
+      filename.lastIndexOf('.') match
+      {
+        case -1 => filename + "_filled"
+        case formatStart =>
+          (filename.substring(0, formatStart) + "_filled"
+              + filename.substring(formatStart))
+      }
+
+    DeckListPort.write(filledCards, filledDeckListFilename)
+    println(s"[INFO] Filled deck list saved at $filledDeckListFilename")
   }
 
   private def metricsString(entries: Seq[DeckEntry]): String =
@@ -76,5 +101,28 @@ object ConsoleController extends App
           .foreach { case (cost, count) => result.append(s"  - $cost: $count\n") }
     }
     result.toString
+  }
+
+  private def queryUser(
+      message: String,
+      validAnswers: Set[String],
+      maxAttempts: Int = 5): Option[String] =
+  {
+    println(message)
+
+    var attempts = 0
+    var answer: String = StdIn.readLine
+    while(!validAnswers.contains(answer) && attempts < maxAttempts)
+    {
+      println(s"Invalid answer: $answer")
+      answer = StdIn.readLine
+      attempts += 1
+    }
+
+    attempts match
+    {
+      case `maxAttempts` => Option.empty
+      case _ => Option(answer)
+    }
   }
 }
