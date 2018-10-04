@@ -19,4 +19,6 @@ object CountAdapter
           .recoverWith { case _ => Failure(new IllegalArgumentException(s"Malformed count: $str")) }
     }
   }
+
+  def toString(count: Int): String = s"[$count]"
 }

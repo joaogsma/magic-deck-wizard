@@ -46,6 +46,9 @@ object ManaAdapter
     }
   }
 
+  def toString(seq: Seq[Mana]): String =
+      '\"' + seq.ensuring(_ != null).sorted.flatMap(toCharSeq).mkString + '\"'
+
   private def toMana(str: String, count: Int): Mana = str match
   {
     case X => Mana.X(count)
@@ -56,5 +59,17 @@ object ManaAdapter
     case BLACK => Mana.Black(count)
     case RED => Mana.Red(count)
     case GREEN => Mana.Green(count)
+  }
+
+  private def toCharSeq(mana: Mana): Seq[String] = mana match
+  {
+    case Mana.X(count) => List.fill(count)("{X}")
+    case Mana.Generic(count) => List(s"{$count}")
+    case Mana.Colorless(count) => List.fill(count)("{C}")
+    case Mana.White(count) => List.fill(count)("{W}")
+    case Mana.Blue(count) => List.fill(count)("{U}")
+    case Mana.Black(count) => List.fill(count)("{B}")
+    case Mana.Red(count) => List.fill(count)("{R}")
+    case Mana.Green(count) => List.fill(count)("{G}")
   }
 }

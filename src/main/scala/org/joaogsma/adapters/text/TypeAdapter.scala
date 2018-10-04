@@ -32,7 +32,10 @@ object TypeAdapter
       Try(str.substring(1, str.length - 1).split(',').map(s => parse(s.trim)).sorted)
   }
 
-  def parse(str: String): Type =
+  def toString(seq: Seq[Type]): String =
+      '[' + seq.ensuring(s => s != null && s.nonEmpty).sorted.map(toString).mkString(", ") + ']'
+
+  private def parse(str: String): Type =
   {
     TYPES.find(regex => str.matches(regex.toString)) match
     {
@@ -45,5 +48,16 @@ object TypeAdapter
       case Some(LAND) => Type.Land
       case _ => throw new IllegalArgumentException(s"Malformed type: $str")
     }
+  }
+
+  private def toString(cardType: Type): String = cardType match
+  {
+    case Type.Enchantment => "Enchantment"
+    case Type.Artifact => "Artifact"
+    case Type.Creature => "Creature"
+    case Type.Instant => "Instant"
+    case Type.Sorcery => "Sorcery"
+    case Type.Planeswalker => "Planeswalker"
+    case Type.Land => "Land"
   }
 }

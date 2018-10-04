@@ -41,6 +41,9 @@ object ColorAdapter
     }
   }
 
+  def toString(seq: Seq[Color]): String =
+      '\"' + seq.ensuring(_ != null).sorted.map(toString).mkString + '\"'
+
   protected def toColor(str: String): Color = str match
   {
     case WHITE => Color.White
@@ -48,5 +51,14 @@ object ColorAdapter
     case BLACK => Color.Black
     case RED => Color.Red
     case GREEN => Color.Green
+  }
+
+  protected def toString(color: Color): String = color match
+  {
+    case Color.White => "W"
+    case Color.Blue => "U"
+    case Color.Black => "B"
+    case Color.Red => "R"
+    case Color.Green => "G"
   }
 }

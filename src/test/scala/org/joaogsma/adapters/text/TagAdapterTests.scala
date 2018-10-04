@@ -83,4 +83,24 @@ class TagAdapterTests extends WordSpec with Matchers
       }
     }
   }
+
+  "the toString function" when
+  {
+    "given an empty set of tags" should
+    {
+      "return an empty string" in
+      {
+        TagAdapter.toString(Set.empty) shouldEqual ""
+      }
+    }
+
+    "given a set of tags" should
+    {
+      "return the correct string" in
+      {
+        val input = Set("tag", "other_tag", "yet-another-tag")
+        TagAdapter.toString(input) shouldEqual "@tag @other_tag @yet-another-tag"
+      }
+    }
+  }
 }

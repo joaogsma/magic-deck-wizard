@@ -47,4 +47,13 @@ object DeckEntryAdapter
       }
     }
   }
+
+  def toString(entry: DeckEntry): String =
+  {
+    assert(entry != null)
+    val count: String = CountAdapter.toString(entry.count)
+    val card: Option[String] = entry.card.map(CardAdapter.toString)
+    val tags: String = TagAdapter.toString(entry.tags)
+    s"$count ${entry.name} ${card.getOrElse("")} $tags"
+  }
 }

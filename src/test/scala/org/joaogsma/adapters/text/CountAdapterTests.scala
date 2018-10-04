@@ -57,4 +57,15 @@ class CountAdapterTests extends WordSpec with Matchers
       }
     }
   }
+
+  "The toString function" when
+  {
+    "given a number" should
+    {
+      "return the correct string" in
+      {
+        CountAdapter.toString(4) shouldEqual "[4]"
+      }
+    }
+  }
 }

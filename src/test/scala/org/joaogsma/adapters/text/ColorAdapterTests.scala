@@ -63,6 +63,30 @@ class ColorAdapterTests extends WordSpec with Matchers
     }
   }
 
+  "The toString function" when
+  {
+    "given an empty color sequence" should
+    {
+      "return \"\"" in
+      {
+        ColorAdapter.toString(Seq.empty) shouldEqual "\"\""
+      }
+    }
+
+    "given a color sequence" should
+    {
+      "return the correct string" in
+      {
+        val colors = List(Color.White, Color.Blue, Color.Black, Color.Red, Color.Green)
+        val inputCombinations: Seq[List[Color]] = (1 to 5).flatMap(colors.combinations)
+        val expectedCombinations: Seq[String] =
+            (1 to 5).flatMap("WUBRG".combinations).map('\"' + _ + '\"')
+        val resultCombinations = inputCombinations.map(ColorAdapter.toString)
+        resultCombinations should contain theSameElementsInOrderAs expectedCombinations
+      }
+    }
+  }
+
   private def randomSubset[A](elements: Iterable[A]): Iterable[A] =
   {
     val subsetSize: Int = 1 + Random.nextInt(elements.size)

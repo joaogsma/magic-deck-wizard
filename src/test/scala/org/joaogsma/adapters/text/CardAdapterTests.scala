@@ -127,4 +127,18 @@ class CardAdapterTests extends WordSpec with Matchers
       }
     }
   }
+
+  "the toString function" when
+  {
+    "given a card" should
+    {
+      "return the correct string" in
+      {
+        val input =
+            Card(List(Mana.Generic(1), Mana.Green(1)), List(Color.Green), List(Type.Sorcery), 2)
+        (CardAdapter.toString(input)
+            shouldEqual """{manacost: "{1}{G}", colors: "G", types: [Sorcery], cmc: 2.00}""")
+      }
+    }
+  }
 }

@@ -143,4 +143,34 @@ class TypeAdapterTests extends WordSpec with Matchers
       }
     }
   }
+
+  "The toString function" when
+  {
+    "given only one type" should
+    {
+      "return the correct string" in
+      {
+        TypeAdapter.toString(List(Type.Enchantment)) shouldEqual "[Enchantment]"
+        TypeAdapter.toString(List(Type.Artifact)) shouldEqual "[Artifact]"
+        TypeAdapter.toString(List(Type.Creature)) shouldEqual "[Creature]"
+        TypeAdapter.toString(List(Type.Instant)) shouldEqual "[Instant]"
+        TypeAdapter.toString(List(Type.Sorcery)) shouldEqual "[Sorcery]"
+        TypeAdapter.toString(List(Type.Planeswalker)) shouldEqual "[Planeswalker]"
+        TypeAdapter.toString(List(Type.Land)) shouldEqual "[Land]"
+      }
+    }
+
+    "given two types" should
+    {
+      "return the correct string" in
+      {
+        (TypeAdapter.toString(List(Type.Enchantment, Type.Creature))
+            shouldEqual "[Enchantment, Creature]")
+        (TypeAdapter.toString(List(Type.Artifact, Type.Creature))
+            shouldEqual "[Artifact, Creature]")
+        (TypeAdapter.toString(List(Type.Enchantment, Type.Artifact))
+            shouldEqual "[Enchantment, Artifact]")
+      }
+    }
+  }
 }

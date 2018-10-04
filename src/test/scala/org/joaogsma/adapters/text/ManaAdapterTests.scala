@@ -64,4 +64,46 @@ class ManaAdapterTests extends WordSpec with Matchers
       }
     }
   }
+
+  "The toString function" when
+  {
+    "given an empty sequence" should
+    {
+      "return \"\"" in
+      {
+        ManaAdapter.toString(Seq.empty) shouldEqual "\"\""
+      }
+    }
+
+    "given an X spell" should
+    {
+      "return the correct string" in
+      {
+        ManaAdapter.toString(List(Mana.X(1), Mana.Red(1))) shouldEqual "\"{X}{R}\""
+        ManaAdapter.toString(List(Mana.X(2), Mana.Green(1))) shouldEqual "\"{X}{X}{G}\""
+      }
+    }
+
+    "passed a mana cost string with multiple mana of a single color" should
+    {
+      "return the correct string" in
+      {
+        ManaAdapter.toString(List(Mana.White(2))) shouldEqual "\"{W}{W}\""
+        ManaAdapter.toString(List(Mana.Blue(3))) shouldEqual "\"{U}{U}{U}\""
+        ManaAdapter.toString(List(Mana.Black(4))) shouldEqual "\"{B}{B}{B}{B}\""
+        ManaAdapter.toString(List(Mana.Red(5))) shouldEqual "\"{R}{R}{R}{R}{R}\""
+        ManaAdapter.toString(List(Mana.Green(6))) shouldEqual "\"{G}{G}{G}{G}{G}{G}\""
+      }
+    }
+
+    "passed a mana cost string with generic mana" should
+    {
+      "return the correct generic mana count" in
+      {
+        ManaAdapter.toString(List(Mana.Generic(7))) shouldEqual "\"{7}\""
+        (ManaAdapter.toString(List(Mana.X(1), Mana.Generic(2), Mana.Blue(1)))
+            shouldEqual "\"{X}{2}{U}\"")
+      }
+    }
+  }
 }

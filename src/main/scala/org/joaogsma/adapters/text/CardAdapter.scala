@@ -22,8 +22,6 @@ object CardAdapter
   val CARD_REGEX: Regex =
       s"\\{ *$DATA_BLOCK_REGEX *$DATA_BLOCK_REGEX *$DATA_BLOCK_REGEX *$DATA_BLOCK_REGEX".r
 
-  private case class CardJson(manacost: String, colors: String, types: List[String], cmc: Double)
-
   def parse(str: String): Try[Card] =
   {
     if (!str.matches(CARD_REGEX.toString))
@@ -41,6 +39,16 @@ object CardAdapter
 
       Try(Card(parsedManaCost.get, parsedColors.get, parsedTypes.get, parsedCmc.get))
     }
+  }
+
+  def toString(card: Card): String =
+  {
+    assert(card != null)
+    val manaCost: String = ManaAdapter.toString(card.manaCost)
+    val colors: String = ColorAdapter.toString(card.colors)
+    val types: String = TypeAdapter.toString(card.types)
+    val cmc: String = card.cmc.formatted("%.2f")
+    s"{manacost: $manaCost, colors: $colors, types: $types, cmc: $cmc}"
   }
 
   private def parseBlock[A](
