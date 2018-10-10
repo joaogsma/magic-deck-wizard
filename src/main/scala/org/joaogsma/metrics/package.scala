@@ -3,6 +3,7 @@ package org.joaogsma
 import org.joaogsma.models.Color
 import org.joaogsma.models.DeckEntry
 import org.joaogsma.models.Mana
+import org.joaogsma.models.Type
 
 import scala.math.max
 
@@ -13,7 +14,16 @@ package object metrics
   def countTags(entries: Seq[DeckEntry]): Map[String, Int] =
   {
     entries
-        .flatMap(card => card.tags.map(_ -> card.count))
+        .flatMap(entry => entry.tags.map(_ -> entry.count))
+        .groupBy(_._1)
+        .mapValues(_.map(_._2).sum)
+  }
+
+  def countTypes(entries: Seq[DeckEntry]): Map[Type, Int] =
+  {
+    entries
+        .ensuring(_.forall(_.card.isDefined))
+        .flatMap(entry => entry.card.get.types.map(_ -> entry.count))
         .groupBy(_._1)
         .mapValues(_.map(_._2).sum)
   }
@@ -77,6 +87,7 @@ package object metrics
         .mapValues(_.map(_.count).sum)
 
     val maxKey = if (counts.isEmpty) 10.0 else max(counts.keys.max, 10.0)
-    (0.0 to (maxKey, 1.0)).map(key => key -> counts.getOrElse(key, 0)).toMap
+     Range.BigDecimal(0.0, maxKey, 1.0)
+         .map(_.toDouble).map(key => key -> counts.getOrElse(key, 0)).toMap
   }
 }

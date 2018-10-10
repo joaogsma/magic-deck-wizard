@@ -1,126 +1,125 @@
-[1] Opt
-[1] Unsummon
-[1] Brainstorm
-[1] Reach Throuch Mists
-[1] Spell Pierce
-[1] Obsessive Search
-[1] Dive Deep
-[1] Blustersquall
-[1] Dispel
-[1] Prying Blade
-[1] Sincopate
-[1] Aether Burst
-[1] Swiftfoot Boots
-[1] Muddle the Mixture
-[1] Just the Wind
-[1] Surge Mare
-[1] Flood of Recollection
-[1] Echoing Truth
-[1] NEgate
-[1] Favirable Winds
-[1] Omenspeaker
-[1] Expel from Orazca
-[1] Peer Through Depths
-[1] Counterspell
-[1] Mind Stone
-[1] Nagging Thoughts
-[1] Augur of Bolas
-[1] Eye of Nowhere
-[1] Pull from Tomorrow
-[1] Disperse
-[1] Blink of an Eye
-[1] Vodalian arcanist
-[1] Arcane Denial
-[1] Guardian Idol
-[1] Reality Shift
-[1] Open Into Wonder
-[1] Neutralizing Blast
-[1] Into the Roil
-[1] Gleaming Barrier
-[1] Curse of the Swine
-[1] Psychic Puppetry
-[1] Consuming Vortex
-[1] Standstill
-[1] Essence Scatter
-[1] Anticipate
-[1] Disdainful Stroke
-[1] Impulse
-[1] Crashing Tide
-[1] Broken Concentration
-[1] Void Shatter
-[1] Scatter to the Winds
-[1] Wizard's Retort
-[1] Worn Powerstone
-[1] Unwind
-[1] Dominate
-[1] Murmurs from Beyond
-[1] Orazca Relic
-[1] Dissolve
-[1] Powerstone Shard
-[1] Dream Fracture
-[1] Dissipate
-[1] Cancel
-[1] Windfall
-[1] Water Knot
-[1] Counterveiling Winds
-[1] Jace's Archivist
-[1] Curse of Verbosity
-[1] Secrets of the Golden City
-[1] Divination
-[1] Hierophant's Chalice
-[1] Hornswoggle
-[1] Transmogrifying Wand
-[1] Aetherize
-[1] Unwind
-[1] Reins of Power
-[1] Sleep
-[1] Run Aground
-[1] Icy manipulator
-[1] Fact or Fiction
-[1] Bone to Ash
-[1] One with the Machine
-[1] Deadeye Rig-Hauler
-[1] Precognition Field
-[1] Pirate's Prize
-[1] Switcheroo
-[1] The Mirari Conjecture
-[1] Future Sight
-[1] Aetherspouts
-[1] Kindred Discovery
-[1] Arcane Melee
-[1] Illusory Ambusher
-[1] Mnemonic Wall
-[1] Aethersnatch
-[1] Frilled Sea Serpent
-[1] Spelltwine
-[1] In Bola's Clutches
-[1] Gather Specimens
-[1] Rise from the Tides
-[1] Deepfathom Skulker
-[1] Stolen Identity
-[1] Sphinx-Bone Wand
-[1] Treasure Cruise
-[1] Dig Through Time
+// Talrand, Sky Summoner
 
-[1] Keening Stone
-[1] Conqueror's Galleon
-[1] Sword of the Animist
-[1] Clone Legion
-[1] Arcanis the Omnipotent
-[1] Paradoxical Outcome
-[1] Peel from Reality
-[1] Commander Sphere
-[1] Darksteel Ingot
-[1] Sky Diamond
-[1] Trophy Mage
-[1] Trading Post
-[1] Blue Sun's Zenith
-[1] Cackling Counterpart
-[1] Polymorhist's Jest
-[1] Salvager of Secrets
-[1] Totally Lost
-[1] Deep Freeze
+// Draw
+[1] Pull from Tomorrow @draw
+[1] Blue Sun's Zenith @draw
+[1] Divination @draw
+[1] Secrets of the Golden City @draw
+[1] Fact or Fiction @draw
+[1] Deep Analysis @draw
+[1] Kumena's Awakening @draw
+[1] Arcanis, the Omnipotent @draw
+[1] Treasure Cruise @draw
+[1] Dig Through Time @draw
+
+// Ramp
+[1] Sky Diamond @ramp
+[1] Mind Stone @ramp
+[1] Guardian Idol @ramp
+[1] Vodalian Arcanist @ramp
+[1] Sword of the Animist @ramp
+[1] Commander's Sphere @ramp
+[1] Orazca Relic @ramp
+[1] Worn Powerstone @ramp
+[1] Arcane Melee @ramp
+
+// Attack Support
+[1] Favorable Winds
+[1] Open Into Wonder @draw_on_combat
+[1] Bident of Thassa @draw_on_combat
+[1] Coastal Piracy @draw_on_combat
+[1] Deepfathom Skulker @draw_on_combat
+
+// Removal
+[1] Reality Shift @creature_removal
+[1] Curse of the Swine @creature_removal @wipe
+[1] Deep Freeze @creature_removal
+[1] Nevinyrral's Disk @wipe
+
+// Enablers
+[1] Dive Down @hexproof
+[1] Swiftfoot Boots @hexproof
+[1] Paradoxical Outcome @bounce @draw
+[1] Aethersnatch
+
+// Counterspells
+[1] Syncopate @counter
+[1] Counterspell @counter
+[1] Negate @counter
+[1] Disdainful Stroke @counter
+[1] Arcane Denial @counter
+[1] Spell Crumple @counter
+[1] Disallow @counter
+[1] Cancel @counter
+[1] Dissipate @counter
+[1] Dissolve @counter
+[1] Wizard's Retort @counter
+[1] Scatter to the Winds @counter
+[1] Void Shatter @counter
+[1] Broken Concentration @counter
+[1] Dream Fracture @counter
+[1] Unwind @counter
+[1] Countervailing Winds @counter
+[1] Insidious Will @counter
+[1] Rewind @counter
+
+// Defense against attacks
+[1] Blustersquall @defense
+[1] Polymorphists Jest @defense
+[1] Sleep @defense
+[1] Reins of Power @defense
+[1] Aetherize @defense
+[1] Illusory Ambusher @defense @draw
+[1] Aetherspouts @bounce @defense
+
+// Cantrips
+[1] Obsessive Search @cantrip
+[1] Reach Through Mists @cantrip
+[1] Brainstorm @cantrip
+[1] Opt @cantrip
+[1] Peer Through Depths @cantrip
+[1] Nagging Thoughts @cantrip
+[1] Anticipate @cantrip
+[1] Impulse @cantrip
+[1] Crashing Tide @cantrip @bounce
+
+// Bounce
+[1] Unsummon @bounce
+[1] Consuming Vortex @bounce
+[1] Into the Roil @bounce
+[1] Blink of an Eye @bounce
+[1] Disperse @bounce
+[1] Expel from Orazca @bounce
+[1] Echoing Truth @bounce
+[1] Just the Wind @bounce
+[1] Peel from Reality @bounce
+
+// Graveyard Recursion
+[1] Flood of Recollection @graveyard_recursion
+[1] The Mirari Conjecture @graveyard_recursion
+[1] Mnemonic Wall @graveyard_recursion
+[1] Salvager of Secrets @graveyard_recursion
+[1] Spelltwine @graveyard_recursion
+[1] Torrential Gearhulk @graveyard_recursion
+
+// Standalones
+[1] Standstill
+[1] Overburden
+[1] Dominate @steal_creature
+[1] Precognition Field
+[1] Future Sight
+[1] Switcheroo @steal_creature
+[1] Metallurgic Summonings
+[1] Gather Specimens
+[1] Stolen Identity @clone @cypher
+[1] Walk the Aeons @extra_turn
+[1] Rise from the Tides @token_generator @win_con
+[1] Sphinx-Bone Wand @win_con
+[1] Clone Legion @token_generator @win_con
 
 // Lands
+[01] Memorial to Genius
 [01] Temple of the False God
-[37] Island
+[01] Lonely Sandbar
+[01] Desert of the Mindful
+[35] Island

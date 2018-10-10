@@ -1,0 +1,79 @@
+[1] Horn of Greed {manacost: "{3}", colors: "", types: [Artifact], cmc: 3.00} @colorless @cmc_3 @draw @artifact @political
+[1] Seer's Sundial {manacost: "{4}", colors: "", types: [Artifact], cmc: 4.00} @cmc_4 @colorless @artifact @draw
+[1] Intellectual Offering {manacost: "{4}{U}", colors: "U", types: [Instant], cmc: 5.00} @blue @instant @draw @cmc_5 @political
+[1] Urban Evolution {manacost: "{3}{U}{G}", colors: "UG", types: [Sorcery], cmc: 5.00} @blue @sorcery @extra_land_drop @ramp @draw @cmc_5 @green
+[1] Minds Aglow {manacost: "{U}", colors: "U", types: [Sorcery], cmc: 1.00} @join_forces @blue @sorcery @draw @cmc_1 @political
+[1] Sol Ring {manacost: "{1}", colors: "", types: [Artifact], cmc: 1.00} @cmc_1 @colorless @artifact @ramp
+[1] Llanowar Scout {manacost: "{1}{G}", colors: "G", types: [Creature], cmc: 2.00} @cmc_2 @extra_land_drop @ramp @creature @green
+[1] Khalni Heart Expedition {manacost: "{1}{G}", colors: "G", types: [Enchantment], cmc: 2.00} @enchantment @cmc_2 @ramp @land_to_battlefield @green
+[1] Cultivate {manacost: "{2}{G}", colors: "G", types: [Sorcery], cmc: 3.00} @sorcery @ramp @cmc_3 @land_to_hand @land_to_battlefield @green
+[1] Kodama's Reach {manacost: "{2}{G}", colors: "G", types: [Sorcery], cmc: 3.00} @sorcery @ramp @cmc_3 @land_to_hand @land_to_battlefield @green
+[1] Harrow {manacost: "{2}{G}", colors: "G", types: [Instant], cmc: 3.00} @sorcery @ramp @cmc_3 @land_to_hand @land_to_battlefield @green
+[1] Spring // Mind {manacost: "{6}{U}{U}{G}", colors: "UG", types: [Instant, Sorcery], cmc: 9.00} @blue @sorcery @ramp @cmc_3 @instant @draw @land_to_battlefield @green
+[1] Yavimaya Dryad {manacost: "{1}{G}{G}", colors: "G", types: [Creature], cmc: 3.00} @cmc_3 @green @creature @ramp
+[1] Wayward Swordtooth {manacost: "{2}{G}", colors: "G", types: [Creature], cmc: 3.00} @extra_land_drop @ramp @cmc_3 @creature @green
+[1] Explosive Vegetation {manacost: "{3}{G}", colors: "G", types: [Sorcery], cmc: 4.00} @sorcery @ramp @cmc_4 @land_to_battlefield @green
+[1] Tempt With Discovery {manacost: "{3}{G}", colors: "G", types: [Sorcery], cmc: 4.00} @sorcery @cmc_4 @land_to_battlefield @green @political
+[1] Curse of the Swine {manacost: "{X}{U}{U}", colors: "U", types: [Sorcery], cmc: 2.00} @cmc_2 @blue @sorcery @creature_removal @wipe
+[1] Consign to Dust {manacost: "{2}{G}", colors: "G", types: [Instant], cmc: 3.00} @enchantment_removal @cmc_3 @artifact_removal @instant @wipe @green
+[1] Ezuri's Predation {manacost: "{5}{G}{G}{G}", colors: "G", types: [Sorcery], cmc: 8.00} @token_generator @sorcery @creature_removal @cmc_8 @wipe @green
+[1] Pongify {manacost: "{U}", colors: "U", types: [Instant], cmc: 1.00} @cmc_1 @blue @instant @creature_removal
+[1] Scavenging Ooze {manacost: "{1}{G}", colors: "G", types: [Creature], cmc: 2.00} @cmc_2 @green @creature @graveyard_hate
+[1] Lignify {manacost: "{1}{G}", colors: "G", types: [Enchantment], cmc: 2.00} @cmc_2 @green @enchantment @creature_removal
+[1] Beast Within {manacost: "{2}{G}", colors: "G", types: [Instant], cmc: 3.00} @cmc_3 @green @instant @creature_removal
+[1] Capsize {manacost: "{1}{U}{U}", colors: "U", types: [Instant], cmc: 3.00} @blue @cmc_3 @bounce @instant @buyback
+[1] Krosan Grip {manacost: "{2}{G}", colors: "G", types: [Instant], cmc: 3.00} @enchantment_removal @cmc_3 @artifact_removal @instant @green
+[1] Acidic Slime {manacost: "{3}{G}{G}", colors: "G", types: [Creature], cmc: 5.00} @enchantment_removal @artifact_removal @creature @cmc_5 @green
+[1] Swan Song {manacost: "{U}", colors: "U", types: [Instant], cmc: 1.00} @cmc_1 @blue @instant @counter
+[1] Counterspell {manacost: "{U}{U}", colors: "U", types: [Instant], cmc: 2.00} @cmc_2 @blue @instant @counter
+[1] Deprive {manacost: "{U}{U}", colors: "U", types: [Instant], cmc: 2.00} @cmc_2 @blue @instant @counter
+[1] Muddle the Mixture {manacost: "{U}{U}", colors: "U", types: [Instant], cmc: 2.00} @cmc_2 @blue @instant @counter
+[1] Swiftfoot Boots {manacost: "{2}", colors: "", types: [Artifact], cmc: 2.00} @cmc_2 @colorless @artifact
+[1] Lightning Greaves {manacost: "{2}", colors: "", types: [Artifact], cmc: 2.00} @cmc_2 @colorless @artifact
+[1] Dissolve {manacost: "{1}{U}{U}", colors: "U", types: [Instant], cmc: 3.00} @cmc_3 @blue @instant @counter
+[1] Collective Voyage {manacost: "{G}", colors: "G", types: [Sorcery], cmc: 1.00} @join_forces @sorcery @land_to_battlefield @cmc_1 @green @political
+[1] Thaumatic Compass // Spires of Orazca {manacost: "{2}", colors: "", types: [Artifact, Land], cmc: 2.00} @cmc_2 @colorless @artifact @land_to_hand
+[1] Elfhame Sanctuary {manacost: "{1}{G}", colors: "G", types: [Enchantment], cmc: 2.00} @cmc_2 @green @enchantment
+[1] Strionic Resonator {manacost: "{2}", colors: "", types: [Artifact], cmc: 2.00} @cmc_2 @colorless @artifact
+[1] Rites of Flourishing {manacost: "{2}{G}", colors: "G", types: [Enchantment], cmc: 3.00} @enchantment @extra_land_drop @ramp @cmc_3 @draw @green @political
+[1] Courser of Kruphix {manacost: "{1}{G}{G}", colors: "G", types: [Enchantment, Creature], cmc: 3.00} @cmc_3 @green @creature @ramp
+[1] Mana Breach {manacost: "{2}{U}", colors: "U", types: [Enchantment], cmc: 3.00} @cmc_3 @blue @enchantment
+[1] Abundance {manacost: "{2}{G}{G}", colors: "G", types: [Enchantment], cmc: 4.00} @cmc_4 @green @enchantment
+[1] Kefnet the Mindful {manacost: "{2}{U}", colors: "U", types: [Creature], cmc: 3.00} @cmc_3 @blue @creature @draw
+[1] Sylvan Offering {manacost: "{X}{G}", colors: "G", types: [Sorcery], cmc: 1.00} @token_generator @sorcery @cmc_1 @green @political
+[1] Coiling Oracle {manacost: "{U}{G}", colors: "UG", types: [Creature], cmc: 2.00} @cmc_2 @blue @green @creature
+[1] Blackblade Reforged {manacost: "{2}", colors: "", types: [Artifact], cmc: 2.00} @cmc_2 @colorless @artifact
+[1] Nissa, Steward of Elements {manacost: "{X}{U}{G}", colors: "UG", types: [Planeswalker], cmc: 2.00} @scry @cmc_2 @blue @planeswalker @land_to_battlefield @green
+[1] Retreat to Kazandu {manacost: "{2}{G}", colors: "G", types: [Enchantment], cmc: 3.00} @enchantment @cmc_3 @landfall @green @life_gain
+[1] Retreat to Coralhelm {manacost: "{2}{U}", colors: "U", types: [Enchantment], cmc: 3.00} @scry @enchantment @blue @cmc_3 @landfall
+[1] Seed the Land {manacost: "{2}{G}{G}", colors: "G", types: [Enchantment], cmc: 4.00} @token_generator @enchantment @cmc_4 @landfall @green
+[1] Centaur Glade {manacost: "{3}{G}{G}", colors: "G", types: [Enchantment], cmc: 5.00} @token_generator @enchantment @mana_sink @cmc_5 @green
+[1] Venser's Journal {manacost: "{5}", colors: "", types: [Artifact], cmc: 5.00} @cmc_5 @colorless @artifact @life_gain
+[1] Future Sight {manacost: "{2}{U}{U}{U}", colors: "U", types: [Enchantment], cmc: 5.00} @cmc_5 @blue @enchantment
+[1] Mystic Confluence {manacost: "{3}{U}{U}", colors: "U", types: [Instant], cmc: 5.00} @blue @counter @bounce @instant @draw @cmc_5
+[1] Zendikar's Roil {manacost: "{3}{G}{G}", colors: "G", types: [Enchantment], cmc: 5.00} @token_generator @enchantment @cmc_5 @landfall @green
+[1] Seasons Past {manacost: "{4}{G}{G}", colors: "G", types: [Sorcery], cmc: 6.00} @cmc_6 @green @sorcery @graveyard_recursion
+[1] Multani, Yavimaya's Avatar {manacost: "{4}{G}{G}", colors: "G", types: [Creature], cmc: 6.00} @cmc_6 @green @creature
+[1] Rampaging Baloths {manacost: "{4}{G}{G}", colors: "G", types: [Creature], cmc: 6.00} @cmc_6 @green @creature @token_generator
+[1] Protean Hulk {manacost: "{5}{G}{G}", colors: "G", types: [Creature], cmc: 7.00} @cmc_7 @green @creature
+[1] Howl of the Night Pack {manacost: "{6}{G}", colors: "G", types: [Sorcery], cmc: 7.00} @cmc_7 @green @sorcery @token_generator
+[1] Praetor's Counsel {manacost: "{5}{G}{G}{G}", colors: "G", types: [Sorcery], cmc: 8.00} @cmc_8 @green @sorcery @graveyard_recursion
+[1] Myriad Landscape {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue @land_to_battlefield
+[1] Terramorphic Expanse {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue
+[1] Evolving Wilds {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue
+[1] Bant Panorama {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue
+[1] Esper Panorama {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_blue
+[1] Grixis Panorama {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_blue
+[1] Jund Panorama {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green
+[1] Naya Panorama {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green
+[1] Reliquary Tower {manacost: "", colors: "", types: [Land], cmc: 0.00} @land
+[1] Rogue’s Passage {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @political
+[1] Command Tower {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue
+[1] Simic Growth Chamber {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue
+[1] Blighted Woodland {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue @land_to_battlefield
+[1] Yavimaya Coast {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue
+[1] Flooded Grove {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue
+[1] Hinterland Harbor {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green @mana_src_blue
+[1] Memorial to Genius {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_blue
+[14] Forest {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_green
+[8] Island {manacost: "", colors: "", types: [Land], cmc: 0.00} @land @mana_src_blue

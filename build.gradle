@@ -13,7 +13,8 @@ mainClassName = 'org.joaogsma.controllers.ConsoleController'
 
 ext {
   scalaVersion = '2.12.4'
-  circleVersion = "0.9.3"
+  circleVersion = '0.9.3'
+  scalafxVersion = '8.0.181-R13'
 }
 
 repositories {
@@ -35,6 +36,7 @@ dependencies {
   compile "io.circe:circe-core_${removePatch(scalaVersion)}:$circleVersion"
   compile "io.circe:circe-generic_${removePatch(scalaVersion)}:$circleVersion"
   compile "io.circe:circe-parser_${removePatch(scalaVersion)}:$circleVersion"
+  compile "org.scalafx:scalafx_${removePatch(scalaVersion)}:$scalafxVersion"
 
   testCompile "org.scalatest:scalatest_${removePatch(scalaVersion)}:3.0.0"
 }
