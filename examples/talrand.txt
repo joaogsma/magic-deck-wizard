@@ -111,7 +111,7 @@
 [1] Switcheroo @steal_creature
 [1] Metallurgic Summonings
 [1] Gather Specimens
-[1] Stolen Identity @clone @cypher
+[1] Stolen Identity @clone @cipher
 [1] Walk the Aeons @extra_turn
 [1] Rise from the Tides @token_generator @win_con
 [1] Sphinx-Bone Wand @win_con

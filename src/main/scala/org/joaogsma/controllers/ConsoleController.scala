@@ -1,8 +1,5 @@
 package org.joaogsma.controllers
 
-import java.util.Comparator
-
-import javafx.stage
 import org.joaogsma.metrics.countCards
 import org.joaogsma.metrics.countManaCurve
 import org.joaogsma.metrics.countTags
@@ -24,13 +21,16 @@ import scalafx.scene.chart.PieChart
 import scalafx.scene.chart.XYChart
 import scalafx.scene.layout.HBox
 import scalafx.scene.text.Font
-import scalafx.stage.Screen
 import scalafx.stage.Stage
 
 import scala.io.StdIn
 import scala.math.max
+import scala.math.pow
 import scala.util.Failure
 import scala.util.Success
+import com.monovore.decline._
+import cats.implicits._
+import scalafx.scene.shape.Rectangle
 
 object ConsoleController extends JFXApp
 {
@@ -126,9 +126,8 @@ object ConsoleController extends JFXApp
       tagCount
           .map { case (tag, count) =>
             val countStr = if (count < 10) "0" + count.toString else count.toString
-            val ratioStr = f"${count.toDouble / totalCardCount}%.2f"
             val padding = List.fill(maxTagLength - tag.length + 1)('=').mkString
-            s"  - $tag $padding> count = $countStr; ratio = $ratioStr\n"
+            s"  - $tag $padding> count = $countStr\n"
           }
           .toSeq
           .sorted
@@ -153,7 +152,7 @@ object ConsoleController extends JFXApp
       title = "Tags"
       scene = new Scene {
         content = new HBox {
-          padding = Insets(20)
+          padding = Insets(5)
           children = Seq(initializeTagsBarChart(entries))
           resizable = false
         }
@@ -169,6 +168,7 @@ object ConsoleController extends JFXApp
             children = Seq(initializeManaCurveBarChart(entries))
             resizable = false
           }
+          stylesheets = Seq("mana-curve-stage.css")
         }
       },
       new Stage {
@@ -200,8 +200,9 @@ object ConsoleController extends JFXApp
 
     val data = ObservableBuffer(
       tagCounts
-          .map { case (key, value) => XYChart.Data(value: Number, s"$key ($value)") }
           .toSeq
+          .sorted(Ordering[(String, Int)].reverse)
+          .map { case (key, value) => XYChart.Data(value: Number, s"$key ($value)") }
     )
 
     val countAxisUpperBound = if (tagCounts.isEmpty) 20 else max(20, tagCounts.values.max + 1)
@@ -214,17 +215,26 @@ object ConsoleController extends JFXApp
     countAxis.setMinorTickVisible(false)
 
     val categoriAxis = CategoryAxis("Tags")
-    categoriAxis.setTickLabelFont(Font.font(12))
+    val fontSize = if (tagCounts.keys.size <= 30) 12 else if (tagCounts.keys.size <= 39) 11 else 10
+    categoriAxis.setTickLabelFont(Font.font(fontSize))
 
     val tagsBarChart = BarChart[Number, String](
       countAxis,
       categoriAxis,
       ObservableBuffer(XYChart.Series[Number, String](data))
     )
+
+    val minHeight = fontSize match {
+      case 10 => 21 * tagCounts.keys.size
+      case 11 => 21.5 * tagCounts.keys.size
+      case 12 => 22 * tagCounts.keys.size
+    }
+
+    tagsBarChart.setCategoryGap(5)
     tagsBarChart.setLegendVisible(false)
     tagsBarChart.setHorizontalGridLinesVisible(false)
-    tagsBarChart.setMinWidth(countAxisUpperBound * 30)
-    tagsBarChart.setMinHeight(tagCounts.keys.size * 30)
+    tagsBarChart.setMinWidth(countAxisUpperBound * 35)
+    tagsBarChart.setMinHeight(minHeight)
     tagsBarChart
   }
 
@@ -241,16 +251,52 @@ object ConsoleController extends JFXApp
 
     def toDataObservableBuffer(manaCurve: Map[Double, Int]) = ObservableBuffer(
       manaCurve
-          .map { case (key, value) => XYChart.Data[Number, String](value, key.formatted("%.2f")) }
           .toSeq
+          .sortBy(_._1)
+          .map { case (key, value) => XYChart.Data[Number, String](value, key.formatted("%.2f")) }
     )
 
-    val totalData = toDataObservableBuffer(totalManaCurve)
-    val whiteData = toDataObservableBuffer(whiteManaCurve)
-    val blueData = toDataObservableBuffer(blueManaCurve)
-    val blackData = toDataObservableBuffer(blackManaCurve)
-    val redData = toDataObservableBuffer(redManaCurve)
-    val greenData = toDataObservableBuffer(greenManaCurve)
+    val totalSeries = Option(totalManaCurve)
+        .filter(_.exists { case (_, count) => count > 0 })
+        .orElse(Some(Map.empty[Double, Int]))
+        .map(toDataObservableBuffer)
+        .map(XYChart.Series[Number, String]("Total", _))
+        .get
+
+    val whiteSeries = Option(whiteManaCurve)
+        .filter(_.exists { case (_, count) => count > 0 })
+        .orElse(Some(Map.empty[Double, Int]))
+        .map(toDataObservableBuffer)
+        .map(XYChart.Series[Number, String]("White", _))
+        .get
+
+    val blueSeries = Option(blueManaCurve)
+        .filter(_.exists { case (_, count) => count > 0 })
+        .orElse(Some(Map.empty[Double, Int]))
+        .map(toDataObservableBuffer)
+        .map(XYChart.Series[Number, String]("Blue", _))
+        .get
+
+    val blackSeries = Option(blackManaCurve)
+        .filter(_.exists { case (_, count) => count > 0 })
+        .orElse(Some(Map.empty[Double, Int]))
+        .map(toDataObservableBuffer)
+        .map(XYChart.Series[Number, String]("Black", _))
+        .get
+
+    val redSeries = Option(redManaCurve)
+        .filter(_.exists { case (_, count) => count > 0 })
+        .orElse(Some(Map.empty[Double, Int]))
+        .map(toDataObservableBuffer)
+        .map(XYChart.Series[Number, String]("Red", _))
+        .get
+
+    val greenSeries = Option(greenManaCurve)
+        .filter(_.exists { case (_, count) => count > 0 })
+        .orElse(Some(Map.empty[Double, Int]))
+        .map(toDataObservableBuffer)
+        .map(XYChart.Series[Number, String]("Green", _))
+        .get
 
     val countAxisUpperBound =
         if (totalManaCurve.isEmpty) 20 else max(20, totalManaCurve.values.max + 1)
@@ -265,32 +311,23 @@ object ConsoleController extends JFXApp
     val manaCostAxis = CategoryAxis("Mana Cost")
     manaCostAxis.setTickLabelFont(Font.font(12))
 
-    XYChart.Series[Number, String]("Total", totalData)
-    XYChart.Series[Number, String]("White", whiteData)
-    XYChart.Series[Number, String]("Blue", blueData)
-    XYChart.Series[Number, String]("Black", blackData)
-    XYChart.Series[Number, String]("Red", redData)
-    XYChart.Series[Number, String]("Green", greenData)
-
     val manaCurveBarChart = BarChart[Number, String](
       countAxis,
       manaCostAxis,
-      ObservableBuffer(
-        XYChart.Series[Number, String]("Total", totalData),
-        XYChart.Series[Number, String]("White", whiteData),
-        XYChart.Series[Number, String]("Blue", blueData),
-        XYChart.Series[Number, String]("Black", blackData),
-        XYChart.Series[Number, String]("Red", redData),
-        XYChart.Series[Number, String]("Green", greenData)
-      )
+      ObservableBuffer(totalSeries, whiteSeries, blueSeries, blackSeries, redSeries, greenSeries)
     )
 
-    manaCurveBarChart.setStyle("-fx-bar-fill: blue")
+    val colors = Seq(whiteManaCurve, blueManaCurve, blackManaCurve, redManaCurve, greenManaCurve)
+        .count(_.values.sum > 0)
+
+    val categoryGap = pow(colors, 1.9).round
+    val minHeight = (50 + 5 * colors) * totalManaCurve.keys.size
 
     manaCurveBarChart.setHorizontalGridLinesVisible(false)
     manaCurveBarChart.setBarGap(0)
-    manaCurveBarChart.setMinWidth(countAxisUpperBound * 30)
-    manaCurveBarChart.setMinHeight(totalManaCurve.keys.size * 30)
+    manaCurveBarChart.setCategoryGap(categoryGap)
+    manaCurveBarChart.setMinWidth(countAxisUpperBound * 35)
+    manaCurveBarChart.setMinHeight(minHeight)
     manaCurveBarChart
   }
 

@@ -3,7 +3,6 @@
 // Draw
 [1] Pull from Tomorrow {manacost: "{X}{U}{U}", colors: "U", types: [Instant], cmc: 2.00} @draw
 [1] Blue Sun's Zenith {manacost: "{X}{U}{U}{U}", colors: "U", types: [Instant], cmc: 3.00} @draw
-[1] Fact or Fiction {manacost: "{3}{U}", colors: "U", types: [Instant], cmc: 4.00} @draw
 [1] Precognition Field {manacost: "{3}{U}", colors: "U", types: [Enchantment], cmc: 4.00} @draw
 [1] Bident of Thassa {manacost: "{2}{U}{U}", colors: "U", types: [Enchantment, Artifact], cmc: 4.00} @draw
 [1] Coastal Piracy {manacost: "{2}{U}{U}", colors: "U", types: [Enchantment], cmc: 4.00} @draw
@@ -64,13 +63,11 @@
 // Bounce
 [1] Into the Roil {manacost: "{1}{U}", colors: "U", types: [Instant], cmc: 2.00} @bounce
 [1] Blink of an Eye {manacost: "{1}{U}", colors: "U", types: [Instant], cmc: 2.00} @bounce
-[1] Expel from Orazca {manacost: "{1}{U}", colors: "U", types: [Instant], cmc: 2.00} @bounce
 
 // Graveyard Recursion
 [1] Flood of Recollection {manacost: "{U}{U}", colors: "U", types: [Sorcery], cmc: 2.00} @graveyard_recursion
 [1] The Mirari Conjecture {manacost: "{4}{U}", colors: "U", types: [Enchantment], cmc: 5.00} @graveyard_recursion
 [1] Mnemonic Wall {manacost: "{4}{U}", colors: "U", types: [Creature], cmc: 5.00} @graveyard_recursion
-[1] Spelltwine {manacost: "{5}{U}", colors: "U", types: [Sorcery], cmc: 6.00} @graveyard_recursion
 [1] Torrential Gearhulk {manacost: "{4}{U}{U}", colors: "U", types: [Artifact, Creature], cmc: 6.00} @graveyard_recursion
 
 // Good Stuff
@@ -80,7 +77,7 @@
 [1] Metallurgic Summonings {manacost: "{3}{U}{U}", colors: "U", types: [Enchantment], cmc: 5.00}
 [1] Switcheroo {manacost: "{4}{U}", colors: "U", types: [Sorcery], cmc: 5.00} @steal_creature
 [1] Aethersnatch {manacost: "{4}{U}{U}", colors: "U", types: [Instant], cmc: 6.00} @steal_creature
-[1] Stolen Identity {manacost: "{4}{U}{U}", colors: "U", types: [Sorcery], cmc: 6.00} @cypher
+[1] Stolen Identity {manacost: "{4}{U}{U}", colors: "U", types: [Sorcery], cmc: 6.00} @cipher
 [1] Walk the Aeons {manacost: "{4}{U}{U}", colors: "U", types: [Sorcery], cmc: 6.00} @extra_turn
 [1] Rise from the Tides {manacost: "{5}{U}", colors: "U", types: [Sorcery], cmc: 6.00} @token_generator @win_con
 [1] Swarm Intelligence {manacost: "{6}{U}", colors: "U", types: [Enchantment], cmc: 7.00}

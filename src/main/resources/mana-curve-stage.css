@@ -1,0 +1,10 @@
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.default-color0.chart-bar { -fx-bar-fill: purple; }
+.default-color1.chart-bar { -fx-bar-fill: #f0e1ac; }
+.default-color2.chart-bar { -fx-bar-fill: #96b4dc; }
+.default-color3.chart-bar { -fx-bar-fill: #8c8c8c; }
+.default-color4.chart-bar { -fx-bar-fill: #eb826e; }
+.default-color5.chart-bar { -fx-bar-fill: #a5d2b4; }
