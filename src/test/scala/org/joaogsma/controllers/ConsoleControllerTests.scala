@@ -14,7 +14,7 @@ class ConsoleControllerTests extends WordSpec with Matchers
       "return the same DeckEntry instance" in
       {
         val input = TestInputs.tatyovaStandaloneEntries.head
-        ConsoleController.fillMissingField(input) shouldEqual input
+        ConsoleController.fillWithScryfallData(input) shouldEqual input
       }
     }
 
@@ -27,7 +27,7 @@ class ConsoleControllerTests extends WordSpec with Matchers
           "Thaumatic Compass // Spires of Orazca",
           Set("cmc_2", "colorless", "artifact", "land_to_hand")
         )
-        ConsoleController.fillMissingField(input).card.isDefined shouldBe true
+        ConsoleController.fillWithScryfallData(input).card.isDefined shouldBe true
       }
     }
   }

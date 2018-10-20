@@ -1,4 +1,4 @@
-package org.joaogsma.ports.file
+package org.joaogsma.ports
 
 import java.io.BufferedWriter
 import java.io.File

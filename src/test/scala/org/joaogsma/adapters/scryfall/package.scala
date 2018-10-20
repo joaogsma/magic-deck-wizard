@@ -1,6 +1,6 @@
 package org.joaogsma.adapters
 
-import org.joaogsma.ports.file.FilePort
+import org.joaogsma.ports.FilePort
 
 package object scryfall
 {
