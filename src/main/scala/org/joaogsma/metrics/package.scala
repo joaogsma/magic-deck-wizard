@@ -87,7 +87,9 @@ package object metrics
         .mapValues(_.map(_.count).sum)
 
     val maxKey = if (counts.isEmpty) 10.0 else max(counts.keys.max, 10.0)
-     Range.BigDecimal(0.0, maxKey, 1.0)
-         .map(_.toDouble).map(key => key -> counts.getOrElse(key, 0)).toMap
+    Range.BigDecimal.inclusive(0.0, maxKey, 1.0)
+        .map(_.toDouble)
+        .map(key => key -> counts.getOrElse(key, 0))
+        .toMap
   }
 }

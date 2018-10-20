@@ -147,7 +147,7 @@ class MetricsPackageTests extends WordSpec with Matchers
     {
       "return a zero count for each cmc" in
       {
-        val expected = Range.BigDecimal(0.0, 10.0, 1.0).map(_.toDouble -> 0).toMap
+        val expected = Range.BigDecimal.inclusive(0.0, 10.0, 1.0).map(_.toDouble -> 0).toMap
         countManaCurve(Seq.empty) shouldEqual expected
       }
     }
