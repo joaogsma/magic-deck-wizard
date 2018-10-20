@@ -1,5 +1,7 @@
 package org.joaogsma.controllers
 
+import cats.implicits._
+import com.monovore.decline._
 import org.joaogsma.metrics.countCards
 import org.joaogsma.metrics.countManaCurve
 import org.joaogsma.metrics.countTags
@@ -28,42 +30,56 @@ import scala.math.max
 import scala.math.pow
 import scala.util.Failure
 import scala.util.Success
-import com.monovore.decline._
-import cats.implicits._
-import scalafx.scene.shape.Rectangle
 
 object ConsoleController extends JFXApp
 {
-  val entriesOpt: Option[Seq[DeckEntry]] = Option(parameters.raw.toList)
-      .flatMap
-      {
-        case filename :: Nil => Some(filename)
-        case _ =>
-          println("[ERROR] Missing filename")
-          None
-      }
-      .flatMap(filename =>
-      {
-        readDeckList(filename)
-            .map(entries =>
-            {
-              val filledEntries = entries.map(fillMissingField)
-              if (entries.exists(_.card.isEmpty) && filledEntries.forall(_.card.isDefined))
-              {
-                val answer = queryUser("Save filled deck list? [y/n]", Set("y", "n"))
-                if (answer.contains("y"))
-                  writeFilledDeckList(filledEntries, filename)
-              }
-              filledEntries
-            })
-      })
+  private val CONSOLE_MODE = 1
+  private val WINDOWED_MODE = 2
 
-  entriesOpt match
+  parseArguments(parameters.raw) match
   {
-    case Some(entries) =>
-      println(metricsString(entries))
-      initializeStages(entries)
-    case None => Platform.exit()
+    case Left(help) =>
+      println(help)
+      Platform.exit()
+    case Right((mode, file)) =>
+      readDeckList(file)
+          .map(entries =>
+          {
+            val filledEntries = entries.map(fillMissingField)
+            if (entries.exists(_.card.isEmpty) && filledEntries.forall(_.card.isDefined))
+            {
+              val answer = queryUser("Save filled deck list? [y/n]", Set("y", "n"))
+              if (answer.contains("y"))
+                writeFilledDeckList(filledEntries, file)
+            }
+            filledEntries
+          })
+          .foreach(entries =>
+          {
+            mode match
+            {
+              case CONSOLE_MODE =>
+                println(metricsString(entries))
+                Platform.exit()
+              case WINDOWED_MODE => initializeStages(entries)
+            }
+          })
+  }
+
+  def parseArguments(args: Seq[String]): Either[Help, (Int, String)] = {
+    val consoleOpts = Opts
+        .flag(long = "console", short = "c", help = "Print the results on the console")
+        .map(_ => CONSOLE_MODE)
+    val windowedOpts = Opts
+        .flag(long = "windowed", short = "w", help = "Print the results on separate windows")
+        .map(_ => WINDOWED_MODE)
+    val fileOpts = Opts.argument[String]("file")
+
+    val command = Command("dummy-name", "dummy-header")(
+      (consoleOpts orElse windowedOpts, fileOpts).mapN(Tuple2.apply)
+    )
+
+    command.parse(args)
   }
 
   def readDeckList(filename: String): Option[Seq[DeckEntry]] =

@@ -15,6 +15,7 @@ ext {
   scalaVersion = '2.12.4'
   circleVersion = '0.9.3'
   scalafxVersion = '8.0.181-R13'
+  declineVersion = '0.5.0'
 }
 
 repositories {
@@ -36,6 +37,7 @@ dependencies {
   compile "io.circe:circe-core_${removePatch(scalaVersion)}:$circleVersion"
   compile "io.circe:circe-generic_${removePatch(scalaVersion)}:$circleVersion"
   compile "io.circe:circe-parser_${removePatch(scalaVersion)}:$circleVersion"
+  compile "com.monovore:decline_${removePatch(scalaVersion)}:$declineVersion"
   compile "org.scalafx:scalafx_${removePatch(scalaVersion)}:$scalafxVersion"
 
   testCompile "org.scalatest:scalatest_${removePatch(scalaVersion)}:3.0.0"
