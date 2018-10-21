@@ -6,8 +6,7 @@ import org.joaogsma.models.DeckEntry
 import org.joaogsma.models.Mana
 import org.joaogsma.models.Type
 
-object TestInputs
-{
+object TestInputs {
   def tatyovaStandaloneEntries: Seq[DeckEntry] = List(
     DeckEntry(
       1,
@@ -17,11 +16,8 @@ object TestInputs
           List(Mana.Generic(2), Mana.Blue(1)),
           List(Color.Blue),
           List(Type.Creature),
-          3
-        )
-      ),
-      Set("cmc_3", "blue", "creature", "draw")
-    ),
+          3)),
+      Set("cmc_3", "blue", "creature", "draw")),
     DeckEntry(
       1,
       "Sylvan Offering",
@@ -30,11 +26,8 @@ object TestInputs
           List(Mana.X(1), Mana.Green(1)),
           List(Color.Green),
           List(Type.Sorcery),
-          1
-        ),
-      ),
-      Set("cmc_1", "green", "sorcery", "political", "token_generator")
-    ),
+          1)),
+      Set("cmc_1", "green", "sorcery", "political", "token_generator")),
     DeckEntry(
       1,
       "Coiling Oracle",
@@ -43,11 +36,8 @@ object TestInputs
           List(Mana.Blue(1), Mana.Green(1)),
           List(Color.Blue, Color.Green),
           List(Type.Creature),
-          2
-        ),
-      ),
-      Set("cmc_2", "blue", "green", "creature")
-    ),
+          2)),
+      Set("cmc_2", "blue", "green", "creature")),
     DeckEntry(
       1,
       "Blackblade Reforged",
@@ -56,11 +46,8 @@ object TestInputs
           List(Mana.Generic(2)),
           List.empty,
           List(Type.Artifact),
-          2
-        )
-      ),
-      Set("cmc_2", "colorless", "artifact")
-    ),
+          2)),
+      Set("cmc_2", "colorless", "artifact")),
     DeckEntry(
       1,
       "Nissa, Steward of Elements",
@@ -69,11 +56,8 @@ object TestInputs
           List(Mana.X(1), Mana.Blue(1), Mana.Green(1)),
           List(Color.Blue, Color.Green),
           List(Type.Planeswalker),
-          2
-        )
-      ),
-      Set("cmc_2", "blue", "green", "planeswalker", "scry", "land_to_battlefield")
-    ),
+          2)),
+      Set("cmc_2", "blue", "green", "planeswalker", "scry", "land_to_battlefield")),
     DeckEntry(
       1,
       "Retreat to Kazandu",
@@ -82,11 +66,8 @@ object TestInputs
           List(Mana.Generic(2), Mana.Green(1)),
           List(Color.Green),
           List(Type.Enchantment),
-          3
-        )
-      ),
-      Set("cmc_3", "green", "enchantment", "life_gain", "landfall")
-    ),
+          3)),
+      Set("cmc_3", "green", "enchantment", "life_gain", "landfall")),
     DeckEntry(
       1,
       "Retreat to Coralhelm",
@@ -95,11 +76,8 @@ object TestInputs
           List(Mana.Generic(2), Mana.Blue(1)),
           List(Color.Blue),
           List(Type.Enchantment),
-          3
-        )
-      ),
-      Set("cmc_3", "blue", "enchantment", "scry", "landfall")
-    ),
+          3)),
+      Set("cmc_3", "blue", "enchantment", "scry", "landfall")),
     DeckEntry(
       1,
       "Seed the Land",
@@ -108,11 +86,8 @@ object TestInputs
           List(Mana.Generic(2), Mana.Green(2)),
           List(Color.Green),
           List(Type.Enchantment),
-          4
-        )
-      ),
-      Set("cmc_4", "green", "enchantment", "token_generator", "landfall")
-    ),
+          4)),
+      Set("cmc_4", "green", "enchantment", "token_generator", "landfall")),
     DeckEntry(
       1,
       "Centaur Glade",
@@ -121,11 +96,8 @@ object TestInputs
           List(Mana.Generic(3), Mana.Green(2)),
           List(Color.Green),
           List(Type.Enchantment),
-          5
-        )
-      ),
-      Set("cmc_5", "green", "enchantment", "token_generator", "mana_sink")
-    ),
+          5)),
+      Set("cmc_5", "green", "enchantment", "token_generator", "mana_sink")),
     DeckEntry(
       1,
       "Venser's Journal",
@@ -134,11 +106,8 @@ object TestInputs
           List(Mana.Generic(5)),
           List.empty,
           List(Type.Artifact),
-          5
-        )
-      ),
-      Set("cmc_5", "colorless", "artifact", "life_gain")
-    ),
+          5)),
+      Set("cmc_5", "colorless", "artifact", "life_gain")),
     DeckEntry(
       1,
       "Future Sight",
@@ -147,11 +116,8 @@ object TestInputs
           List(Mana.Generic(2), Mana.Blue(3)),
           List(Color.Blue),
           List(Type.Enchantment),
-          5
-        )
-      ),
-      Set("cmc_5", "blue", "enchantment")
-    ),
+          5)),
+      Set("cmc_5", "blue", "enchantment")),
     DeckEntry(
       1,
       "Mystic Confluence",
@@ -160,11 +126,8 @@ object TestInputs
           List(Mana.Generic(3), Mana.Blue(2)),
           List(Color.Blue),
           List(Type.Instant),
-          5
-        )
-      ),
-      Set("cmc_5", "blue", "instant", "draw", "counter", "bounce")
-    ),
+          5)),
+      Set("cmc_5", "blue", "instant", "draw", "counter", "bounce")),
     DeckEntry(
       1,
       "Zendikar's Roil",
@@ -173,11 +136,8 @@ object TestInputs
           List(Mana.Generic(3), Mana.Green(2)),
           List(Color.Green),
           List(Type.Enchantment),
-          5
-        )
-      ),
-      Set("cmc_5", "green", "enchantment", "landfall", "token_generator")
-    ),
+          5)),
+      Set("cmc_5", "green", "enchantment", "landfall", "token_generator")),
     DeckEntry(
       1,
       "Seasons Past",
@@ -186,11 +146,8 @@ object TestInputs
           List(Mana.Generic(4), Mana.Green(2)),
           List(Color.Green),
           List(Type.Sorcery),
-          6
-        )
-      ),
-      Set("cmc_6", "green", "sorcery", "graveyard_recursion")
-    ),
+          6)),
+      Set("cmc_6", "green", "sorcery", "graveyard_recursion")),
     DeckEntry(
       1,
       "Multani, Yavimaya's Avatar",
@@ -199,11 +156,8 @@ object TestInputs
           List(Mana.Generic(4), Mana.Green(2)),
           List(Color.Green),
           List(Type.Creature),
-          6
-        )
-      ),
-      Set("cmc_6", "green", "creature")
-    ),
+          6)),
+      Set("cmc_6", "green", "creature")),
     DeckEntry(
       1,
       "Rampaging Baloths",
@@ -212,11 +166,8 @@ object TestInputs
           List(Mana.Generic(4), Mana.Green(2)),
           List(Color.Green),
           List(Type.Creature),
-          6
-        )
-      ),
-      Set("cmc_6", "green", "creature", "token_generator")
-    ),
+          6)),
+      Set("cmc_6", "green", "creature", "token_generator")),
     DeckEntry(
       1,
       "Protean Hulk",
@@ -225,9 +176,7 @@ object TestInputs
           List(Mana.Generic(5), Mana.Green(2)),
           List(Color.Green),
           List(Type.Creature),
-          7
-        )
-      ),
+          7)),
       Set("cmc_7", "green", "creature")),
     DeckEntry(
       1,
@@ -237,11 +186,8 @@ object TestInputs
           List(Mana.Generic(6), Mana.Green(1)),
           List(Color.Green),
           List(Type.Sorcery),
-          7
-        )
-      ),
-      Set("cmc_7", "green", "sorcery", "token_generator")
-    ),
+          7)),
+      Set("cmc_7", "green", "sorcery", "token_generator")),
     DeckEntry(
       1,
       "Praetor's Counsel",
@@ -250,10 +196,6 @@ object TestInputs
           List(Mana.Generic(5), Mana.Green(3)),
           List(Color.Green),
           List(Type.Sorcery),
-          8
-        )
-      ),
-      Set("cmc_8", "green", "sorcery", "graveyard_recursion")
-    )
-  )
+          8)),
+      Set("cmc_8", "green", "sorcery", "graveyard_recursion")))
 }

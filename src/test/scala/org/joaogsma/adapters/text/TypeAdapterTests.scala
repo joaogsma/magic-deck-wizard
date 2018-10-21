@@ -6,38 +6,28 @@ import org.scalatest.WordSpec
 
 import scala.util.Success
 
-class TypeAdapterTests extends WordSpec with Matchers
-{
-  "The parseToSequence function" when
-  {
-    "given a creature" should
-    {
-      "parse correctly" in
-      {
+class TypeAdapterTests extends WordSpec with Matchers {
+  "The parseToSequence function" when {
+    "given a creature" should {
+      "parse correctly" in {
         TypeAdapter.parseToSequence("[Creature]") shouldEqual Success(Seq(Type.Creature))
       }
     }
 
-    "given an enchantment" should
-    {
-      "parse correctly" in
-      {
+    "given an enchantment" should {
+      "parse correctly" in {
         TypeAdapter.parseToSequence("[Enchantment]") shouldEqual Success(Seq(Type.Enchantment))
       }
     }
 
-    "given an artifact" should
-     {
-       "parse correctly" in
-       {
-         TypeAdapter.parseToSequence("[Artifact]") shouldEqual Success(Seq(Type.Artifact))
-       }
-     }
+    "given an artifact" should {
+      "parse correctly" in {
+        TypeAdapter.parseToSequence("[Artifact]") shouldEqual Success(Seq(Type.Artifact))
+      }
+    }
 
-    "given an enchantment or artifact creature" should
-    {
-      "parse correctly" in
-      {
+    "given an enchantment or artifact creature" should {
+      "parse correctly" in {
         (TypeAdapter.parseToSequence("[Enchantment, Creature]")
             shouldEqual Success(Seq(Type.Enchantment, Type.Creature)))
         (TypeAdapter.parseToSequence("[Artifact, Creature]")
@@ -45,52 +35,40 @@ class TypeAdapterTests extends WordSpec with Matchers
       }
     }
 
-    "given an enchantment artifact" should
-    {
-      "parse correctly" in
-      {
+    "given an enchantment artifact" should {
+      "parse correctly" in {
         (TypeAdapter.parseToSequence("[Enchantment, Artifact]")
             shouldEqual Success(Seq(Type.Enchantment, Type.Artifact)))
       }
     }
 
-    "given a land" should
-    {
-      "parse correctly" in
-      {
+    "given a land" should {
+      "parse correctly" in {
         TypeAdapter.parseToSequence("[Land]") shouldEqual Success(Seq(Type.Land))
       }
     }
 
-    "given a planeswalker" should
-    {
-      "parse correctly" in
-      {
+    "given a planeswalker" should {
+      "parse correctly" in {
         (TypeAdapter.parseToSequence("[Planeswalker]")
             shouldEqual Success(Seq(Type.Planeswalker)))
       }
     }
 
-    "given a instant" should
-    {
-      "parse correctly" in
-      {
+    "given a instant" should {
+      "parse correctly" in {
         TypeAdapter.parseToSequence("[Instant]") shouldEqual Success(Seq(Type.Instant))
       }
     }
 
-    "given a sorcery" should
-    {
-      "parse correctly" in
-      {
+    "given a sorcery" should {
+      "parse correctly" in {
         TypeAdapter.parseToSequence("[Sorcery]") shouldEqual Success(Seq(Type.Sorcery))
       }
     }
 
-    "given an invalid word" should
-    {
-      "return a Failure" in
-      {
+    "given an invalid word" should {
+      "return a Failure" in {
         TypeAdapter.parseToSequence("[Creature, foo]").isFailure shouldBe true
         TypeAdapter.parseToSequence("[bar, Enchantment]").isFailure shouldBe true
         TypeAdapter.parseToSequence("[Artifact, foo]").isFailure shouldBe true
@@ -101,10 +79,8 @@ class TypeAdapterTests extends WordSpec with Matchers
       }
     }
 
-    "given lower case words" should
-    {
-      "parse correctly" in
-      {
+    "given lower case words" should {
+      "parse correctly" in {
         TypeAdapter.parseToSequence("[creature]") shouldEqual Success(Seq(Type.Creature))
 
         (TypeAdapter.parseToSequence("[enchantment]")
@@ -132,10 +108,8 @@ class TypeAdapterTests extends WordSpec with Matchers
       }
     }
 
-    "given a sequence with arbitrary spacing" should
-    {
-      "parse correctly" in
-      {
+    "given a sequence with arbitrary spacing" should {
+      "parse correctly" in {
         (TypeAdapter.parseToSequence("[Enchantment,               Creature]")
             shouldEqual Success(Seq(Type.Enchantment, Type.Creature)))
         (TypeAdapter.parseToSequence("[       Artifact,     Creature       ]")
@@ -144,12 +118,9 @@ class TypeAdapterTests extends WordSpec with Matchers
     }
   }
 
-  "The toString function" when
-  {
-    "given only one type" should
-    {
-      "return the correct string" in
-      {
+  "The toString function" when {
+    "given only one type" should {
+      "return the correct string" in {
         TypeAdapter.toString(List(Type.Enchantment)) shouldEqual "[Enchantment]"
         TypeAdapter.toString(List(Type.Artifact)) shouldEqual "[Artifact]"
         TypeAdapter.toString(List(Type.Creature)) shouldEqual "[Creature]"
@@ -160,10 +131,8 @@ class TypeAdapterTests extends WordSpec with Matchers
       }
     }
 
-    "given two types" should
-    {
-      "return the correct string" in
-      {
+    "given two types" should {
+      "return the correct string" in {
         (TypeAdapter.toString(List(Type.Enchantment, Type.Creature))
             shouldEqual "[Enchantment, Creature]")
         (TypeAdapter.toString(List(Type.Artifact, Type.Creature))

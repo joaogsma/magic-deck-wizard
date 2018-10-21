@@ -5,8 +5,7 @@ import java.net.URL
 
 import scala.io.Source
 
-trait HttpPort
-{
+trait HttpPort {
   /**
     * Returns the text (content) from a REST URL as a String.
     * Inspired by:
@@ -16,17 +15,17 @@ trait HttpPort
     *
     * The `connectTimeout` and `readTimeout` comes from the Java URLConnection
     * class Javadoc.
-    * @param url The full URL to connect to.
-    * @param connectTimeout Sets a specified timeout value, in milliseconds,
-    * to be used when opening a communications link to the resource referenced
-    * by this URLConnection. If the timeout expires before the connection can
-    * be established, a java.net.SocketTimeoutException
-    * is raised. A timeout of zero is interpreted as an infinite timeout.
-    * Defaults to 5000 ms.
-    * @param readTimeout If the timeout expires before there is data available
-    * for read, a java.net.SocketTimeoutException is raised. A timeout of zero
-    * is interpreted as an infinite timeout. Defaults to 5000 ms.
     *
+    * @param url            The full URL to connect to.
+    * @param connectTimeout Sets a specified timeout value, in milliseconds,
+    *                       to be used when opening a communications link to the resource referenced
+    *                       by this URLConnection. If the timeout expires before the connection can
+    *                       be established, a java.net.SocketTimeoutException
+    *                       is raised. A timeout of zero is interpreted as an infinite timeout.
+    *                       Defaults to 5000 ms.
+    * @param readTimeout    If the timeout expires before there is data available
+    *                       for read, a java.net.SocketTimeoutException is raised. A timeout of zero
+    *                       is interpreted as an infinite timeout. Defaults to 5000 ms.
     * @example get("http://www.example.com/getInfo")
     * @example get("http://www.example.com/getInfo", 5000)
     * @example get("http://www.example.com/getInfo", 5000, 5000)
@@ -36,17 +35,14 @@ trait HttpPort
   def get(
       url: String,
       connectTimeout: Int = 5000,
-      readTimeout: Int = 5000): String =
-  {
+      readTimeout: Int = 5000): String = {
     val connection = new URL(url).openConnection.asInstanceOf[HttpURLConnection]
     connection.setConnectTimeout(connectTimeout)
     connection.setReadTimeout(readTimeout)
 
     val inputStream = connection.getInputStream
 
-    try
-      Source.fromInputStream(inputStream).mkString
-    finally
-      if (inputStream != null) inputStream.close()
+    try Source.fromInputStream(inputStream).mkString
+    finally if (inputStream != null) inputStream.close()
   }
 }

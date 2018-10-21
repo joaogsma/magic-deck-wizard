@@ -5,24 +5,18 @@ import org.joaogsma.ports.file.DeckListPort
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
 
-class MetricsPackageTests extends WordSpec with Matchers
-{
+class MetricsPackageTests extends WordSpec with Matchers {
   private val RESOURCES_DIRECTORY = "src/test/resources/org/joaogsma/metrics"
 
-  "The countTags function" when
-  {
-    "given an empty list" should
-    {
-      "return an empty map" in
-      {
+  "The countTags function" when {
+    "given an empty list" should {
+      "return an empty map" in {
         countTags(Seq.empty) shouldBe empty
       }
     }
 
-    "given a valid deck entry sequence" should
-    {
-      "count the tag occurrences correctly" in
-      {
+    "given a valid deck entry sequence" should {
+      "count the tag occurrences correctly" in {
         val input = DeckListPort.read(s"$RESOURCES_DIRECTORY/tatyova.txt").get
 
         val expected = Map(
@@ -73,12 +67,9 @@ class MetricsPackageTests extends WordSpec with Matchers
     }
   }
 
-  "The countColors function" when
-  {
-    "given an empty deck entry list" should
-    {
-      "return a zero count to each color" in
-      {
+  "The countColors function" when {
+    "given an empty deck entry list" should {
+      "return a zero count to each color" in {
         val expected: Map[Option[Color], Int] = Map(
           None -> 0,
           Some(Color.White) -> 0,
@@ -91,10 +82,8 @@ class MetricsPackageTests extends WordSpec with Matchers
       }
     }
 
-    "given a valid deck entry list" should
-    {
-      "return the correct counts in a map" in
-      {
+    "given a valid deck entry list" should {
+      "return the correct counts in a map" in {
         val expected: Map[Option[Color], Int] = Map(
           None -> 2,
           Some(Color.White) -> 0,
@@ -108,12 +97,9 @@ class MetricsPackageTests extends WordSpec with Matchers
     }
   }
 
-  "The countManaSymbols function" when
-  {
-    "given an empty deck entry list" should
-    {
-      "return a zero count to each color" in
-      {
+  "The countManaSymbols function" when {
+    "given an empty deck entry list" should {
+      "return a zero count to each color" in {
         val expected: Map[Color, Int] = Map(
           Color.White -> 0,
           Color.Blue -> 0,
@@ -125,10 +111,8 @@ class MetricsPackageTests extends WordSpec with Matchers
       }
     }
 
-    "given a valid deck entry list" should
-    {
-      "return the correct counts in a map" in
-      {
+    "given a valid deck entry list" should {
+      "return the correct counts in a map" in {
         val expected: Map[Color, Int] = Map(
           Color.White -> 0,
           Color.Blue -> 9,
@@ -141,21 +125,16 @@ class MetricsPackageTests extends WordSpec with Matchers
     }
   }
 
-  "The countManaCurve function" when
-  {
-    "given an empty deck entry list" should
-    {
-      "return a zero count for each cmc" in
-      {
+  "The countManaCurve function" when {
+    "given an empty deck entry list" should {
+      "return a zero count for each cmc" in {
         val expected = Range.BigDecimal.inclusive(0.0, 10.0, 1.0).map(_.toDouble -> 0).toMap
         countManaCurve(Seq.empty) shouldEqual expected
       }
     }
 
-    "given a valid deck entry list" should
-    {
-      "return the correct count for each CMC" in
-      {
+    "given a valid deck entry list" should {
+      "return the correct count for each CMC" in {
         val expected = Map(
           0.0 -> 0,
           1.0 -> 1,
@@ -167,8 +146,7 @@ class MetricsPackageTests extends WordSpec with Matchers
           7.0 -> 2,
           8.0 -> 1,
           9.0 -> 0,
-          10.0 -> 0
-        )
+          10.0 -> 0)
         countManaCurve(TestInputs.tatyovaStandaloneEntries) shouldEqual expected
       }
     }

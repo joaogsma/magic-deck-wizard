@@ -14,26 +14,21 @@ import org.joaogsma.ports.scryfall.ScryfallPort
 import scala.util.Failure
 import scala.util.Success
 
-object ConsoleController extends App
-{
+object ConsoleController extends App {
   private val CONSOLE_MODE = 1
   private val WINDOWED_MODE = 2
 
-  parseArguments(args) match
-  {
+  parseArguments(args) match {
     case Left(help) => println(help)
     case Right((mode, file)) =>
       readDeckList(file)
-          .map(entries =>
-          {
+          .map(entries => {
             val filledEntries = entries.map(fillWithScryfallData)
             maybeWriteFilledDeckList(file, entries, filledEntries)
             filledEntries
           })
-          .foreach(entries =>
-          {
-            mode match
-            {
+          .foreach(entries => {
+            mode match {
               case CONSOLE_MODE => println(metricsString(entries))
               case WINDOWED_MODE => ScalaFxPort.initialize(entries)
             }
@@ -49,17 +44,13 @@ object ConsoleController extends App
         .map(_ => WINDOWED_MODE)
     val fileOpts = Opts.argument[String]("file")
 
-    val command = Command("dummy-name", "dummy-header")(
-      (consoleOpts orElse windowedOpts, fileOpts).mapN(Tuple2.apply)
-    )
-
-    command.parse(args)
+    Command("Parse the arguments", "Parse the initialization options")(
+      (consoleOpts orElse windowedOpts, fileOpts).mapN(Tuple2.apply))
+        .parse(args)
   }
 
-  def readDeckList(filename: String): Option[Seq[DeckEntry]] =
-  {
-    DeckListPort.read(filename) match
-    {
+  def readDeckList(filename: String): Option[Seq[DeckEntry]] = {
+    DeckListPort.read(filename) match {
       case Failure(exception) =>
         println(s"[ERROR] ${exception.getMessage}")
         None
@@ -67,20 +58,17 @@ object ConsoleController extends App
     }
   }
 
-  def fillWithScryfallData(entry: DeckEntry): DeckEntry = entry.card match
-  {
+  def fillWithScryfallData(entry: DeckEntry): DeckEntry = entry.card match {
     case Some(_) => entry
     case None =>
       print(s""" Searching Scryfall for missing information on card "${entry.name}"...""")
-      ScryfallPort.searchCardName(entry.name) match
-      {
+      ScryfallPort.searchCardName(entry.name) match {
         case Success(card) =>
           println("done")
           entry.copy(card = Some(card))
         case Failure(_) =>
           println(
-            s"\n[ERROR] Could not get missing information of the card ${entry.name} from Scryfall."
-          )
+            s"\n[ERROR] Could not get missing information of the card ${entry.name} from Scryfall.")
           entry
       }
   }
@@ -88,8 +76,7 @@ object ConsoleController extends App
   def maybeWriteFilledDeckList(
       originalFile: String,
       originalEntries: Seq[DeckEntry],
-      filledEntries: Seq[DeckEntry]): Unit =
-  {
+      filledEntries: Seq[DeckEntry]): Unit = {
     if (originalEntries.forall(_.card.nonEmpty) || filledEntries.exists(_.card.isEmpty))
       return
 
@@ -101,8 +88,7 @@ object ConsoleController extends App
       return
 
     val filledDeckListFile =
-      originalFile.lastIndexOf('.') match
-      {
+      originalFile.lastIndexOf('.') match {
         case -1 => originalFile + "_filled"
         case formatStart =>
           (originalFile.substring(0, formatStart) + "_filled"
@@ -113,8 +99,7 @@ object ConsoleController extends App
     println(s"[INFO] Filled deck list saved at $filledDeckListFile")
   }
 
-  private def metricsString(entries: Seq[DeckEntry]): String =
-  {
+  private def metricsString(entries: Seq[DeckEntry]): String = {
     val result: StringBuilder = StringBuilder.newBuilder
 
     val totalCardCount: Int = countCards(entries)
@@ -122,8 +107,7 @@ object ConsoleController extends App
 
     val tagCount: Map[String, Int] = countTags(entries)
 
-    if (tagCount.nonEmpty)
-    {
+    if (tagCount.nonEmpty) {
       val maxTagLength: Int = tagCount.keys.map(_.length).max
       result.append("Tags:\n")
       tagCount
@@ -137,8 +121,7 @@ object ConsoleController extends App
           .foreach(result.append)
     }
 
-    if (entries.forall(_.card.isDefined))
-    {
+    if (entries.forall(_.card.isDefined)) {
       result.append("Mana curve:\n")
       countManaCurve(entries)
           .filter(_._2 > 0)

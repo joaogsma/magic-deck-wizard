@@ -7,8 +7,7 @@ import scala.util.Failure
 import scala.util.Try
 import scala.util.matching.Regex
 
-object TypeAdapter
-{
+object TypeAdapter {
   private val CREATURE: Regex = "[Cc]reature".r
   private val INSTANT: Regex = "[Ii]nstant".r
   private val SORCERY: Regex = "[Ss]orcery".r
@@ -24,21 +23,19 @@ object TypeAdapter
 
   private val TYPES = List(ENCHANTMENT, ARTIFACT, CREATURE, INSTANT, SORCERY, PLANESWALKER, LAND)
 
-  def parseToSequence(str: String): Try[Seq[Type]] =
-  {
-    if (!str.matches(TYPE_SEQUENCE_REGEX.toString))
+  def parseToSequence(str: String): Try[Seq[Type]] = {
+    if (!str.matches(TYPE_SEQUENCE_REGEX.toString)) {
       Failure(new IllegalArgumentException(s"Malformed type: $str"))
-    else
+    } else {
       Try(str.substring(1, str.length - 1).split(',').map(s => parse(s.trim)).sorted)
+    }
   }
 
   def toString(seq: Seq[Type]): String =
       '[' + seq.ensuring(s => s != null && s.nonEmpty).sorted.map(toString).mkString(", ") + ']'
 
-  private def parse(str: String): Type =
-  {
-    TYPES.find(regex => str.matches(regex.toString)) match
-    {
+  private def parse(str: String): Type = {
+    TYPES.find(regex => str.matches(regex.toString)) match {
       case Some(ENCHANTMENT) => Type.Enchantment
       case Some(ARTIFACT) => Type.Artifact
       case Some(CREATURE) => Type.Creature
@@ -50,8 +47,7 @@ object TypeAdapter
     }
   }
 
-  private def toString(cardType: Type): String = cardType match
-  {
+  private def toString(cardType: Type): String = cardType match {
     case Type.Enchantment => "Enchantment"
     case Type.Artifact => "Artifact"
     case Type.Creature => "Creature"

@@ -3,10 +3,8 @@ package org.joaogsma.adapters.scryfall
 import org.joaogsma.models.Type
 import org.joaogsma.models.Type.TypeOrdering
 
-object TypeAdapter
-{
-  def parseToSequence(str: String): Seq[Type] =
-  {
+object TypeAdapter {
+  def parseToSequence(str: String): Seq[Type] = {
     TYPES.filter(str.contains).map(TypeAdapter.parse).sorted
   }
 
@@ -20,8 +18,7 @@ object TypeAdapter
 
   private val TYPES = List(ENCHANTMENT, ARTIFACT, CREATURE, INSTANT, SORCERY, PLANESWALKER, LAND)
 
-  private def parse(typeStr: String): Type = typeStr match
-  {
+  private def parse(typeStr: String): Type = typeStr match {
     case ENCHANTMENT => Type.Enchantment
     case ARTIFACT => Type.Artifact
     case CREATURE => Type.Creature

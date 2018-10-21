@@ -6,24 +6,20 @@ import scala.util.Failure
 import scala.util.Try
 import scala.util.matching.Regex
 
-object DeckEntryAdapter
-{
+object DeckEntryAdapter {
   private val NAME_REGEX = "\\S+( *\\S+)*".r
 
   val DECK_ENTRY_REGEX: Regex =
       (s"^ *${CountAdapter.COUNT_REGEX} +" +
           s"$NAME_REGEX *" +
           s"(${CardAdapter.CARD_REGEX})?" +
-          s"( +${TagAdapter.TAG_GROUP_REGEX})?"+ " *$").r
+          s"( +${TagAdapter.TAG_GROUP_REGEX})?" + " *$").r
 
-  def parse(line: String): Try[DeckEntry] =
-  {
-    if (!line.matches(DECK_ENTRY_REGEX.toString))
+  def parse(line: String): Try[DeckEntry] = {
+    if (!line.matches(DECK_ENTRY_REGEX.toString)) {
       Failure(new IllegalArgumentException(s"Malformed line: $line"))
-    else
-    {
-      Try
-      {
+    } else {
+      Try {
         val count: Regex.Match = CountAdapter.COUNT_REGEX.findFirstMatchIn(line).get
         val cardMatch: Option[Regex.Match] = CardAdapter.CARD_REGEX.findFirstMatchIn(line)
         val tagsMatch: Option[Regex.Match] = TagAdapter.TAG_GROUP_REGEX.findFirstMatchIn(line)
@@ -48,8 +44,7 @@ object DeckEntryAdapter
     }
   }
 
-  def toString(entry: DeckEntry): String =
-  {
+  def toString(entry: DeckEntry): String = {
     assert(entry != null)
     val count: String = CountAdapter.toString(entry.count)
     val card: Option[String] = entry.card.map(CardAdapter.toString)

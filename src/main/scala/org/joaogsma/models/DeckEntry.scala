@@ -4,11 +4,9 @@ case class DeckEntry(
     count: Int,
     name: String,
     card: Option[Card],
-    tags: Set[String]
-)
+    tags: Set[String])
 
-object DeckEntry
-{
+object DeckEntry {
   def apply(count: Int, name: String, tags: Set[String]): DeckEntry =
       DeckEntry(count, name, Option.empty, tags)
 }

@@ -7,16 +7,15 @@ import org.joaogsma.ports.HttpPort
 
 import scala.util.Try
 
-object ScryfallPort extends HttpPort
-{
+object ScryfallPort extends HttpPort {
   private val ROOT_URL: String = "https://api.scryfall.com/"
   private val SCRYFALL_REQUESTED_ELAPSED_TIME = 100
+
   def searchCardName(
       name: String,
       exact: Boolean = true,
       connectTimeout: Int = 5000,
-      readTimeout: Int = 5000): Try[Card] =
-  {
+      readTimeout: Int = 5000): Try[Card] = {
     val searchType = if (exact) "exact" else "fuzzy"
     val adjustedName = name.trim.replace(' ', '+')
     val url = s"$ROOT_URL/cards/named?$searchType=$adjustedName"

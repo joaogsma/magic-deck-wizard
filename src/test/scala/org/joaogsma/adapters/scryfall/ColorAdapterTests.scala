@@ -6,14 +6,10 @@ import org.scalatest.WordSpec
 
 import scala.util.Random
 
-class ColorAdapterTests extends WordSpec with Matchers
-{
-  "The parseToSequence function" when
-  {
-    "applied to a sequence with any combination of color strings" should
-    {
-      "return a sequence with the correct color combination" in
-      {
+class ColorAdapterTests extends WordSpec with Matchers {
+  "The parseToSequence function" when {
+    "applied to a sequence with any combination of color strings" should {
+      "return a sequence with the correct color combination" in {
         val colors = List(Color.White, Color.Blue, Color.Black, Color.Red, Color.Green)
 
         val inputCombinations: Seq[Seq[String]] = (1 to 5)
@@ -26,18 +22,14 @@ class ColorAdapterTests extends WordSpec with Matchers
       }
     }
 
-    "applied to an empty sequence" should
-    {
-      "return an empty sequence" in
-      {
+    "applied to an empty sequence" should {
+      "return an empty sequence" in {
         ColorAdapter.parseToSequence(Seq.empty) shouldBe empty
       }
     }
 
-    "applied to a sequence with repeated color strings" should
-    {
-      "remove the repeated colors" in
-      {
+    "applied to a sequence with repeated color strings" should {
+      "remove the repeated colors" in {
         val colors = List(Color.White, Color.Blue, Color.Black, Color.Red, Color.Green)
 
         val inputCombinations: Seq[Seq[String]] = (1 to 5)
@@ -52,8 +44,7 @@ class ColorAdapterTests extends WordSpec with Matchers
     }
   }
 
-  private def randomSubset[A](elements: Iterable[A]): Iterable[A] =
-  {
+  private def randomSubset[A](elements: Iterable[A]): Iterable[A] = {
     val subsetSize: Int = 1 + Random.nextInt(elements.size)
     Random.shuffle(elements).take(subsetSize)
   }

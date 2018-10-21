@@ -12,61 +12,46 @@ import org.scalatest.WordSpec
 import scala.io.BufferedSource
 import scala.util.Try
 
-class CardAdapterTests extends WordSpec with Matchers
-{
-  "The jsonToCard function" when
-  {
-    "applied to Json.Null" should
-    {
-      "return a failure" in
-      {
+class CardAdapterTests extends WordSpec with Matchers {
+  "The jsonToCard function" when {
+    "applied to Json.Null" should {
+      "return a failure" in {
         CardAdapter.jsonToCard(Json.Null).isFailure shouldBe true
       }
     }
 
-    "applied to a complete JSON)" should
-    {
-      "read all the fields" in
-      {
+    "applied to a complete JSON)" should {
+      "read all the fields" in {
         val expectedCard: Card = Card(
           Seq(Mana.Generic(1), Mana.Green(1)),
           Seq(Color.Green),
           Seq(Type.Sorcery),
-          2.0
-        )
+          2.0)
         val result = usingFileSource("RampantGrowth.json", parseAndTransformToCard(None))
         result shouldEqual Try(expectedCard)
       }
     }
 
-    "applied to a JSON missing the mana cost" should
-    {
-      "return a Failure" in
-      {
+    "applied to a JSON missing the mana cost" should {
+      "return a Failure" in {
         val result = usingFileSource(
           "Bereavement.json",
-          parseAndTransformToCard(Option("mana_cost"))
-        )
+          parseAndTransformToCard(Option("mana_cost")))
         result.isFailure shouldBe true
       }
     }
 
-    "applied ot a JSON missing the colors" should
-    {
-      "return a Failure" in
-      {
+    "applied ot a JSON missing the colors" should {
+      "return a Failure" in {
         val result = usingFileSource(
           "CorpseAugur.json",
-          parseAndTransformToCard(Option("colors"))
-        )
+          parseAndTransformToCard(Option("colors")))
         result.isFailure shouldBe true
       }
     }
 
-    "applied to a JSON missing the type line" should
-    {
-      "return a Failure" in
-      {
+    "applied to a JSON missing the type line" should {
+      "return a Failure" in {
         val result = usingFileSource(
           "CorpseAugur.json",
           parseAndTransformToCard(Option("type_line")))
@@ -75,16 +60,13 @@ class CardAdapterTests extends WordSpec with Matchers
     }
   }
 
-  private def usingFileSource[A](filename: String, f: BufferedSource => A): A =
-  {
+  private def usingFileSource[A](filename: String, f: BufferedSource => A): A = {
     FilePortImpl.usingFile(s"$RESOURCES_DIRECTORY/$filename", f)
   }
 
-  def parseAndTransformToCard(deleteField: Option[String])(bs: BufferedSource): Try[Card] =
-  {
+  def parseAndTransformToCard(deleteField: Option[String])(bs: BufferedSource): Try[Card] = {
     val json = parse(bs.mkString)
-        .map(json => deleteField match
-        {
+        .map(json => deleteField match {
           case Some(field) => json.hcursor.downField(field).delete.top.get
           case None => json
         })

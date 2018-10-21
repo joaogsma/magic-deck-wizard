@@ -22,15 +22,13 @@ import scalafx.stage.Stage
 import scala.math.max
 import scala.math.pow
 
-object ScalaFxPort extends JFXApp
-{
+object ScalaFxPort extends JFXApp {
   def initialize(entries: Seq[DeckEntry]): Unit = {
     delayedInit(initializeStages(entries))
     main(Array.empty)
   }
 
-  private def initializeStages(entries: Seq[DeckEntry]): Unit =
-  {
+  private def initializeStages(entries: Seq[DeckEntry]): Unit = {
     stage = new PrimaryStage {
       title = "Tags"
       scene = new Scene {
@@ -63,13 +61,11 @@ object ScalaFxPort extends JFXApp
             resizable = false
           }
         }
-      }
-    )
+      })
 
     secondaryStages
         .zipWithIndex
-        .foreach
-        {
+        .foreach {
           case (secondaryStage, index) =>
             secondaryStage.setY((index + 1) * 100)
             secondaryStage.setX((index + 1) * 100)
@@ -77,16 +73,14 @@ object ScalaFxPort extends JFXApp
         }
   }
 
-  private def initializeTagsBarChart(entries: Seq[DeckEntry]): BarChart[Number, String] =
-  {
+  private def initializeTagsBarChart(entries: Seq[DeckEntry]): BarChart[Number, String] = {
     val tagCounts = countTags(entries)
 
     val data = ObservableBuffer(
       tagCounts
           .toSeq
           .sorted(Ordering[(String, Int)].reverse)
-          .map { case (key, value) => XYChart.Data(value: Number, s"$key ($value)") }
-    )
+          .map { case (key, value) => XYChart.Data(value: Number, s"$key ($value)") })
 
     val countAxisUpperBound = if (tagCounts.isEmpty) 20 else max(20, tagCounts.values.max + 1)
 
@@ -104,8 +98,7 @@ object ScalaFxPort extends JFXApp
     val tagsBarChart = BarChart[Number, String](
       countAxis,
       categoriAxis,
-      ObservableBuffer(XYChart.Series[Number, String](data))
-    )
+      ObservableBuffer(XYChart.Series[Number, String](data)))
 
     val minHeight = fontSize match {
       case 10 => 21 * tagCounts.keys.size
@@ -121,8 +114,7 @@ object ScalaFxPort extends JFXApp
     tagsBarChart
   }
 
-  private def initializeManaCurveBarChart(entries: Seq[DeckEntry]): BarChart[Number, String] =
-  {
+  private def initializeManaCurveBarChart(entries: Seq[DeckEntry]): BarChart[Number, String] = {
     assert(entries.forall(_.card.isDefined))
 
     val totalManaCurve = countManaCurve(entries)
@@ -136,8 +128,7 @@ object ScalaFxPort extends JFXApp
       manaCurve
           .toSeq
           .sortBy(_._1)
-          .map { case (key, value) => XYChart.Data[Number, String](value, key.formatted("%.2f")) }
-    )
+          .map { case (key, value) => XYChart.Data[Number, String](value, key.formatted("%.2f")) })
 
     val totalSeries = Option(totalManaCurve)
         .filter(_.exists { case (_, count) => count > 0 })
@@ -182,7 +173,7 @@ object ScalaFxPort extends JFXApp
         .get
 
     val countAxisUpperBound =
-      if (totalManaCurve.isEmpty) 20 else max(20, totalManaCurve.values.max + 1)
+        if (totalManaCurve.isEmpty) 20 else max(20, totalManaCurve.values.max + 1)
 
     val countAxis = NumberAxis("Count")
     countAxis.setAutoRanging(false)
@@ -197,8 +188,7 @@ object ScalaFxPort extends JFXApp
     val manaCurveBarChart = BarChart[Number, String](
       countAxis,
       manaCostAxis,
-      ObservableBuffer(totalSeries, whiteSeries, blueSeries, blackSeries, redSeries, greenSeries)
-    )
+      ObservableBuffer(totalSeries, whiteSeries, blueSeries, blackSeries, redSeries, greenSeries))
 
     val colors = Seq(whiteManaCurve, blueManaCurve, blackManaCurve, redManaCurve, greenManaCurve)
         .count(_.values.sum > 0)
@@ -214,13 +204,11 @@ object ScalaFxPort extends JFXApp
     manaCurveBarChart
   }
 
-  private def initializeTypesPieChart(entries: Seq[DeckEntry]): PieChart =
-  {
+  private def initializeTypesPieChart(entries: Seq[DeckEntry]): PieChart = {
     val pieChartData = ObservableBuffer(
       countTypes(entries)
           .map { case (key, value) => PieChart.Data(s"$key ($value)", value) }
-          .toSeq
-    )
+          .toSeq)
 
     PieChart(pieChartData)
   }

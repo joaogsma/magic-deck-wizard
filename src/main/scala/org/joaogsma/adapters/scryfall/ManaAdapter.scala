@@ -5,15 +5,12 @@ import org.joaogsma.models.Mana.ManaOrdering
 
 import scala.util.matching.Regex
 
-object ManaAdapter
-{
+object ManaAdapter {
   // TODO: ensure that the string contains nothing but the mana symbols
-  def parseToSequence(str: String): Seq[Mana] =
-  {
+  def parseToSequence(str: String): Seq[Mana] = {
     val orderedSeq = Seq(X, GENERIC, COLORLESS, WHITE, BLUE, BLACK, RED, GREEN)
     orderedSeq
-        .map(regex =>
-        {
+        .map(regex => {
           val count = regex
               .findAllMatchIn(str)
               .map(_.matched)
@@ -34,14 +31,12 @@ object ManaAdapter
   private val RED: Regex = "\\{R\\}".r
   private val GREEN: Regex = "\\{G\\}".r
 
-  private def matchToManaCount(manaRegex: Regex, str: String): Int = manaRegex match
-  {
+  private def matchToManaCount(manaRegex: Regex, str: String): Int = manaRegex match {
     case GENERIC => str.substring(1, str.length - 1).toInt
     case _ => 1
   }
 
-  private def toMana(manaRegex: Regex, count: Int): Mana = manaRegex match
-  {
+  private def toMana(manaRegex: Regex, count: Int): Mana = manaRegex match {
     case X => Mana.X(count)
     case GENERIC => Mana.Generic(count)
     case COLORLESS => Mana.Colorless(count)

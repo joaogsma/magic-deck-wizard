@@ -7,14 +7,10 @@ import org.scalatest.WordSpec
 
 import scala.io.BufferedSource
 
-class ManaAdapterTests extends WordSpec with Matchers
-{
-  "The parseToSequence function" when
-  {
-    "passed a X spell" should
-    {
-      "parse correctly" in
-      {
+class ManaAdapterTests extends WordSpec with Matchers {
+  "The parseToSequence function" when {
+    "passed a X spell" should {
+      "parse correctly" in {
         (ManaAdapter.parseToSequence(parseFileAndGetManaCost("Fireball.json"))
             should contain theSameElementsInOrderAs Seq(Mana.X(1), Mana.Red(1)))
         (ManaAdapter.parseToSequence(parseFileAndGetManaCost("GelatinousGenesis.json"))
@@ -22,18 +18,14 @@ class ManaAdapterTests extends WordSpec with Matchers
       }
     }
 
-    "passed an empty string" should
-     {
-      "parse to an empty sequence" in
-      {
+    "passed an empty string" should {
+      "parse to an empty sequence" in {
         ManaAdapter.parseToSequence("") shouldBe empty
       }
     }
 
-    "passed a mana cost string with multiple mana of a single color" should
-    {
-      "return the correct count" in
-      {
+    "passed a mana cost string with multiple mana of a single color" should {
+      "return the correct count" in {
         (ManaAdapter.parseToSequence("{W}{W}")
             should contain theSameElementsInOrderAs Seq(Mana.White(2)))
         (ManaAdapter.parseToSequence("{U}{U}{U}")
@@ -47,10 +39,8 @@ class ManaAdapterTests extends WordSpec with Matchers
       }
     }
 
-    "passed a mana cost string with generic mana" should
-    {
-      "return the correct generic mana count" in
-      {
+    "passed a mana cost string with generic mana" should {
+      "return the correct generic mana count" in {
         (ManaAdapter.parseToSequence(parseFileAndGetManaCost("ScourFromExistence.json"))
             should contain theSameElementsInOrderAs Seq(Mana.Generic(7)))
         (ManaAdapter.parseToSequence(parseFileAndGetManaCost("StrokeOfGenius.json"))
@@ -59,13 +49,11 @@ class ManaAdapterTests extends WordSpec with Matchers
     }
   }
 
-  private def parseFileAndGetManaCost(filename: String): String =
-  {
+  private def parseFileAndGetManaCost(filename: String): String = {
     FilePortImpl.usingFile(s"$RESOURCES_DIRECTORY/$filename", parseAndGetManaCost)
   }
 
-  private def parseAndGetManaCost(bs: BufferedSource): String =
-  {
+  private def parseAndGetManaCost(bs: BufferedSource): String = {
     parse(bs.mkString)
         .map(json => json.hcursor.get[String]("mana_cost").toTry.get)
         .toTry
