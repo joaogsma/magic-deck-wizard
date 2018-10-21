@@ -7,7 +7,7 @@ import org.joaogsma.metrics.countManaCurve
 import org.joaogsma.metrics.countTags
 import org.joaogsma.models.DeckEntry
 import org.joaogsma.ports.ConsolePort
-import org.joaogsma.ports.file.DeckListPort
+import org.joaogsma.ports.library.LibraryPort
 import org.joaogsma.ports.scalafx.ScalaFxPort
 import org.joaogsma.ports.scryfall.ScryfallPort
 
@@ -50,7 +50,7 @@ object ConsoleController extends App {
   }
 
   def readDeckList(filename: String): Option[Seq[DeckEntry]] = {
-    DeckListPort.read(filename) match {
+    LibraryPort.read(filename) match {
       case Failure(exception) =>
         println(s"[ERROR] ${exception.getMessage}")
         None
@@ -73,7 +73,7 @@ object ConsoleController extends App {
       }
   }
 
-  def maybeWriteFilledDeckList(
+  private def maybeWriteFilledDeckList(
       originalFile: String,
       originalEntries: Seq[DeckEntry],
       filledEntries: Seq[DeckEntry]): Unit = {
@@ -95,7 +95,7 @@ object ConsoleController extends App {
               + originalFile.substring(formatStart))
       }
 
-    DeckListPort.write(filledEntries, filledDeckListFile)
+    LibraryPort.write(filledEntries, filledDeckListFile)
     println(s"[INFO] Filled deck list saved at $filledDeckListFile")
   }
 

@@ -1,7 +1,7 @@
 package org.joaogsma.metrics
 
 import org.joaogsma.models.Color
-import org.joaogsma.ports.file.DeckListPort
+import org.joaogsma.ports.library.LibraryPort
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
 
@@ -17,7 +17,7 @@ class MetricsPackageTests extends WordSpec with Matchers {
 
     "given a valid deck entry sequence" should {
       "count the tag occurrences correctly" in {
-        val input = DeckListPort.read(s"$RESOURCES_DIRECTORY/tatyova.txt").get
+        val input = LibraryPort.read(s"$RESOURCES_DIRECTORY/tatyova.txt").get
 
         val expected = Map(
           "cmc_8" -> 2,
