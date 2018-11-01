@@ -339,14 +339,14 @@ class LibraryPortTests extends WordSpec with Matchers {
             8,
             "Island",
             Set("land", "mana_src_blue")))
-        (LibraryPort.read(s"$RESOURCES_DIRECTORY/tatyova_valid.txt")
+        (LibraryPort.read(s"$RESOURCES_DIRECTORY/tatyova_valid.library")
             shouldEqual Success(expected))
       }
     }
 
     "given an invalid deck list" should {
       "return a Failure" in {
-        val result = LibraryPort.read(s"$RESOURCES_DIRECTORY/tatyova_invalid.txt")
+        val result = LibraryPort.read(s"$RESOURCES_DIRECTORY/tatyova_invalid.library")
         result.isFailure shouldBe true
         (result
             .asInstanceOf[Failure[Seq[DeckEntry]]]

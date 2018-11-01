@@ -48,17 +48,18 @@ package object metrics {
     keys.map(key => key -> counts.getOrElse(key, 0)).toMap
   }
 
-  def countManaSymbols(entries: Seq[DeckEntry]): Map[Color, Int] = {
-    val counts: Map[Color, Int] = entries
+  def countManaSymbols(entries: Seq[DeckEntry]): Map[Option[Color], Int] = {
+    val counts: Map[Option[Color], Int] = entries
         .ensuring(_.forall(_.card.isDefined))
         .flatMap(entry => {
           entry.card.get.manaCost
               .map {
-                case Mana.White(count) => Option(Color.White -> count * entry.count)
-                case Mana.Blue(count) => Option(Color.Blue -> count * entry.count)
-                case Mana.Black(count) => Option(Color.Black -> count * entry.count)
-                case Mana.Red(count) => Option(Color.Red -> count * entry.count)
-                case Mana.Green(count) => Option(Color.Green -> count * entry.count)
+                case Mana.White(count) => Some(Some(Color.White) -> count * entry.count)
+                case Mana.Blue(count) => Some(Some(Color.Blue) -> count * entry.count)
+                case Mana.Black(count) => Some(Some(Color.Black) -> count * entry.count)
+                case Mana.Red(count) => Some(Some(Color.Red) -> count * entry.count)
+                case Mana.Green(count) => Some(Some(Color.Green) -> count * entry.count)
+                case Mana.Colorless(count) => Some(None -> count * entry.count)
                 case _ => Option.empty
               }
               .filter(_.isDefined)
@@ -67,7 +68,13 @@ package object metrics {
         .groupBy(_._1)
         .mapValues(_.map(_._2).sum)
 
-    val keys = List(Color.White, Color.Blue, Color.Black, Color.Red, Color.Green)
+    val keys = List(
+      Some(Color.White),
+      Some(Color.Blue),
+      Some(Color.Black),
+      Some(Color.Red),
+      Some(Color.Green),
+      None)
     keys.map(key => key -> counts.getOrElse(key, 0)).toMap
   }
 

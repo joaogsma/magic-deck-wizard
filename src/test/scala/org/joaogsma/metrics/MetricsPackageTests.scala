@@ -100,12 +100,13 @@ class MetricsPackageTests extends WordSpec with Matchers {
   "The countManaSymbols function" when {
     "given an empty deck entry list" should {
       "return a zero count to each color" in {
-        val expected: Map[Color, Int] = Map(
-          Color.White -> 0,
-          Color.Blue -> 0,
-          Color.Black -> 0,
-          Color.Red -> 0,
-          Color.Green -> 0
+        val expected: Map[Option[Color], Int] = Map(
+          Some(Color.White) -> 0,
+          Some(Color.Blue) -> 0,
+          Some(Color.Black) -> 0,
+          Some(Color.Red) -> 0,
+          Some(Color.Green) -> 0,
+          None -> 0
         )
         countManaSymbols(Seq.empty) shouldEqual expected
       }
@@ -113,12 +114,13 @@ class MetricsPackageTests extends WordSpec with Matchers {
 
     "given a valid deck entry list" should {
       "return the correct counts in a map" in {
-        val expected: Map[Color, Int] = Map(
-          Color.White -> 0,
-          Color.Blue -> 9,
-          Color.Black -> 0,
-          Color.Red -> 0,
-          Color.Green -> 22
+        val expected: Map[Option[Color], Int] = Map(
+          Some(Color.White) -> 0,
+          Some(Color.Blue) -> 9,
+          Some(Color.Black) -> 0,
+          Some(Color.Red) -> 0,
+          Some(Color.Green) -> 22,
+          None -> 0
         )
         countManaSymbols(TestInputs.tatyovaStandaloneEntries) shouldEqual expected
       }

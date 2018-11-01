@@ -1,6 +1,7 @@
 package org.joaogsma.ports.scalafx
 
 import org.joaogsma.metrics.countManaCurve
+import org.joaogsma.metrics.countManaSymbols
 import org.joaogsma.metrics.countTags
 import org.joaogsma.metrics.countTypes
 import org.joaogsma.models.Color
@@ -47,6 +48,17 @@ object ScalaFxPort extends JFXApp {
           content = new HBox {
             padding = Insets(20)
             children = Seq(initializeManaCurveBarChart(entries))
+            resizable = false
+          }
+          stylesheets = Seq("mana-curve-stage.css")
+        }
+      },
+      new Stage {
+        title = "Mana Symbols"
+        scene = new Scene {
+          content = new HBox {
+            padding = Insets(20)
+            children = Seq(initializeManaSymbolsBarChart(entries))
             resizable = false
           }
           stylesheets = Seq("mana-curve-stage.css")
@@ -102,15 +114,15 @@ object ScalaFxPort extends JFXApp {
 
     val minHeight = fontSize match {
       case 10 => 21 * tagCounts.keys.size
-      case 11 => 21.5 * tagCounts.keys.size
-      case 12 => 22 * tagCounts.keys.size
+      case 11 => 22 * tagCounts.keys.size
+      case 12 => 30 * tagCounts.keys.size
     }
 
     tagsBarChart.setCategoryGap(5)
     tagsBarChart.setLegendVisible(false)
     tagsBarChart.setHorizontalGridLinesVisible(false)
-    tagsBarChart.setMinWidth(countAxisUpperBound * 35)
-    tagsBarChart.setMinHeight(minHeight)
+    tagsBarChart.setPrefWidth(countAxisUpperBound * 35)
+    tagsBarChart.setPrefHeight(minHeight)
     tagsBarChart
   }
 
@@ -199,10 +211,53 @@ object ScalaFxPort extends JFXApp {
     manaCurveBarChart.setHorizontalGridLinesVisible(false)
     manaCurveBarChart.setBarGap(0)
     manaCurveBarChart.setCategoryGap(categoryGap)
-    manaCurveBarChart.setMinWidth(countAxisUpperBound * 35)
-    manaCurveBarChart.setMinHeight(minHeight)
+    manaCurveBarChart.setPrefWidth(countAxisUpperBound * 35)
+    manaCurveBarChart.setPrefHeight(minHeight)
     manaCurveBarChart
   }
+
+  private def initializeManaSymbolsBarChart(entries: Seq[DeckEntry]): BarChart[Number, String] = {
+    assert(entries.forall(_.card.isDefined))
+
+    val manaSymbols = countManaSymbols(entries)
+    val manaSymbolsData = ObservableBuffer(
+      manaSymbols
+          .toSeq
+          .sorted
+          .map {
+            case (colorOpt, count) =>
+              val colorStr = colorOpt match {
+                case None => "Colorless"
+                case Some(color) => color.toString
+              }
+              XYChart.Data[Number, String](count, colorStr)
+          })
+
+    val countAxisUpperBound = max(20, manaSymbols.values.max + 1)
+
+    val countAxis = NumberAxis("Count")
+    countAxis.setAutoRanging(false)
+    countAxis.setLowerBound(0)
+    countAxis.setUpperBound(countAxisUpperBound)
+    countAxis.setTickUnit(5)
+    countAxis.setMinorTickVisible(true)
+
+    val manaCostAxis = CategoryAxis("Color")
+    manaCostAxis.setTickLabelFont(Font.font(12))
+
+    val manaSymbolBarChart = BarChart[Number, String](
+      countAxis,
+      manaCostAxis,
+      ObservableBuffer(XYChart.Series[Number, String]("Mana Symbols", manaSymbolsData)))
+
+    manaSymbolBarChart.setLegendVisible(false)
+    manaSymbolBarChart.setHorizontalGridLinesVisible(false)
+    manaSymbolBarChart.setBarGap(10)
+    manaSymbolBarChart.setPrefWidth(countAxisUpperBound * 12.5)
+    manaSymbolBarChart.setPrefHeight(350)
+    manaSymbolBarChart
+  }
+
 
   private def initializeTypesPieChart(entries: Seq[DeckEntry]): PieChart = {
     val pieChartData = ObservableBuffer(
