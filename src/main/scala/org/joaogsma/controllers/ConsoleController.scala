@@ -5,6 +5,9 @@ import com.monovore.decline._
 import org.joaogsma.metrics.countCards
 import org.joaogsma.metrics.countManaCurve
 import org.joaogsma.metrics.countTags
+import org.joaogsma.metrics.countTypes
+import org.joaogsma.metrics.countColors
+import org.joaogsma.metrics.countManaSymbols
 import org.joaogsma.models.DeckEntry
 import org.joaogsma.ports.ConsolePort
 import org.joaogsma.ports.library.LibraryPort
@@ -29,7 +32,7 @@ object ConsoleController extends App {
           })
           .foreach(entries => {
             mode match {
-              case CONSOLE_MODE => println(metricsString(entries))
+              case CONSOLE_MODE => println(createMetricsString(entries))
               case WINDOWED_MODE => ScalaFxPort.initialize(entries)
             }
           })
@@ -99,7 +102,7 @@ object ConsoleController extends App {
     println(s"[INFO] Filled deck list saved at $filledDeckListFile")
   }
 
-  private def metricsString(entries: Seq[DeckEntry]): String = {
+  private def createMetricsString(entries: Seq[DeckEntry]): String = {
     val result: StringBuilder = StringBuilder.newBuilder
 
     val totalCardCount: Int = countCards(entries)
@@ -119,6 +122,8 @@ object ConsoleController extends App {
           .toSeq
           .sorted
           .foreach(result.append)
+    } else {
+      result.append("No tags to be shown.")
     }
 
     if (entries.forall(_.card.isDefined)) {
@@ -128,7 +133,52 @@ object ConsoleController extends App {
           .toList
           .sorted
           .foreach { case (cost, count) => result.append(s"  - $cost: $count\n") }
+    } else {
+      result.append(
+        "Mana curve cannot be shown because one or more cards have missing information.\n")
     }
+
+    if (entries.forall(_.card.isDefined)) {
+      result.append("Card Types:\n")
+      countTypes(entries)
+          .filter(_._2 > 0)
+          .toList
+          .sorted
+          .foreach { case (cardType, count) => result.append(s"  - $cardType: $count\n") }
+    } else {
+      result.append(
+        "Card types cannot be shown because one or more cards have missing information.\n")
+    }
+
+    if (entries.forall(_.card.isDefined)) {
+      result.append("Colors:\n")
+      countColors(entries)
+          .filter(_._2 > 0)
+          .toList
+          .sorted
+          .foreach {
+            case (Some(color), count) => result.append(s"  - $color: $count\n")
+            case (None, count) => result.append(s"  - Colorless: $count\n")
+          }
+    } else {
+      result.append("Colors cannot be shown because one or more cards have missing information.\n")
+    }
+
+    if (entries.forall(_.card.isDefined)) {
+      result.append("Mana Symbols:\n")
+      countManaSymbols(entries)
+          .filter(_._2 > 0)
+          .toList
+          .sorted
+          .foreach {
+            case (Some(color), count) => result.append(s"  - $color: $count\n")
+            case (None, count) => result.append(s"  - Colorless: $count\n")
+          }
+    } else {
+      result.append(
+        "Mana symbols cannot be shown because one or more cards have missing information.\n")
+    }
+
     result.toString
   }
 }
