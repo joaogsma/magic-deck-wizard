@@ -52,27 +52,42 @@ package object metrics {
     val counts: Map[Option[Color], Int] = entries
         .ensuring(_.forall(_.card.isDefined))
         .flatMap(entry => {
-          def colorCount(color: Color, count: Int): Option[(Option[Color], Int)] =
-              Some(Some(color) -> count * entry.count)
+          def toCountOptions(count: Int, colors: Color*): Seq[Option[(Option[Color], Int)]] =
+              colors.toSeq.map(color => Some(Some(color) -> count * entry.count))
+
           entry.card.get.manaCost
-              .map {
-                case Mana.HybridMonoWhite(count) => colorCount(Color.White, count)
-                case Mana.HybridMonoBlue(count) => colorCount(Color.Blue, count)
-                case Mana.HybridMonoBlack(count) => colorCount(Color.Black, count)
-                case Mana.HybridMonoRed(count) => colorCount(Color.Red, count)
-                case Mana.HybridMonoGreen(count) => colorCount(Color.Green, count)
-                case Mana.PhyrexianWhite(count) => colorCount(Color.White, count)
-                case Mana.PhyrexianBlue(count) => colorCount(Color.Blue, count)
-                case Mana.PhyrexianBlack(count) => colorCount(Color.Black, count)
-                case Mana.PhyrexianRed(count) => colorCount(Color.Red, count)
-                case Mana.PhyrexianGreen(count) => colorCount(Color.Green, count)
-                case Mana.White(count) => colorCount(Color.White, count)
-                case Mana.Blue(count) => colorCount(Color.Blue, count)
-                case Mana.Black(count) => colorCount(Color.Black, count)
-                case Mana.Red(count) => colorCount(Color.Red, count)
-                case Mana.Green(count) => colorCount(Color.Green, count)
-                case Mana.Colorless(count) => Some(None -> count * entry.count)
-                case _ => Option.empty
+              .flatMap {
+                case Mana.HybridMonoWhite(count) => toCountOptions(count, Color.White)
+                case Mana.HybridMonoBlue(count) => toCountOptions(count, Color.Blue)
+                case Mana.HybridMonoBlack(count) => toCountOptions(count, Color.Black)
+                case Mana.HybridMonoRed(count) => toCountOptions(count, Color.Red)
+                case Mana.HybridMonoGreen(count) => toCountOptions(count, Color.Green)
+
+                case Mana.HybridWhiteBlue(count) => toCountOptions(count, Color.White, Color.Blue)
+                case Mana.HybridWhiteBlack(count) => toCountOptions(count, Color.White, Color.Black)
+                case Mana.HybridWhiteRed(count) => toCountOptions(count, Color.White, Color.Red)
+                case Mana.HybridWhiteGreen(count) => toCountOptions(count, Color.White, Color.Green)
+                case Mana.HybridBlueBlack(count) => toCountOptions(count, Color.Blue, Color.Black)
+                case Mana.HybridBlueRed(count) => toCountOptions(count, Color.Blue, Color.Red)
+                case Mana.HybridBlueGreen(count) => toCountOptions(count, Color.Blue, Color.Green)
+                case Mana.HybridBlackRed(count) => toCountOptions(count, Color.Black, Color.Red)
+                case Mana.HybridBlackGreen(count) => toCountOptions(count, Color.Black, Color.Green)
+                case Mana.HybridRedGreen(count) => toCountOptions(count, Color.Red, Color.Green)
+
+                case Mana.PhyrexianWhite(count) => toCountOptions(count, Color.White)
+                case Mana.PhyrexianBlue(count) => toCountOptions(count, Color.Blue)
+                case Mana.PhyrexianBlack(count) => toCountOptions(count, Color.Black)
+                case Mana.PhyrexianRed(count) => toCountOptions(count, Color.Red)
+                case Mana.PhyrexianGreen(count) => toCountOptions(count, Color.Green)
+
+                case Mana.White(count) => toCountOptions(count, Color.White)
+                case Mana.Blue(count) => toCountOptions(count, Color.Blue)
+                case Mana.Black(count) => toCountOptions(count, Color.Black)
+                case Mana.Red(count) => toCountOptions(count, Color.Red)
+                case Mana.Green(count) => toCountOptions(count, Color.Green)
+
+                case Mana.Colorless(count) => Seq(Some(None -> count * entry.count))
+                case _ => Seq(Option.empty)
               }
               .filter(_.isDefined)
               .map(_.get)
