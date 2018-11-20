@@ -10,6 +10,11 @@ object ManaAdapter {
   private val X: String = "X"
   private val GENERIC: String = "\\d+"
   private val COLORLESS: String = "C"
+  private val PHYREXIAN_WHITE: String = "W/P"
+  private val PHYREXIAN_BLUE: String = "U/P"
+  private val PHYREXIAN_BLACK: String = "B/P"
+  private val PHYREXIAN_RED: String = "R/P"
+  private val PHYREXIAN_GREEN: String = "G/P"
   private val WHITE: String = "W"
   private val BLUE: String = "U"
   private val BLACK: String = "B"
@@ -17,9 +22,24 @@ object ManaAdapter {
   private val GREEN: String = "G"
 
   val MANA_COST_REGEX: String = (s""""(\\{$X\\}|\\{$GENERIC\\}|\\{$COLORLESS\\}|\\{$WHITE\\}|"""
+      + s"""\\{$PHYREXIAN_WHITE\\}|\\{$PHYREXIAN_BLUE\\}|\\{$PHYREXIAN_BLACK\\}|"""
+      + s"""\\{$PHYREXIAN_RED\\}|\\{$PHYREXIAN_GREEN\\}|"""
       + s"""\\{$BLUE\\}|\\{$BLACK\\}|\\{$RED\\}|\\{$GREEN\\})*"""")
 
-  private val MANA_SYMBOLS = Seq(X, GENERIC, COLORLESS, WHITE, BLUE, BLACK, RED, GREEN)
+  private val MANA_SYMBOLS = Seq(
+    X,
+    GENERIC,
+    COLORLESS,
+    PHYREXIAN_WHITE,
+    PHYREXIAN_BLUE,
+    PHYREXIAN_BLACK,
+    PHYREXIAN_RED,
+    PHYREXIAN_GREEN,
+    WHITE,
+    BLUE,
+    BLACK,
+    RED,
+    GREEN)
 
   def parseToSequence(str: String): Try[Seq[Mana]] = {
     if (!str.matches(MANA_COST_REGEX)) {
@@ -48,6 +68,11 @@ object ManaAdapter {
     case X => Mana.X(count)
     case GENERIC => Mana.Generic(count)
     case COLORLESS => Mana.Colorless(count)
+    case PHYREXIAN_WHITE => Mana.PhyrexianWhite(count)
+    case PHYREXIAN_BLUE => Mana.PhyrexianBlue(count)
+    case PHYREXIAN_BLACK => Mana.PhyrexianBlack(count)
+    case PHYREXIAN_RED => Mana.PhyrexianRed(count)
+    case PHYREXIAN_GREEN => Mana.PhyrexianGreen(count)
     case WHITE => Mana.White(count)
     case BLUE => Mana.Blue(count)
     case BLACK => Mana.Black(count)
@@ -56,13 +81,18 @@ object ManaAdapter {
   }
 
   private def toCharSeq(mana: Mana): Seq[String] = mana match {
-    case Mana.X(count) => List.fill(count)("{X}")
+    case Mana.X(count) => List.fill(count)(s"{$X}")
     case Mana.Generic(count) => List(s"{$count}")
-    case Mana.Colorless(count) => List.fill(count)("{C}")
-    case Mana.White(count) => List.fill(count)("{W}")
-    case Mana.Blue(count) => List.fill(count)("{U}")
-    case Mana.Black(count) => List.fill(count)("{B}")
-    case Mana.Red(count) => List.fill(count)("{R}")
-    case Mana.Green(count) => List.fill(count)("{G}")
+    case Mana.Colorless(count) => List.fill(count)(s"{$COLORLESS}")
+    case Mana.PhyrexianWhite(count) => List.fill(count)(s"{$PHYREXIAN_WHITE}")
+    case Mana.PhyrexianBlue(count) => List.fill(count)(s"{$PHYREXIAN_BLUE}")
+    case Mana.PhyrexianBlack(count) => List.fill(count)(s"{$PHYREXIAN_BLACK}")
+    case Mana.PhyrexianRed(count) => List.fill(count)(s"{$PHYREXIAN_RED}")
+    case Mana.PhyrexianGreen(count) => List.fill(count)(s"{$PHYREXIAN_GREEN}")
+    case Mana.White(count) => List.fill(count)(s"{$WHITE}")
+    case Mana.Blue(count) => List.fill(count)(s"{$BLUE}")
+    case Mana.Black(count) => List.fill(count)(s"{$BLACK}")
+    case Mana.Red(count) => List.fill(count)(s"{$RED}")
+    case Mana.Green(count) => List.fill(count)(s"{$GREEN}")
   }
 }

@@ -54,6 +54,11 @@ package object metrics {
         .flatMap(entry => {
           entry.card.get.manaCost
               .map {
+                case Mana.PhyrexianWhite(count) => Some(Some(Color.White) -> count * entry.count)
+                case Mana.PhyrexianBlue(count) => Some(Some(Color.Blue) -> count * entry.count)
+                case Mana.PhyrexianBlack(count) => Some(Some(Color.Black) -> count * entry.count)
+                case Mana.PhyrexianRed(count) => Some(Some(Color.Red) -> count * entry.count)
+                case Mana.PhyrexianGreen(count) => Some(Some(Color.Green) -> count * entry.count)
                 case Mana.White(count) => Some(Some(Color.White) -> count * entry.count)
                 case Mana.Blue(count) => Some(Some(Color.Blue) -> count * entry.count)
                 case Mana.Black(count) => Some(Some(Color.Black) -> count * entry.count)

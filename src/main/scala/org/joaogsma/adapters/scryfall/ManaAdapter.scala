@@ -8,7 +8,20 @@ import scala.util.matching.Regex
 object ManaAdapter {
   // TODO: ensure that the string contains nothing but the mana symbols
   def parseToSequence(str: String): Seq[Mana] = {
-    val orderedSeq = Seq(X, GENERIC, COLORLESS, WHITE, BLUE, BLACK, RED, GREEN)
+    val orderedSeq = Seq(
+      X,
+      GENERIC,
+      COLORLESS,
+      PHYREXIAN_WHITE,
+      PHYREXIAN_BLUE,
+      PHYREXIAN_BLACK,
+      PHYREXIAN_RED,
+      PHYREXIAN_GREEN,
+      WHITE,
+      BLUE,
+      BLACK,
+      RED,
+      GREEN)
     orderedSeq
         .map(regex => {
           val count = regex
@@ -25,6 +38,11 @@ object ManaAdapter {
   private val X: Regex = "\\{X\\}".r
   private val GENERIC: Regex = "\\{\\d+\\}".r
   private val COLORLESS: Regex = "\\{C\\}".r
+  private val PHYREXIAN_WHITE: Regex = "\\{W/P\\}".r
+  private val PHYREXIAN_BLUE: Regex = "\\{U/P\\}".r
+  private val PHYREXIAN_BLACK: Regex = "\\{B/P\\}".r
+  private val PHYREXIAN_RED: Regex = "\\{R/P\\}".r
+  private val PHYREXIAN_GREEN: Regex = "\\{G/P\\}".r
   private val WHITE: Regex = "\\{W\\}".r
   private val BLUE: Regex = "\\{U\\}".r
   private val BLACK: Regex = "\\{B\\}".r
@@ -40,6 +58,11 @@ object ManaAdapter {
     case X => Mana.X(count)
     case GENERIC => Mana.Generic(count)
     case COLORLESS => Mana.Colorless(count)
+    case PHYREXIAN_WHITE => Mana.PhyrexianWhite(count)
+    case PHYREXIAN_BLUE => Mana.PhyrexianBlue(count)
+    case PHYREXIAN_BLACK => Mana.PhyrexianBlack(count)
+    case PHYREXIAN_RED => Mana.PhyrexianRed(count)
+    case PHYREXIAN_GREEN => Mana.PhyrexianGreen(count)
     case WHITE => Mana.White(count)
     case BLUE => Mana.Blue(count)
     case BLACK => Mana.Black(count)

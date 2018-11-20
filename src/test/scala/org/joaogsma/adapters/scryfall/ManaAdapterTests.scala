@@ -47,6 +47,20 @@ class ManaAdapterTests extends WordSpec with Matchers {
             should contain theSameElementsInOrderAs Seq(Mana.X(1), Mana.Generic(2), Mana.Blue(1)))
       }
     }
+
+    "passed a mana cost string with phyrexian mana" should {
+      "parse correctly" in {
+        val inputStr = "{W/P}{U/P}{U/P}{B/P}{B/P}{B/P}{R/P}{R/P}{R/P}{R/P}{G/P}{G/P}{G/P}{G/P}{G/P}"
+        val expected = Seq(
+          Mana.PhyrexianWhite(1),
+          Mana.PhyrexianBlue(2),
+          Mana.PhyrexianBlack(3),
+          Mana.PhyrexianRed(4),
+          Mana.PhyrexianGreen(5),
+        )
+        ManaAdapter.parseToSequence(inputStr) should contain theSameElementsInOrderAs expected
+      }
+    }
   }
 
   private def parseFileAndGetManaCost(filename: String): String = {
