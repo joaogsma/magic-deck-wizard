@@ -12,6 +12,11 @@ object ManaAdapter {
       X,
       GENERIC,
       COLORLESS,
+      HYBRID_MONO_WHITE,
+      HYBRID_MONO_BLUE,
+      HYBRID_MONO_BLACK,
+      HYBRID_MONO_RED,
+      HYBRID_MONO_GREEN,
       PHYREXIAN_WHITE,
       PHYREXIAN_BLUE,
       PHYREXIAN_BLACK,
@@ -38,6 +43,11 @@ object ManaAdapter {
   private val X: Regex = "\\{X\\}".r
   private val GENERIC: Regex = "\\{\\d+\\}".r
   private val COLORLESS: Regex = "\\{C\\}".r
+  private val HYBRID_MONO_WHITE: Regex = "\\{2/W\\}".r
+  private val HYBRID_MONO_BLUE: Regex = "\\{2/U\\}".r
+  private val HYBRID_MONO_BLACK: Regex = "\\{2/B\\}".r
+  private val HYBRID_MONO_RED: Regex = "\\{2/R\\}".r
+  private val HYBRID_MONO_GREEN: Regex = "\\{2/G\\}".r
   private val PHYREXIAN_WHITE: Regex = "\\{W/P\\}".r
   private val PHYREXIAN_BLUE: Regex = "\\{U/P\\}".r
   private val PHYREXIAN_BLACK: Regex = "\\{B/P\\}".r
@@ -58,6 +68,11 @@ object ManaAdapter {
     case X => Mana.X(count)
     case GENERIC => Mana.Generic(count)
     case COLORLESS => Mana.Colorless(count)
+    case HYBRID_MONO_WHITE => Mana.HybridMonoWhite(count)
+    case HYBRID_MONO_BLUE => Mana.HybridMonoBlue(count)
+    case HYBRID_MONO_BLACK => Mana.HybridMonoBlack(count)
+    case HYBRID_MONO_RED => Mana.HybridMonoRed(count)
+    case HYBRID_MONO_GREEN => Mana.HybridMonoGreen(count)
     case PHYREXIAN_WHITE => Mana.PhyrexianWhite(count)
     case PHYREXIAN_BLUE => Mana.PhyrexianBlue(count)
     case PHYREXIAN_BLACK => Mana.PhyrexianBlack(count)

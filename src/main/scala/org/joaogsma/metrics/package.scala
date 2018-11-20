@@ -52,18 +52,25 @@ package object metrics {
     val counts: Map[Option[Color], Int] = entries
         .ensuring(_.forall(_.card.isDefined))
         .flatMap(entry => {
+          def colorCount(color: Color, count: Int): Option[(Option[Color], Int)] =
+              Some(Some(color) -> count * entry.count)
           entry.card.get.manaCost
               .map {
-                case Mana.PhyrexianWhite(count) => Some(Some(Color.White) -> count * entry.count)
-                case Mana.PhyrexianBlue(count) => Some(Some(Color.Blue) -> count * entry.count)
-                case Mana.PhyrexianBlack(count) => Some(Some(Color.Black) -> count * entry.count)
-                case Mana.PhyrexianRed(count) => Some(Some(Color.Red) -> count * entry.count)
-                case Mana.PhyrexianGreen(count) => Some(Some(Color.Green) -> count * entry.count)
-                case Mana.White(count) => Some(Some(Color.White) -> count * entry.count)
-                case Mana.Blue(count) => Some(Some(Color.Blue) -> count * entry.count)
-                case Mana.Black(count) => Some(Some(Color.Black) -> count * entry.count)
-                case Mana.Red(count) => Some(Some(Color.Red) -> count * entry.count)
-                case Mana.Green(count) => Some(Some(Color.Green) -> count * entry.count)
+                case Mana.HybridMonoWhite(count) => colorCount(Color.White, count)
+                case Mana.HybridMonoBlue(count) => colorCount(Color.Blue, count)
+                case Mana.HybridMonoBlack(count) => colorCount(Color.Black, count)
+                case Mana.HybridMonoRed(count) => colorCount(Color.Red, count)
+                case Mana.HybridMonoGreen(count) => colorCount(Color.Green, count)
+                case Mana.PhyrexianWhite(count) => colorCount(Color.White, count)
+                case Mana.PhyrexianBlue(count) => colorCount(Color.Blue, count)
+                case Mana.PhyrexianBlack(count) => colorCount(Color.Black, count)
+                case Mana.PhyrexianRed(count) => colorCount(Color.Red, count)
+                case Mana.PhyrexianGreen(count) => colorCount(Color.Green, count)
+                case Mana.White(count) => colorCount(Color.White, count)
+                case Mana.Blue(count) => colorCount(Color.Blue, count)
+                case Mana.Black(count) => colorCount(Color.Black, count)
+                case Mana.Red(count) => colorCount(Color.Red, count)
+                case Mana.Green(count) => colorCount(Color.Green, count)
                 case Mana.Colorless(count) => Some(None -> count * entry.count)
                 case _ => Option.empty
               }

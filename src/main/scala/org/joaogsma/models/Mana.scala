@@ -12,6 +12,11 @@ object Mana {
   case class Black(override val count: Int) extends Mana(count)
   case class Red(override val count: Int) extends Mana(count)
   case class Green(override val count: Int) extends Mana(count)
+  case class HybridMonoWhite(override val count: Int) extends Mana(count)
+  case class HybridMonoBlue(override val count: Int) extends Mana(count)
+  case class HybridMonoBlack(override val count: Int) extends Mana(count)
+  case class HybridMonoRed(override val count: Int) extends Mana(count)
+  case class HybridMonoGreen(override val count: Int) extends Mana(count)
   case class PhyrexianWhite(override val count: Int) extends Mana(count)
   case class PhyrexianBlue(override val count: Int) extends Mana(count)
   case class PhyrexianBlack(override val count: Int) extends Mana(count)
@@ -25,16 +30,21 @@ object Mana {
       case _: X => 1
       case _: Generic => 2
       case _: Colorless => 3
-      case _: PhyrexianWhite => 4
-      case _: PhyrexianBlue => 5
-      case _: PhyrexianBlack => 6
-      case _: PhyrexianRed => 7
-      case _: PhyrexianGreen => 8
-      case _: White => 9
-      case _: Blue => 10
-      case _: Black => 11
-      case _: Red => 12
-      case _: Green => 13
+      case _: HybridMonoWhite => 4
+      case _: HybridMonoBlue => 5
+      case _: HybridMonoBlack => 6
+      case _: HybridMonoRed => 7
+      case _: HybridMonoGreen => 8
+      case _: PhyrexianWhite => 9
+      case _: PhyrexianBlue => 10
+      case _: PhyrexianBlack => 11
+      case _: PhyrexianRed => 12
+      case _: PhyrexianGreen => 13
+      case _: White => 14
+      case _: Blue => 15
+      case _: Black => 16
+      case _: Red => 17
+      case _: Green => 18
     }
   }
 }
