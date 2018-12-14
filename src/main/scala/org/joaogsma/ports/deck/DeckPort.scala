@@ -1,4 +1,4 @@
-package org.joaogsma.ports.library
+package org.joaogsma.ports.deck
 
 import java.io.BufferedWriter
 
@@ -10,7 +10,7 @@ import scala.util.Failure
 import scala.util.Success
 import scala.util.Try
 
-object LibraryPort extends FilePort {
+object DeckPort extends FilePort {
   def read(filename: String): Try[List[DeckEntry]] = {
     val deckLines: List[String] = usingFile(filename, _.getLines.toList)
     val parsedLines: List[(Try[DeckEntry], Int)] = deckLines

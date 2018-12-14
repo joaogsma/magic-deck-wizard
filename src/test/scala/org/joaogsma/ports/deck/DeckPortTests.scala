@@ -1,4 +1,4 @@
-package org.joaogsma.ports.library
+package org.joaogsma.ports.deck
 
 import org.joaogsma.models.DeckEntry
 import org.scalatest.Matchers
@@ -7,7 +7,7 @@ import org.scalatest.WordSpec
 import scala.util.Failure
 import scala.util.Success
 
-class LibraryPortTests extends WordSpec with Matchers {
+class DeckPortTests extends WordSpec with Matchers {
   "The read function" when {
     "given a valid deck list" should {
       "read the entries successfully" in {
@@ -339,14 +339,14 @@ class LibraryPortTests extends WordSpec with Matchers {
             8,
             "Island",
             Set("land", "mana_src_blue")))
-        (LibraryPort.read(s"$RESOURCES_DIRECTORY/tatyova_valid.library")
+        (DeckPort.read(s"$RESOURCES_DIRECTORY/tatyova_valid.library")
             shouldEqual Success(expected))
       }
     }
 
     "given an invalid deck list" should {
       "return a Failure" in {
-        val result = LibraryPort.read(s"$RESOURCES_DIRECTORY/tatyova_invalid.library")
+        val result = DeckPort.read(s"$RESOURCES_DIRECTORY/tatyova_invalid.library")
         result.isFailure shouldBe true
         (result
             .asInstanceOf[Failure[Seq[DeckEntry]]]

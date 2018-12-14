@@ -1,0 +1,96 @@
+// Tatyova, Benthic Druid
+
+// Card Draw
+[1] Horn of Greed @draw @symmetrical
+[1] Intellectual Offering @draw @symmetrical
+[1] Minds Aglow @draw @symmetrical
+[1] Future Sight @draw
+[1] Rishkar's Expertise @draw
+
+// Ramp
+[1] Skyshroud Ranger @ramp @extra_land_drop
+[1] Sakura-Tribe Scout @ramp @extra_land_drop
+[1] Budoka Gardener @ramp @extra_land_drop
+[1] Llanowar Scout @ramp @extra_land_drop
+[1] Walking Atlas @ramp @extra_land_drop
+[1] Khalni Heart Expedition @ramp @land_to_battlefield
+[1] Cultivate @ramp @land_to_hand @land_to_battlefield
+[1] Harrow @ramp @land_to_battlefield
+[1] Wayward Swordtooth @ramp @extra_land_drop
+[1] Pir's Whim @ramp @land_to_battlefield
+[1] Silverglade Elemental @ramp @land_to_battlefield
+[1] Oblivion Sower @ramp @land_to_battlefield
+[1] Ulvenwald Hydra @ramp @land_to_battlefield
+
+// Wraths
+[1] Curse of the Swine @creature_wrath
+[1] Ezuri's Predation @creature_wrath @token_generator
+
+// Removal
+[1] Pongify @creature_removal
+[1] Scavenging Ooze @graveyard_hate
+[1] Lignify @creature_removal
+[1] Broken Bond @artifact_removal @enchantment_removal @ramp @extra_land_drop
+[1] Beast Within @creature_removal
+[1] Krosan Grip @artifact_removal @enchantment_removal
+[1] Acidic Slime @artifact_removal @enchantment_removal
+
+// Counters
+[1] Swan Song @counter
+[1] Counterspell @counter
+[1] Deprive @counter
+[1] Dissolve @counter
+[1] Insidious Will @counter
+
+// Commander Protection
+[1] Swiftfoot Boots @commander_protection
+[1] Lightning Greaves @commander_protection
+[1] Neurok Stealthsuit @commander_protection
+
+// Enhancers
+[1] Thaumatic Compass // Spires of Orazca @land_to_hand
+[1] Elfhame Sanctuary
+[1] Strionic Resonator
+[1] Rites of Flourishing @draw @ramp @symmetrical @extra_land_drop
+[1] Courser of Kruphix @landfall
+[1] Mana Breach
+[1] Abundance
+
+// Standalones
+[1] Sylvan Offering @symmetrical @token_generator
+[1] Heroic Intervention
+[1] Coiling Oracle
+[1] Blackblade Reforged
+[1] Kefnet the Mindful @draw
+[1] Retreat to Kazandu @life_gain @landfall
+[1] Retreat to Coralhelm @scry @landfall
+[1] Seed the Land @token_generator @landfall @symmetrical
+[1] Centaur Glade @token_generator
+[1] Mystic Confluence @draw @counter @bounce
+[1] Zendikar's Roil @landfall @token_generator
+[1] Seasons Past @graveyard_recursion
+[1] Multani, Yavimaya's Avatar
+[1] Rampaging Baloths @token_generator
+[1] Spelltwine
+[1] Protean Hulk
+[1] Howl of the Night Pack @token_generator
+[1] Praetor's Counsel @graveyard_recursion
+
+// Lands
+[01] Myriad Landscape @land_to_battlefield
+[01] Terramorphic Expanse
+[01] Evolving Wilds
+[01] Bant Panorama
+[01] Esper Panorama
+[01] Grixis Panorama
+[01] Jund Panorama
+[01] Naya Panorama
+[01] Reliquary Tower
+[01] Rogue’s Passage
+[01] Command Tower
+[01] Simic Growth Chamber
+[01] Yavimaya Coast
+[01] Flooded Grove
+[01] Hinterland Harbor
+[14] Forest
+[10] Island

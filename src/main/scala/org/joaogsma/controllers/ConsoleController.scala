@@ -10,7 +10,7 @@ import org.joaogsma.metrics.countColors
 import org.joaogsma.metrics.countManaSymbols
 import org.joaogsma.models.DeckEntry
 import org.joaogsma.ports.ConsolePort
-import org.joaogsma.ports.library.LibraryPort
+import org.joaogsma.ports.deck.DeckPort
 import org.joaogsma.ports.scalafx.ScalaFxPort
 import org.joaogsma.ports.scryfall.ScryfallPort
 
@@ -53,7 +53,7 @@ object ConsoleController extends App {
   }
 
   def readDeckList(filename: String): Option[Seq[DeckEntry]] = {
-    LibraryPort.read(filename) match {
+    DeckPort.read(filename) match {
       case Failure(exception) =>
         println(s"[ERROR] ${exception.getMessage}")
         None
@@ -98,7 +98,7 @@ object ConsoleController extends App {
               + originalFile.substring(formatStart))
       }
 
-    LibraryPort.write(filledEntries, filledDeckListFile)
+    DeckPort.write(filledEntries, filledDeckListFile)
     println(s"[INFO] Filled deck list saved at $filledDeckListFile")
   }
 
