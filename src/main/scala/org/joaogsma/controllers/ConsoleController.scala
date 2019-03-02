@@ -9,10 +9,10 @@ import org.joaogsma.metrics.countTypes
 import org.joaogsma.metrics.countColors
 import org.joaogsma.metrics.countManaSymbols
 import org.joaogsma.models.DeckEntry
-import org.joaogsma.ports.ConsolePort
-import org.joaogsma.ports.deck.DeckPort
-import org.joaogsma.ports.scalafx.ScalaFxPort
-import org.joaogsma.ports.scryfall.ScryfallPort
+import org.joaogsma.ports.file.DeckPort
+import org.joaogsma.ports.ui.ScalaFxPort
+import org.joaogsma.ports.web.ScryfallPort
+import org.joaogsma.ports.ui.ConsolePort
 
 import scala.util.Failure
 import scala.util.Success

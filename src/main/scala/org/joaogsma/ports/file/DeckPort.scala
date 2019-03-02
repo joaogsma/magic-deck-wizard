@@ -1,10 +1,9 @@
-package org.joaogsma.ports.deck
+package org.joaogsma.ports.file
 
 import java.io.BufferedWriter
 
 import org.joaogsma.adapters.text.DeckEntryAdapter
 import org.joaogsma.models.DeckEntry
-import org.joaogsma.ports.FilePort
 
 import scala.util.Failure
 import scala.util.Success

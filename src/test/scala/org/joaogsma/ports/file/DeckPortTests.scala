@@ -1,4 +1,4 @@
-package org.joaogsma.ports.deck
+package org.joaogsma.ports.file
 
 import org.joaogsma.models.DeckEntry
 import org.scalatest.Matchers

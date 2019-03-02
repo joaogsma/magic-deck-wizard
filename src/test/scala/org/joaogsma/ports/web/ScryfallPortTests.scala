@@ -1,4 +1,4 @@
-package org.joaogsma.ports.scryfall
+package org.joaogsma.ports.web
 
 import org.joaogsma.models.Card
 import org.joaogsma.models.Color

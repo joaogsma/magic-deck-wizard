@@ -105,7 +105,7 @@ class ManaAdapterTests extends WordSpec with Matchers {
   }
 
   private def parseFileAndGetManaCost(filename: String): String = {
-    FilePortImpl.usingFile(s"$RESOURCES_DIRECTORY/$filename", parseAndGetManaCost)
+    FilePortImpl.usingFile(s"$RESOURCES_DIRECTORY/$filename", parseAndGetManaCost _)
   }
 
   private def parseAndGetManaCost(bs: BufferedSource): String = {

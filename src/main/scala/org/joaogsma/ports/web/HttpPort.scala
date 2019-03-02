@@ -1,4 +1,4 @@
-package org.joaogsma.ports
+package org.joaogsma.ports.web
 
 import java.net.HttpURLConnection
 import java.net.URL

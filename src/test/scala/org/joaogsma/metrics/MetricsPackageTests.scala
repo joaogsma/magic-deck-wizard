@@ -1,7 +1,7 @@
 package org.joaogsma.metrics
 
 import org.joaogsma.models.Color
-import org.joaogsma.ports.deck.DeckPort
+import org.joaogsma.ports.file.DeckPort
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
 

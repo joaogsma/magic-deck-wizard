@@ -1,4 +1,4 @@
-package org.joaogsma.ports
+package org.joaogsma.ports.web
 
 import org.scalatest.Matchers
 import org.scalatest.WordSpec

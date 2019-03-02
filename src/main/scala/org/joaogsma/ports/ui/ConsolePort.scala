@@ -1,4 +1,4 @@
-package org.joaogsma.ports
+package org.joaogsma.ports.ui
 
 import scala.io.StdIn
 

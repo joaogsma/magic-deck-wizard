@@ -1,4 +1,4 @@
-package org.joaogsma.ports.scalafx
+package org.joaogsma.ports.ui
 
 import org.joaogsma.metrics.countManaCurve
 import org.joaogsma.metrics.countManaSymbols
