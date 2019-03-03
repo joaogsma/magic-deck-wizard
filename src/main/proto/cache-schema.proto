@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package mtg_deck_wizard;
+
+option java_package = "org.joaogsma.models.proto";
+option java_outer_classname = "CacheProtos";
+
+message Cache {
+  repeated Card cards = 1;
+}
+
+message Card {
+  string name = 1;
+  repeated ManaCostEntry mana_cost = 2;
+  repeated Color colors = 3;
+  repeated CardType types = 4;
+  double cmc = 5;
+}
+
+message ManaCostEntry {
+  ManaType type = 1;
+  int32 count = 2;
+}
+
+enum ManaType {
+  GENERIC_MANA = 0;
+  X_MANA = 1;
+  COLORLESS_MANA = 16;
+
+  WHITE_MANA = 2;
+  BLUE_MANA = 3;
+  BLACK_MANA = 4;
+  RED_MANA = 5;
+  GREEN_MANA = 6;
+
+  HYBRID_MONO_WHITE_MANA = 17;
+  HYBRID_MONO_BLUE_MANA = 18;
+  HYBRID_MONO_BLACK_MANA = 19;
+  HYBRID_MONO_RED_MANA = 20;
+  HYBRID_MONO_GREEN_MANA = 21;
+  HYBRID_WHITE_BLUE_MANA = 22;
+  HYBRID_WHITE_BLACK_MANA = 23;
+  HYBRID_WHITE_RED_MANA = 24;
+  HYBRID_WHITE_GREEN_MANA = 25;
+  HYBRID_BLUE_BLACK_MANA = 26;
+  HYBRID_BLUE_RED_MANA = 27;
+  HYBRID_BLUE_GREEN_MANA = 28;
+  HYBRID_BLACK_RED_MANA = 29;
+  HYBRID_BLACK_GREEN_MANA = 30;
+  HYBRID_RED_GREEN_MANA = 31;
+
+  PHYREXIAN_WHITE_MANA = 32;
+  PHYREXIAN_BLUE_MANA = 33;
+  PHYREXIAN_BLACK_MANA = 34;
+  PHYREXIAN_RED_MANA = 35;
+  PHYREXIAN_GREEN_MANA = 36;
+}
+
+enum Color {
+  WHITE = 0;
+  BLUE = 1;
+  BLACK = 2;
+  RED = 3;
+  GREEN = 4;
+}
+
+enum CardType {
+  LAND = 0;
+  CREATURE = 1;
+  INSTANT = 2;
+  SORCERY = 3;
+  ARTIFACT = 4;
+  ENCHANTMENT = 5;
+  PLANESWALKER = 6;
+}
