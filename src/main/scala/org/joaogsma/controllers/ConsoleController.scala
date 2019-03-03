@@ -3,17 +3,19 @@ package org.joaogsma.controllers
 import cats.implicits._
 import com.monovore.decline._
 import org.joaogsma.metrics.countCards
+import org.joaogsma.metrics.countColors
 import org.joaogsma.metrics.countManaCurve
+import org.joaogsma.metrics.countManaSymbols
 import org.joaogsma.metrics.countTags
 import org.joaogsma.metrics.countTypes
-import org.joaogsma.metrics.countColors
-import org.joaogsma.metrics.countManaSymbols
+import org.joaogsma.models.Card
 import org.joaogsma.models.DeckEntry
 import org.joaogsma.ports.file.DeckPort
+import org.joaogsma.ports.ui.ConsolePort
 import org.joaogsma.ports.ui.ScalaFxPort
 import org.joaogsma.ports.web.ScryfallPort
-import org.joaogsma.ports.ui.ConsolePort
 
+import scala.collection.mutable
 import scala.util.Failure
 import scala.util.Success
 
@@ -26,7 +28,10 @@ object ConsoleController extends App {
     case Right((mode, file)) =>
       readDeckList(file)
           .map(entries => {
-            val filledEntries = entries.map(fillWithScryfallData)
+            val filledEntries: Seq[DeckEntry] =
+                entries.map((fillWithCacheData _).andThen(fillWithScryfallData))
+            updateCache(filledEntries)
+            CacheController.writeCache()
             maybeWriteFilledDeckList(file, entries, filledEntries)
             filledEntries
           })
@@ -61,6 +66,19 @@ object ConsoleController extends App {
     }
   }
 
+  def fillWithCacheData(entry: DeckEntry): DeckEntry = entry.card match {
+    case Some(_) => entry
+    case None =>
+      print(s""" Searching cache for missing information on card "${entry.name}"...""")
+      val cacheResult: Option[Card] = CacheController.getOrReadCache().get(entry.name)
+      if (cacheResult.isDefined) {
+        println("found")
+      } else {
+        println("not found")
+      }
+      entry.copy(card = cacheResult)
+  }
+
   def fillWithScryfallData(entry: DeckEntry): DeckEntry = entry.card match {
     case Some(_) => entry
     case None =>
@@ -74,6 +92,13 @@ object ConsoleController extends App {
             s"\n[ERROR] Could not get missing information of the card ${entry.name} from Scryfall.")
           entry
       }
+  }
+
+  private def updateCache(entries: Seq[DeckEntry]): Unit = {
+    val cache: mutable.Map[String, Card] = CacheController.getOrReadCache()
+    entries
+        .filter(_.card.isDefined)
+        .foreach(entry => cache.put(entry.name, entry.card.get))
   }
 
   private def maybeWriteFilledDeckList(

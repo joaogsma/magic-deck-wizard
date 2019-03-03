@@ -5,13 +5,14 @@ import java.io.BufferedWriter
 import org.joaogsma.adapters.text.DeckEntryAdapter
 import org.joaogsma.models.DeckEntry
 
+import scala.io.BufferedSource
 import scala.util.Failure
 import scala.util.Success
 import scala.util.Try
 
 object DeckPort extends FilePort {
   def read(filename: String): Try[List[DeckEntry]] = {
-    val deckLines: List[String] = usingFile(filename, _.getLines.toList)
+    val deckLines: List[String] = usingFile(filename, (_: BufferedSource).getLines.toList)
     val parsedLines: List[(Try[DeckEntry], Int)] = deckLines
         .map(_.trim)
         .zipWithIndex
@@ -39,6 +40,8 @@ object DeckPort extends FilePort {
           sb.append('\n')
         })
 
-    usingFile(filename, (_: BufferedWriter).write(sb.mkString))
+    val writeEntries: BufferedWriter => Boolean =
+        bf => Try(bf.write(sb.mkString)).isSuccess
+    usingFile(filename, writeEntries)
   }
 }
