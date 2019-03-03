@@ -82,7 +82,7 @@ object ConsoleController extends App {
   def fillWithScryfallData(entry: DeckEntry): DeckEntry = entry.card match {
     case Some(_) => entry
     case None =>
-      print(s""" Searching Scryfall for missing information on card "${entry.name}"...""")
+      print(s"""   Searching Scryfall for missing information on card "${entry.name}"...""")
       ScryfallPort.searchCardName(entry.name) match {
         case Success(card) =>
           println("done")
