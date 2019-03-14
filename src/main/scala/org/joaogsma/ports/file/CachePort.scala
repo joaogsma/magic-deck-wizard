@@ -1,27 +1,24 @@
 package org.joaogsma.ports.file
 
-import java.io.ObjectInputStream
-import java.io.ObjectOutputStream
+import java.io.InputStream
+import java.io.OutputStream
 
+import org.joaogsma.adapters.proto.CacheAdapter
 import org.joaogsma.models.Card
+import org.joaogsma.models.proto.CacheProtos
 
-import scala.collection.immutable.HashMap
 import scala.util.Try
 
 object CachePort extends FilePort {
-  def read(filename: String): Try[Map[String, Card]] = {
-    val tryReadMap: ObjectInputStream => Try[Map[String, Card]] =
-        ois => Try(ois.readObject().asInstanceOf[Map[String, Card]])
-    Try(usingFile(filename, tryReadMap)).flatten
+  def read(filename: String): Try[Seq[(String, Card)]] = {
+    val tryReadSeq: InputStream => Try[Seq[(String, Card)]] =
+        ois => Try(CacheAdapter.fromProto(CacheProtos.Cache.parseFrom(ois))).flatten
+    Try(usingFile(filename, tryReadSeq)).flatten
   }
 
-  def write(cache: Map[String, Card], filename: String): Boolean = {
-    val hashMapCache: HashMap[String, Card] = cache match {
-      case hashMap: HashMap[String, Card] => hashMap
-      case _ => (HashMap.empty ++ cache).asInstanceOf[HashMap[String, Card]]
-    }
-
-    val tryWrite = (oos: ObjectOutputStream) => Try(oos.writeObject(hashMapCache)).isSuccess
+  def write(cache: TraversableOnce[(String, Card)], filename: String): Boolean = {
+    val tryWrite: OutputStream => Boolean =
+        oos => Try(CacheAdapter.toProto(cache).writeTo(oos)).isSuccess
     Try(usingFile(filename, tryWrite)).getOrElse(false)
   }
 }
