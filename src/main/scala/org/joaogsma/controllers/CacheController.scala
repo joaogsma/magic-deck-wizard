@@ -12,11 +12,11 @@ object CacheController {
 
   def getOrReadCache(): mutable.Map[String, Card] = cache
 
-  def writeCache(): Boolean = CachePort.write(immutable.HashMap.empty ++ cache, cacheFilename)
+  def writeCache(): Boolean = CachePort.write(cache, cacheFilename)
 
   private def loadCache(): mutable.Map[String, Card] = {
     CachePort.read(cacheFilename)
-        .map(mutable.HashMap.empty ++ _)
+        .map(mutable.Map.empty ++ _)
         .getOrElse(mutable.HashMap.empty[String, Card])
   }
 }
