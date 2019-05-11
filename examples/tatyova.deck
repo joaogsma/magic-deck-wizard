@@ -1,11 +1,4 @@
-// Tatyova, Benthic Druid
-
-// Card Draw
-[1] Horn of Greed @draw @symmetrical
-[1] Intellectual Offering @draw @symmetrical
-[1] Minds Aglow @draw @symmetrical
-[1] Future Sight @draw
-[1] Rishkar's Expertise @draw
+[1] Tatyova, Benthic Druid @draw @landfal
 
 // Ramp
 [1] Skyshroud Ranger @ramp @extra_land_drop
@@ -21,60 +14,65 @@
 [1] Silverglade Elemental @ramp @land_to_battlefield
 [1] Oblivion Sower @ramp @land_to_battlefield
 [1] Ulvenwald Hydra @ramp @land_to_battlefield
+[1] Lotus Cobra @ramp @landfall
+[1] Skyshroud Claim @ramp
+[1] Rites of Flourishing @ramp @extra_land_drop
 
-// Wraths
+// Card Draw
+[1] Horn of Greed @draw
+[1] Future Sight @draw
+[1] Rishkar's Expertise @draw
+
+// Wraths & Removal
 [1] Curse of the Swine @creature_wrath
 [1] Ezuri's Predation @creature_wrath @token_generator
-
-// Removal
 [1] Pongify @creature_removal
-[1] Scavenging Ooze @graveyard_hate
+[1] Reality Shift @creature_removal
+[1] Beast Within @creature_removal
 [1] Lignify @creature_removal
 [1] Broken Bond @artifact_removal @enchantment_removal @ramp @extra_land_drop
-[1] Beast Within @creature_removal
 [1] Krosan Grip @artifact_removal @enchantment_removal
 [1] Acidic Slime @artifact_removal @enchantment_removal
 
-// Counters
-[1] Swan Song @counter
-[1] Counterspell @counter
-[1] Deprive @counter
-[1] Dissolve @counter
-[1] Insidious Will @counter
+// Protection
+[1] Swan Song @counter @protection
+[1] Counterspell @counter @protection
+[1] Deprive @counter @protection
+[1] Dissolve @counter @protection
+[1] Insidious Will @counter @protection
+[1] Mystic Confluence @draw @counter @bounce @protection
+[1] Swiftfoot Boots @protection
+[1] Lightning Greaves @protection
+[1] Neurok Stealthsuit @protection
+[1] Heroic Intervention @protection
 
-// Commander Protection
-[1] Swiftfoot Boots @commander_protection
-[1] Lightning Greaves @commander_protection
-[1] Neurok Stealthsuit @commander_protection
-
-// Enhancers
-[1] Thaumatic Compass // Spires of Orazca @land_to_hand
-[1] Elfhame Sanctuary
-[1] Strionic Resonator
-[1] Rites of Flourishing @draw @ramp @symmetrical @extra_land_drop
+// Landfall
 [1] Courser of Kruphix @landfall
-[1] Mana Breach
-[1] Abundance
-
-// Standalones
-[1] Sylvan Offering @symmetrical @token_generator
-[1] Heroic Intervention
-[1] Coiling Oracle
-[1] Blackblade Reforged
-[1] Kefnet the Mindful @draw
 [1] Retreat to Kazandu @life_gain @landfall
 [1] Retreat to Coralhelm @scry @landfall
-[1] Seed the Land @token_generator @landfall @symmetrical
-[1] Centaur Glade @token_generator
-[1] Mystic Confluence @draw @counter @bounce
+[1] Seed the Land @token_generator @landfall
 [1] Zendikar's Roil @landfall @token_generator
+[1] Rampaging Baloths @token_generator
+[1] Roil Elemental @landfall
+
+// Land Bounce
+[1] Soratami Rainshaper @land_bounce
+[1] Kefnet the Mindful @draw @land_bounce
+[1] Meloku, the Clouded Mirror @land_bounce
+
+// Misc
+[1] Coiling Oracle
+[1] Risen Reef
+[1] Elfhame Sanctuary
+[1] Abundance
+[1] Mana Breach
+[1] Scavenging Ooze @graveyard_hate
+[1] Nissa, Who Shakes the World
 [1] Seasons Past @graveyard_recursion
 [1] Multani, Yavimaya's Avatar
-[1] Rampaging Baloths @token_generator
 [1] Spelltwine
-[1] Protean Hulk
+[1] Psychosis Crawler
 [1] Howl of the Night Pack @token_generator
-[1] Praetor's Counsel @graveyard_recursion
 
 // Lands
 [01] Myriad Landscape @land_to_battlefield
