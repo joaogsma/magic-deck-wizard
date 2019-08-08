@@ -54,6 +54,12 @@ dependencies {
   testCompile "org.scalatest:scalatest_${removePatch(scalaVersion)}:$scalatestVersion"
 }
 
+protobuf {
+  protoc {
+    artifact = 'com.google.protobuf:protoc:3.0.0'
+  }
+}
+
 shadowJar {
   minimize()
   version = project.version
