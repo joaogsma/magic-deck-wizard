@@ -8,5 +8,6 @@ out/
 .DS_Store
 examples/
 mtg-deck-wizard
+decks
 .cache
 
