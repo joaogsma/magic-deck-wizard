@@ -1,0 +1,3 @@
+[submodule "mtg-decks"]
+	path = mtg-decks
+	url = git@github.com:joaogsma/mtg-decks.git
