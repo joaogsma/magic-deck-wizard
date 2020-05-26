@@ -12,7 +12,6 @@ import org.joaogsma.models.Card
 import org.joaogsma.models.DeckEntry
 import org.joaogsma.ports.file.DeckPort
 import org.joaogsma.ports.ui.ConsolePort
-import org.joaogsma.ports.ui.ScalaFxPort
 import org.joaogsma.ports.web.ScryfallPort
 
 import scala.collection.mutable
@@ -21,11 +20,10 @@ import scala.util.Success
 
 object ConsoleController extends App {
   private val CONSOLE_MODE = 1
-  private val WINDOWED_MODE = 2
 
   parseArguments(args) match {
     case Left(help) => println(help)
-    case Right((mode, file)) =>
+    case Right((file)) =>
       readDeckList(file)
           .map(entries => {
             val filledEntries: Seq[DeckEntry] =
@@ -36,24 +34,17 @@ object ConsoleController extends App {
             filledEntries
           })
           .foreach(entries => {
-            mode match {
-              case CONSOLE_MODE => println(createMetricsString(entries))
-              case WINDOWED_MODE => ScalaFxPort.initialize(entries)
-            }
+            println(createMetricsString(entries))
           })
   }
 
-  def parseArguments(args: Seq[String]): Either[Help, (Int, String)] = {
-    val consoleOpts = Opts
-        .flag(long = "console", short = "c", help = "Print the results on the console")
-        .map(_ => CONSOLE_MODE)
-    val windowedOpts = Opts
-        .flag(long = "windowed", short = "w", help = "Print the results on separate windows")
-        .map(_ => WINDOWED_MODE)
+  def parseArguments(args: Seq[String]): Either[Help, (String)] = {
     val fileOpts = Opts.argument[String]("file")
 
-    Command("Parse the arguments", "Parse the initialization options")(
-      (consoleOpts orElse windowedOpts, fileOpts).mapN(Tuple2.apply))
+    Command(
+      "Parse the arguments",
+      "Parse the initialization options")(
+      fileOpts)
         .parse(args)
   }
 

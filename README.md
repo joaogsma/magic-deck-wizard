@@ -72,13 +72,8 @@ Some examples are detailed below. For entire example deck lists, check the `exam
 
 
 ## Running the application
-The application can be run in either console mode or windowed mode, which is chosen through the 
-mandatory flags `--console` and `--windowed`. The windowed mode shows the results through graphs, 
-while the console mode shows them in the console.
-
-### Console mode 
 ```
-$ build/install/mtg-deck-wizard-shadow/bin/mtg-deck-wizard --console examples/tatyova.deck 
+$ build/install/mtg-deck-wizard-shadow/bin/mtg-deck-wizard examples/tatyova.deck 
  Searching Scryfall for missing information on card "Horn of Greed"...done
  Searching Scryfall for missing information on card "Intellectual Offering"...done
  Searching Scryfall for missing information on card "Minds Aglow"...done
@@ -204,91 +199,6 @@ Mana Symbols:
   - Blue: 24
   - Green: 52
 ```
-
-### Windowed mode
-```
-$ build/install/mtg-deck-wizard-shadow/bin/mtg-deck-wizard --windowed examples/tatyova.deck 
- Searching Scryfall for missing information on card "Horn of Greed"...done
- Searching Scryfall for missing information on card "Intellectual Offering"...done
- Searching Scryfall for missing information on card "Minds Aglow"...done
- Searching Scryfall for missing information on card "Future Sight"...done
- Searching Scryfall for missing information on card "Rishkar's Expertise"...done
- Searching Scryfall for missing information on card "Skyshroud Ranger"...done
- Searching Scryfall for missing information on card "Sakura-Tribe Scout"...done
- Searching Scryfall for missing information on card "Budoka Gardener"...done
- Searching Scryfall for missing information on card "Llanowar Scout"...done
- Searching Scryfall for missing information on card "Walking Atlas"...done
- Searching Scryfall for missing information on card "Khalni Heart Expedition"...done
- Searching Scryfall for missing information on card "Grow from the Ashes"...done
- Searching Scryfall for missing information on card "Harrow"...done
- Searching Scryfall for missing information on card "Wayward Swordtooth"...done
- Searching Scryfall for missing information on card "Pir's Whim"...done
- Searching Scryfall for missing information on card "Silverglade Elemental"...done
- Searching Scryfall for missing information on card "Oblivion Sower"...done
- Searching Scryfall for missing information on card "Ulvenwald Hydra"...done
- Searching Scryfall for missing information on card "Curse of the Swine"...done
- Searching Scryfall for missing information on card "Ezuri's Predation"...done
- Searching Scryfall for missing information on card "Pongify"...done
- Searching Scryfall for missing information on card "Scavenging Ooze"...done
- Searching Scryfall for missing information on card "Lignify"...done
- Searching Scryfall for missing information on card "Broken Bond"...done
- Searching Scryfall for missing information on card "Beast Within"...done
- Searching Scryfall for missing information on card "Krosan Grip"...done
- Searching Scryfall for missing information on card "Acidic Slime"...done
- Searching Scryfall for missing information on card "Swan Song"...done
- Searching Scryfall for missing information on card "Counterspell"...done
- Searching Scryfall for missing information on card "Deprive"...done
- Searching Scryfall for missing information on card "Dissolve"...done
- Searching Scryfall for missing information on card "Insidious Will"...done
- Searching Scryfall for missing information on card "Swiftfoot Boots"...done
- Searching Scryfall for missing information on card "Lightning Greaves"...done
- Searching Scryfall for missing information on card "Neurok Stealthsuit"...done
- Searching Scryfall for missing information on card "Thaumatic Compass // Spires of Orazca"...done
- Searching Scryfall for missing information on card "Elfhame Sanctuary"...done
- Searching Scryfall for missing information on card "Strionic Resonator"...done
- Searching Scryfall for missing information on card "Rites of Flourishing"...done
- Searching Scryfall for missing information on card "Courser of Kruphix"...done
- Searching Scryfall for missing information on card "Mana Breach"...done
- Searching Scryfall for missing information on card "Abundance"...done
- Searching Scryfall for missing information on card "Sylvan Offering"...done
- Searching Scryfall for missing information on card "Heroic Intervention"...done
- Searching Scryfall for missing information on card "Coiling Oracle"...done
- Searching Scryfall for missing information on card "Blackblade Reforged"...done
- Searching Scryfall for missing information on card "Kefnet the Mindful"...done
- Searching Scryfall for missing information on card "Retreat to Kazandu"...done
- Searching Scryfall for missing information on card "Retreat to Coralhelm"...done
- Searching Scryfall for missing information on card "Seed the Land"...done
- Searching Scryfall for missing information on card "Centaur Glade"...done
- Searching Scryfall for missing information on card "Mystic Confluence"...done
- Searching Scryfall for missing information on card "Zendikar's Roil"...done
- Searching Scryfall for missing information on card "Seasons Past"...done
- Searching Scryfall for missing information on card "Multani, Yavimaya's Avatar"...done
- Searching Scryfall for missing information on card "Rampaging Baloths"...done
- Searching Scryfall for missing information on card "Spelltwine"...done
- Searching Scryfall for missing information on card "Protean Hulk"...done
- Searching Scryfall for missing information on card "Howl of the Night Pack"...done
- Searching Scryfall for missing information on card "Praetor's Counsel"...done
- Searching Scryfall for missing information on card "Myriad Landscape"...done
- Searching Scryfall for missing information on card "Terramorphic Expanse"...done
- Searching Scryfall for missing information on card "Evolving Wilds"...done
- Searching Scryfall for missing information on card "Bant Panorama"...done
- Searching Scryfall for missing information on card "Esper Panorama"...done
- Searching Scryfall for missing information on card "Grixis Panorama"...done
- Searching Scryfall for missing information on card "Jund Panorama"...done
- Searching Scryfall for missing information on card "Naya Panorama"...done
- Searching Scryfall for missing information on card "Reliquary Tower"...done
- Searching Scryfall for missing information on card "Rogue’s Passage"...done
- Searching Scryfall for missing information on card "Command Tower"...done
- Searching Scryfall for missing information on card "Simic Growth Chamber"...done
- Searching Scryfall for missing information on card "Yavimaya Coast"...done
- Searching Scryfall for missing information on card "Flooded Grove"...done
- Searching Scryfall for missing information on card "Hinterland Harbor"...done
- Searching Scryfall for missing information on card "Forest"...done
- Searching Scryfall for missing information on card "Island"...done
-Save filled deck list? [y/n]
-n
-```
-images here
 
 ## Installation
 ### Distribution
