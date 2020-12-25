@@ -1,10 +1,10 @@
 package org.joaogsma.adapters.scryfall
 
 import org.joaogsma.models.Type
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class TypeAdapterTests extends WordSpec with Matchers {
+class TypeAdapterTests extends AnyWordSpec with Matchers {
   "The parseToSequence function" when {
     "given a creature" should {
       "parse correctly" in {

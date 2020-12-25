@@ -1,13 +1,13 @@
 package org.joaogsma.adapters.proto
 
 import org.joaogsma.models.proto.CacheProtos
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Success
 import org.joaogsma.models.Type
 
-class TypeAdapterTests extends WordSpec with Matchers {
+class TypeAdapterTests extends AnyWordSpec with Matchers {
   "The fromProto function" when {
     "given a creature card" should {
       "convert it correctly" in {

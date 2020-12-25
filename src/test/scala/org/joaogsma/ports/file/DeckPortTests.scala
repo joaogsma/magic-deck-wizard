@@ -1,13 +1,13 @@
 package org.joaogsma.ports.file
 
 import org.joaogsma.models.DeckEntry
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Failure
 import scala.util.Success
 
-class DeckPortTests extends WordSpec with Matchers {
+class DeckPortTests extends AnyWordSpec with Matchers {
   "The read function" when {
     "given a valid deck list" should {
       "read the entries successfully" in {

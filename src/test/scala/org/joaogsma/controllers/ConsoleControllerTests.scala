@@ -2,10 +2,10 @@ package org.joaogsma.controllers
 
 import org.joaogsma.metrics.TestInputs
 import org.joaogsma.models.DeckEntry
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class ConsoleControllerTests extends WordSpec with Matchers {
+class ConsoleControllerTests extends AnyWordSpec with Matchers {
   "The fillMissingField function" when {
     "given a DeckEntry which is not missing the card field" should {
       "return the same DeckEntry instance" in {

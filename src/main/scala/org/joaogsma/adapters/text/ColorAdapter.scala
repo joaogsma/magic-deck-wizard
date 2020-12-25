@@ -37,7 +37,7 @@ object ColorAdapter {
   }
 
   def toString(seq: Seq[Color]): String =
-      '\"' + seq.ensuring(_ != null).sorted.map(toString).mkString + '\"'
+      "\"" + seq.ensuring(_ != null).sorted.map(toString).mkString + "\""
 
   protected def toColor(str: String): Color = str match {
     case WHITE => Color.White

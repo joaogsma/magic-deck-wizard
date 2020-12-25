@@ -14,7 +14,9 @@ package object metrics {
     entries
         .flatMap(entry => entry.tags.map(_ -> entry.count))
         .groupBy(_._1)
+        .view
         .mapValues(_.map(_._2).sum)
+        .toMap
   }
 
   def countTypes(entries: Seq[DeckEntry]): Map[Type, Int] = {
@@ -22,7 +24,9 @@ package object metrics {
         .ensuring(_.forall(_.card.isDefined))
         .flatMap(entry => entry.card.get.types.map(_ -> entry.count))
         .groupBy(_._1)
+        .view
         .mapValues(_.map(_._2).sum)
+        .toMap
   }
 
   def countColors(entries: Seq[DeckEntry]): Map[Option[Color], Int] = {
@@ -35,7 +39,9 @@ package object metrics {
           }
         })
         .groupBy(_._1)
+        .view
         .mapValues(_.map(_._2).sum)
+        .toMap
 
     val keys = List(
       None,
@@ -93,7 +99,9 @@ package object metrics {
               .map(_.get)
         })
         .groupBy(_._1)
+        .view
         .mapValues(_.map(_._2).sum)
+        .toMap
 
     val keys = List(
       Some(Color.White),
@@ -109,7 +117,9 @@ package object metrics {
     val counts: Map[Double, Int] = entries
         .ensuring(_.forall(_.card.isDefined))
         .groupBy(_.card.get.cmc)
+        .view
         .mapValues(_.map(_.count).sum)
+        .toMap
 
     val maxKey = if (counts.isEmpty) 10.0 else max(counts.keys.max, 10.0)
     Range.BigDecimal.inclusive(0.0, maxKey, 1.0)

@@ -27,12 +27,12 @@ object TypeAdapter {
     if (!str.matches(TYPE_SEQUENCE_REGEX.toString)) {
       Failure(new IllegalArgumentException(s"Malformed type: $str"))
     } else {
-      Try(str.substring(1, str.length - 1).split(',').map(s => parse(s.trim)).sorted)
+      Try(str.substring(1, str.length - 1).split(',').map(s => parse(s.trim)).sorted.toSeq)
     }
   }
 
   def toString(seq: Seq[Type]): String =
-      '[' + seq.ensuring(s => s != null && s.nonEmpty).sorted.map(toString).mkString(", ") + ']'
+      "[" + seq.ensuring(s => s != null && s.nonEmpty).sorted.map(toString).mkString(", ") + "]"
 
   private def parse(str: String): Type = {
     TYPES.find(regex => str.matches(regex.toString)) match {

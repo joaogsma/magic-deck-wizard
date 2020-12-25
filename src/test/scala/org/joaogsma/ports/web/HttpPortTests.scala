@@ -1,9 +1,9 @@
 package org.joaogsma.ports.web
 
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class HttpPortTests extends WordSpec with Matchers {
+class HttpPortTests extends AnyWordSpec with Matchers {
 
   object Test extends HttpPort
 

@@ -10,10 +10,10 @@ object ConsolePort {
     println(message)
 
     var attempts = 0
-    var answer: String = StdIn.readLine
+    var answer: String = StdIn.readLine()
     while (!validAnswers.contains(answer) && attempts < maxAttempts) {
       println(s"Invalid answer: $answer")
-      answer = StdIn.readLine
+      answer = StdIn.readLine()
       attempts += 1
     }
 

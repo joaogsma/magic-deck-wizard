@@ -5,13 +5,13 @@ import org.joaogsma.models.Color
 import org.joaogsma.models.DeckEntry
 import org.joaogsma.models.Mana
 import org.joaogsma.models.Type
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Random
 import scala.util.Success
 
-class DeckEntryAdapterTests extends WordSpec with Matchers {
+class DeckEntryAdapterTests extends AnyWordSpec with Matchers {
   "The parse function" when {
     "given a valid deck entry" should {
       "parse it successfully" in {

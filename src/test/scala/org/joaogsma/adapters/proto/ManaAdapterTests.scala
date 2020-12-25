@@ -2,14 +2,14 @@ package org.joaogsma.adapters.proto
 
 import org.joaogsma.models.proto.CacheProtos
 import org.joaogsma.models.Mana
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Random
 import scala.math.abs
 import scala.util.Success
 
-class ManaAdapterTests extends WordSpec with Matchers {
+class ManaAdapterTests extends AnyWordSpec with Matchers {
   "The fromProto function" when {
     "given a X mana cost" should {
       "convert it correctly" in {

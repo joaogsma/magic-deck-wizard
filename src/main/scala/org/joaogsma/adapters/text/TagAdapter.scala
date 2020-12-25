@@ -23,5 +23,5 @@ object TagAdapter {
     }
   }
 
-  def toString(tags: Set[String]): String = tags.ensuring(_ != null).map('@' + _).mkString(" ")
+  def toString(tags: Set[String]): String = tags.ensuring(_ != null).map("@" + _).mkString(" ")
 }

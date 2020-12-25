@@ -16,7 +16,7 @@ object CachePort extends FilePort {
     Try(usingFile(filename, tryReadSeq)).flatten
   }
 
-  def write(cache: TraversableOnce[(String, Card)], filename: String): Boolean = {
+  def write(cache: IterableOnce[(String, Card)], filename: String): Boolean = {
     val tryWrite: OutputStream => Boolean =
         oos => Try(CacheAdapter.toProto(cache).writeTo(oos)).isSuccess
     Try(usingFile(filename, tryWrite)).getOrElse(false)

@@ -70,7 +70,7 @@ object ManaAdapter {
     RED,
     GREEN)
 
-  val MANA_COST_REGEX: String = StringBuilder.newBuilder
+  val MANA_COST_REGEX: String = new StringBuilder()
       .append("\"(")
       .append(MANA_SYMBOLS.map(str => s"""\\{$str\\}""").mkString("|"))
       .append(")*\"")
@@ -85,6 +85,7 @@ object ManaAdapter {
             .replaceAll("(^\"\\{?)|(\\}?\"$)", "")
             .split("\\}\\{")
             .groupBy(string => MANA_SYMBOLS.find(string.matches))
+            .view
             .filterKeys(_.isDefined)
             .map {
               case (Some(GENERIC), values) => toMana(GENERIC, values.map(_.toInt).sum)
@@ -97,7 +98,7 @@ object ManaAdapter {
   }
 
   def toString(seq: Seq[Mana]): String =
-      '\"' + seq.ensuring(_ != null).sorted.flatMap(toCharSeq).mkString + '\"'
+      "\"" + seq.ensuring(_ != null).sorted.flatMap(toCharSeq).mkString + "\""
 
   private def toMana(str: String, count: Int): Mana = str match {
     case X => Mana.X(count)

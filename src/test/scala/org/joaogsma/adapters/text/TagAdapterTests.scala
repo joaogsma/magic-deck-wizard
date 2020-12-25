@@ -1,11 +1,11 @@
 package org.joaogsma.adapters.text
 
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Success
 
-class TagAdapterTests extends WordSpec with Matchers {
+class TagAdapterTests extends AnyWordSpec with Matchers {
   "The parseToSequence function" when {
     "given valid tags" should {
       "parse them correctly" in {

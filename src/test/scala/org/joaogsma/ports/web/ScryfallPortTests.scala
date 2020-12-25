@@ -4,12 +4,12 @@ import org.joaogsma.models.Card
 import org.joaogsma.models.Color
 import org.joaogsma.models.Mana
 import org.joaogsma.models.Type
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Success
 
-class ScryfallPortTests extends WordSpec with Matchers {
+class ScryfallPortTests extends AnyWordSpec with Matchers {
   "The searchCardName function" when {
     "given a valid card name" should {
       "connect to Scryfall and return a complete Card" in {

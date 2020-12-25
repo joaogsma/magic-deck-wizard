@@ -3,7 +3,7 @@ package org.joaogsma.adapters.proto
 import org.joaogsma.models.Card
 import org.joaogsma.models.proto.CacheProtos
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.util.Try
 
 object CacheAdapter {
@@ -12,12 +12,13 @@ object CacheAdapter {
       cacheProto.getCardsList
           .asScala
           .map(CacheEntryAdapter.fromProto(_).get)
+          .toSeq
     }
   }
 
-  def toProto(cache: TraversableOnce[(String, Card)]): CacheProtos.Cache = {
+  def toProto(cache: IterableOnce[(String, Card)]): CacheProtos.Cache = {
     CacheProtos.Cache.newBuilder()
-        .addAllCards(cache.map(CacheEntryAdapter.toProto).toIterable.asJava)
+        .addAllCards(cache.iterator.map(CacheEntryAdapter.toProto).to(Iterable).asJava)
         .build()
   }
 }

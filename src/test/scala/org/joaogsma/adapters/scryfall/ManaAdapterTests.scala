@@ -2,12 +2,12 @@ package org.joaogsma.adapters.scryfall
 
 import io.circe.parser.parse
 import org.joaogsma.models.Mana
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.io.BufferedSource
 
-class ManaAdapterTests extends WordSpec with Matchers {
+class ManaAdapterTests extends AnyWordSpec with Matchers {
   "The parseToSequence function" when {
     "passed a X spell" should {
       "parse correctly" in {

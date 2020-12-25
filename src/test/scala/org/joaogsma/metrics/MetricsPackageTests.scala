@@ -2,10 +2,10 @@ package org.joaogsma.metrics
 
 import org.joaogsma.models.Color
 import org.joaogsma.ports.file.DeckPort
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class MetricsPackageTests extends WordSpec with Matchers {
+class MetricsPackageTests extends AnyWordSpec with Matchers {
   private val RESOURCES_DIRECTORY = "src/test/resources/org/joaogsma/metrics"
 
   "The countTags function" when {

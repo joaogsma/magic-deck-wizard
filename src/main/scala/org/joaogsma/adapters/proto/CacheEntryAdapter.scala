@@ -6,19 +6,22 @@ import org.joaogsma.models.Mana
 import org.joaogsma.models.Type
 import org.joaogsma.models.proto.CacheProtos
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.util.Try
 
 object CacheEntryAdapter {
   def fromProto(cardProto: CacheProtos.Card): Try[(String, Card)] = {
     Try {
       val name: String = cardProto.getName
-      val manaCost: Seq[Mana] = cardProto.getManaCostList.asScala.map(ManaAdapter.fromProto(_).get)
-      val colors: Seq[Color] = cardProto.getColorsList.asScala.map(ColorAdapter.fromProto(_).get)
+      val manaCost: Seq[Mana] =
+          cardProto.getManaCostList.asScala.map(ManaAdapter.fromProto(_).get).toSeq
+      val colors: Seq[Color] =
+          cardProto.getColorsList.asScala.map(ColorAdapter.fromProto(_).get).toSeq
       val types: Seq[Type] = cardProto
-          .getTypesList
+          .getTypesList()
           .asScala
           .map(TypeAdapter.fromProto(_).get)
+          .toSeq
       val cmc: Double = cardProto.getCmc
 
       require(name.nonEmpty, "Card names must not be empty")

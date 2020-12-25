@@ -1,12 +1,12 @@
 package org.joaogsma.adapters.scryfall
 
 import org.joaogsma.models.Color
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Random
 
-class ColorAdapterTests extends WordSpec with Matchers {
+class ColorAdapterTests extends AnyWordSpec with Matchers {
   "The parseToSequence function" when {
     "applied to a sequence with any combination of color strings" should {
       "return a sequence with the correct color combination" in {

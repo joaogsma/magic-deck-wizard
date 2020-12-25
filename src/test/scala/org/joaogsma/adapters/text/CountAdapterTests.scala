@@ -1,12 +1,12 @@
 package org.joaogsma.adapters.text
 
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Random
 import scala.util.Success
 
-class CountAdapterTests extends WordSpec with Matchers {
+class CountAdapterTests extends AnyWordSpec with Matchers {
   "The parse function" when {
     "given a valid count string" should {
       "parse it correctly" in {

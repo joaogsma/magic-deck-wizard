@@ -12,7 +12,7 @@ import scala.util.Try
 
 object DeckPort extends FilePort {
   def read(filename: String): Try[List[DeckEntry]] = {
-    val deckLines: List[String] = usingFile(filename, (_: BufferedSource).getLines.toList)
+    val deckLines: List[String] = usingFile(filename, (_: BufferedSource).getLines().toList)
     val parsedLines: List[(Try[DeckEntry], Int)] = deckLines
         .map(_.trim)
         .zipWithIndex

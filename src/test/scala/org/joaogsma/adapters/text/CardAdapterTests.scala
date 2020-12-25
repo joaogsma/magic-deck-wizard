@@ -4,12 +4,12 @@ import org.joaogsma.models.Card
 import org.joaogsma.models.Color
 import org.joaogsma.models.Mana
 import org.joaogsma.models.Type
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Try
 
-class CardAdapterTests extends WordSpec with Matchers {
+class CardAdapterTests extends AnyWordSpec with Matchers {
   "The parse function" when {
     "applied to an empty string" should {
       "return a Failure" in {

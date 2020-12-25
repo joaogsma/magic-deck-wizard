@@ -21,7 +21,7 @@ import scala.util.Success
 object ConsoleController extends App {
   private val CONSOLE_MODE = 1
 
-  parseArguments(args) match {
+  parseArguments(args.toSeq) match {
     case Left(help) => println(help)
     case Right((file)) =>
       readDeckList(file)
@@ -119,7 +119,7 @@ object ConsoleController extends App {
   }
 
   private def createMetricsString(entries: Seq[DeckEntry]): String = {
-    val result: StringBuilder = StringBuilder.newBuilder
+    val result: StringBuilder = new StringBuilder()
 
     val totalCardCount: Int = countCards(entries)
     result.append(s"Total number of cards: $totalCardCount\n")

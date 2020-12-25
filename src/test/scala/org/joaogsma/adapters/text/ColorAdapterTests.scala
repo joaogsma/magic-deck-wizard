@@ -1,14 +1,15 @@
 package org.joaogsma.adapters.text
 
 import org.joaogsma.models.Color
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
+import scala.collection.immutable.WrappedString
 import scala.util.Random
 import scala.util.Success
 import scala.util.Try
 
-class ColorAdapterTests extends WordSpec with Matchers {
+class ColorAdapterTests extends AnyWordSpec with Matchers {
   "The parseToSequence function" when {
     "applied to a sequence with any combination of color strings" should {
       "return a sequence with the correct color combination" in {
@@ -16,7 +17,7 @@ class ColorAdapterTests extends WordSpec with Matchers {
 
         val inputCombinations: Seq[String] = (1 to 5)
             .flatMap("WUBRG".combinations)
-            .map('\"' + _ + '\"')
+            .map("\"" + _ + "\"")
         val expectedCombinations: Seq[Try[Seq[Color]]] = (1 to 5)
             .flatMap(colors.combinations)
             .map(Success.apply)
@@ -44,8 +45,8 @@ class ColorAdapterTests extends WordSpec with Matchers {
 
         val inputCombinations: Seq[String] = (1 to 5)
             .flatMap("WUBRG".combinations)
-            .map(combination => combination ++ randomSubset(combination))
-            .map('\"' + _ + '\"')
+            .map(combination => combination ++ randomSubset(combination): String)
+            .map("\"" + _ + "\"")
 
         val resultCombinations = inputCombinations.map(ColorAdapter.parseToSequence)
         resultCombinations.forall(_.isFailure) shouldBe true
@@ -65,7 +66,7 @@ class ColorAdapterTests extends WordSpec with Matchers {
         val colors = List(Color.White, Color.Blue, Color.Black, Color.Red, Color.Green)
         val inputCombinations: Seq[List[Color]] = (1 to 5).flatMap(colors.combinations)
         val expectedCombinations: Seq[String] =
-            (1 to 5).flatMap("WUBRG".combinations).map('\"' + _ + '\"')
+            (1 to 5).flatMap("WUBRG".combinations).map("\"" + _ + "\"")
         val resultCombinations = inputCombinations.map(ColorAdapter.toString)
         resultCombinations should contain theSameElementsInOrderAs expectedCombinations
       }

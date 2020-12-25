@@ -1,12 +1,12 @@
 package org.joaogsma.adapters.text
 
 import org.joaogsma.models.Mana
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Success
 
-class ManaAdapterTests extends WordSpec with Matchers {
+class ManaAdapterTests extends AnyWordSpec with Matchers {
   "The parseToSequence function" when {
     "passed a X spell" should {
       "parse correctly" in {

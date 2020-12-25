@@ -2,12 +2,12 @@ package org.joaogsma.adapters.proto
 
 import org.joaogsma.models.Color
 import org.joaogsma.models.proto.CacheProtos
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Success
 
-class ColorAdapterTests extends WordSpec with Matchers {
+class ColorAdapterTests extends AnyWordSpec with Matchers {
   "The fromProto function" when {
     "given white" should {
       "convert it correctly" in {

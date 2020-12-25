@@ -5,13 +5,13 @@ import org.joaogsma.models.Color
 import org.joaogsma.models.Mana
 import org.joaogsma.models.Type
 import org.joaogsma.models.proto.CacheProtos
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.util.Success
 
-class CacheAdapterTests extends WordSpec with Matchers {
+class CacheAdapterTests extends AnyWordSpec with Matchers {
   "The fromProto function" when {
     "given a regular input" should {
       "convert it correctly" in {
