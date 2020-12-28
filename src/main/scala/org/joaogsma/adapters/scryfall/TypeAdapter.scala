@@ -1,11 +1,11 @@
 package org.joaogsma.adapters.scryfall
 
-import org.joaogsma.models.Type
-import org.joaogsma.models.Type.TypeOrdering
+import org.joaogsma.entities.models.Type
+import org.joaogsma.entities.models.Type.TypeOrdering
 
 object TypeAdapter {
-  def parseToSequence(str: String): Seq[Type] = {
-    TYPES.filter(str.contains).map(TypeAdapter.parse).sorted
+  def parseToSet(str: String): Set[Type] = {
+    TYPES.filter(str.contains).map(TypeAdapter.parse).toSet
   }
 
   private val CREATURE: String = "Creature"

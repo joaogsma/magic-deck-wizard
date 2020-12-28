@@ -1,10 +1,10 @@
 package org.joaogsma.adapters.proto
 
-import org.joaogsma.models.Card
-import org.joaogsma.models.Color
-import org.joaogsma.models.Mana
-import org.joaogsma.models.Type
-import org.joaogsma.models.proto.CacheProtos
+import org.joaogsma.entities.models.Card
+import org.joaogsma.entities.models.Color
+import org.joaogsma.entities.models.Mana
+import org.joaogsma.entities.models.Type
+import org.joaogsma.entities.models.proto.CacheProtos
 
 import scala.jdk.CollectionConverters._
 import scala.util.Try
@@ -13,22 +13,22 @@ object CacheEntryAdapter {
   def fromProto(cardProto: CacheProtos.Card): Try[(String, Card)] = {
     Try {
       val name: String = cardProto.getName
-      val manaCost: Seq[Mana] =
-          cardProto.getManaCostList.asScala.map(ManaAdapter.fromProto(_).get).toSeq
-      val colors: Seq[Color] =
-          cardProto.getColorsList.asScala.map(ColorAdapter.fromProto(_).get).toSeq
-      val types: Seq[Type] = cardProto
+      val manaCost: Set[Mana] =
+          cardProto.getManaCostList.asScala.map(ManaAdapter.fromProto(_).get).toSet
+      val colors: Set[Color] =
+          cardProto.getColorsList.asScala.map(ColorAdapter.fromProto(_).get).toSet
+      val types: Set[Type] = cardProto
           .getTypesList()
           .asScala
           .map(TypeAdapter.fromProto(_).get)
-          .toSeq
+          .toSet
       val cmc: Double = cardProto.getCmc
 
       require(name.nonEmpty, "Card names must not be empty")
       require(types.nonEmpty, "Cards must have at least one type")
       require(isValidCmc(cmc), "CMC must be positive and finite")
 
-      name -> Card(manaCost, colors, types, cmc)
+      name -> Card(name, manaCost, colors, types, cmc)
     }
   }
 

@@ -1,13 +1,13 @@
 package org.joaogsma.adapters.scryfall
 
-import org.joaogsma.models.Mana
-import org.joaogsma.models.Mana.ManaOrdering
+import org.joaogsma.entities.models.Mana
+import org.joaogsma.entities.models.Mana.ManaOrdering
 
 import scala.util.matching.Regex
 
 object ManaAdapter {
   // TODO: ensure that the string contains nothing but the mana symbols
-  def parseToSequence(str: String): Seq[Mana] = {
+  def parseToSet(str: String): Set[Mana] = {
     val orderedSeq = Seq(
       X,
       GENERIC,
@@ -38,6 +38,7 @@ object ManaAdapter {
       RED,
       GREEN)
     orderedSeq
+        .view
         .map(regex => {
           val count = regex
               .findAllMatchIn(str)
@@ -47,7 +48,7 @@ object ManaAdapter {
           toMana(regex, count)
         })
         .filter(_.count > 0)
-        .sorted
+        .to(Set)
   }
 
   private val X: Regex = "\\{X\\}".r

@@ -4,8 +4,8 @@ import java.io.InputStream
 import java.io.OutputStream
 
 import org.joaogsma.adapters.proto.CacheAdapter
-import org.joaogsma.models.Card
-import org.joaogsma.models.proto.CacheProtos
+import org.joaogsma.entities.models.Card
+import org.joaogsma.entities.models.proto.CacheProtos
 
 import scala.util.Try
 

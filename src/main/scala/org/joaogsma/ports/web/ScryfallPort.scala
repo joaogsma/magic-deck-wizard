@@ -2,7 +2,7 @@ package org.joaogsma.ports.web
 
 import io.circe.parser.parse
 import org.joaogsma.adapters.scryfall.CardAdapter
-import org.joaogsma.models.Card
+import org.joaogsma.entities.models.Card
 
 import scala.util.Try
 

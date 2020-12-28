@@ -1,6 +1,6 @@
 package org.joaogsma.controllers
 
-import org.joaogsma.models.Card
+import org.joaogsma.entities.models.Card
 import org.joaogsma.ports.file.CachePort
 
 import scala.collection.mutable

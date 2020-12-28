@@ -1,7 +1,7 @@
 package org.joaogsma.adapters.proto
 
-import org.joaogsma.models.Card
-import org.joaogsma.models.proto.CacheProtos
+import org.joaogsma.entities.models.Card
+import org.joaogsma.entities.models.proto.CacheProtos
 
 import scala.jdk.CollectionConverters._
 import scala.util.Try

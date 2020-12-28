@@ -1,11 +1,11 @@
 package org.joaogsma.adapters.proto
 
-import org.joaogsma.models.proto.CacheProtos
+import org.joaogsma.entities.models.proto.CacheProtos
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Success
-import org.joaogsma.models.Type
+import org.joaogsma.entities.models.Type
 
 class TypeAdapterTests extends AnyWordSpec with Matchers {
   "The fromProto function" when {

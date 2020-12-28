@@ -1,19 +1,22 @@
 package org.joaogsma.ports.web
 
-import org.joaogsma.models.Card
-import org.joaogsma.models.Color
-import org.joaogsma.models.Mana
-import org.joaogsma.models.Type
+import org.joaogsma.entities.models.Card
+import org.joaogsma.entities.models.Color
+import org.joaogsma.entities.models.Mana
+import org.joaogsma.entities.models.Type
+import org.scalatest.Ignore
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Success
 
+@Ignore
 class ScryfallPortTests extends AnyWordSpec with Matchers {
   "The searchCardName function" when {
     "given a valid card name" should {
       "connect to Scryfall and return a complete Card" in {
-        val expectedCard = Card(Seq(Mana.Blue(2)), Seq(Color.Blue), Seq(Type.Instant), 2.0)
+        val expectedCard =
+            Card("Counterspell", Set(Mana.Blue(2)), Set(Color.Blue), Set(Type.Instant), 2.0)
         ScryfallPort.searchCardName("Counterspell") shouldEqual Success(expectedCard)
       }
     }

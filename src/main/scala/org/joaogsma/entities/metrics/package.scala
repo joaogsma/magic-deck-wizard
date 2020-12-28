@@ -1,16 +1,13 @@
-package org.joaogsma
+package org.joaogsma.entities
 
-import org.joaogsma.models.Color
-import org.joaogsma.models.DeckEntry
-import org.joaogsma.models.Mana
-import org.joaogsma.models.Type
+import org.joaogsma.entities.models.{Color, DeckEntry, CompleteDeckEntry, Mana, Type}
 
 import scala.math.max
 
 package object metrics {
-  def countCards(entries: Seq[DeckEntry]): Int = entries.map(_.count).sum
+  def countCards(entries: Seq[CompleteDeckEntry]): Int = entries.map(_.count).sum
 
-  def countTags(entries: Seq[DeckEntry]): Map[String, Int] = {
+  def countTags(entries: Seq[CompleteDeckEntry]): Map[String, Int] = {
     entries
         .flatMap(entry => entry.tags.map(_ -> entry.count))
         .groupBy(_._1)
@@ -19,21 +16,19 @@ package object metrics {
         .toMap
   }
 
-  def countTypes(entries: Seq[DeckEntry]): Map[Type, Int] = {
+  def countTypes(entries: Seq[CompleteDeckEntry]): Map[Type, Int] = {
     entries
-        .ensuring(_.forall(_.card.isDefined))
-        .flatMap(entry => entry.card.get.types.map(_ -> entry.count))
+        .flatMap(entry => entry.card.types.map(_ -> entry.count))
         .groupBy(_._1)
         .view
         .mapValues(_.map(_._2).sum)
         .toMap
   }
 
-  def countColors(entries: Seq[DeckEntry]): Map[Option[Color], Int] = {
+  def countColors(entries: Seq[CompleteDeckEntry]): Map[Option[Color], Int] = {
     val counts: Map[Option[Color], Int] = entries
-        .ensuring(_.forall(_.card.isDefined))
         .flatMap(entry => {
-          entry.card.get.colors match {
+          entry.card.colors match {
             case Nil => List(Option.empty -> entry.count)
             case colors => colors.map(Some(_) -> entry.count)
           }
@@ -54,14 +49,13 @@ package object metrics {
     keys.map(key => key -> counts.getOrElse(key, 0)).toMap
   }
 
-  def countManaSymbols(entries: Seq[DeckEntry]): Map[Option[Color], Int] = {
+  def countManaSymbols(entries: Seq[CompleteDeckEntry]): Map[Option[Color], Int] = {
     val counts: Map[Option[Color], Int] = entries
-        .ensuring(_.forall(_.card.isDefined))
         .flatMap(entry => {
           def toCountOptions(count: Int, colors: Color*): Seq[Option[(Option[Color], Int)]] =
-              colors.toSeq.map(color => Some(Some(color) -> count * entry.count))
+              colors.to(Seq).map(color => Some(Some(color) -> count * entry.count))
 
-          entry.card.get.manaCost
+          entry.card.manaCost
               .flatMap {
                 case Mana.HybridMonoWhite(count) => toCountOptions(count, Color.White)
                 case Mana.HybridMonoBlue(count) => toCountOptions(count, Color.Blue)
@@ -113,10 +107,9 @@ package object metrics {
     keys.map(key => key -> counts.getOrElse(key, 0)).toMap
   }
 
-  def countManaCurve(entries: Seq[DeckEntry]): Map[Double, Int] = {
+  def countManaCurve(entries: Seq[CompleteDeckEntry]): Map[Double, Int] = {
     val counts: Map[Double, Int] = entries
-        .ensuring(_.forall(_.card.isDefined))
-        .groupBy(_.card.get.cmc)
+        .groupBy(_.card.cmc)
         .view
         .mapValues(_.map(_.count).sum)
         .toMap

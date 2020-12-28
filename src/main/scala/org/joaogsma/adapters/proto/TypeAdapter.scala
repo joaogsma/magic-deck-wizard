@@ -1,7 +1,7 @@
 package org.joaogsma.adapters.proto
 
-import org.joaogsma.models.Type
-import org.joaogsma.models.proto.CacheProtos
+import org.joaogsma.entities.models.Type
+import org.joaogsma.entities.models.proto.CacheProtos
 
 import scala.util.Try
 

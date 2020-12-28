@@ -3,7 +3,7 @@ package org.joaogsma.ports.file
 import java.io.BufferedWriter
 
 import org.joaogsma.adapters.text.DeckEntryAdapter
-import org.joaogsma.models.DeckEntry
+import org.joaogsma.entities.models.DeckEntry
 
 import scala.io.BufferedSource
 import scala.util.Failure

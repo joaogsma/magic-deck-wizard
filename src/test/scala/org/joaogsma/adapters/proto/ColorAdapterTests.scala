@@ -1,7 +1,7 @@
 package org.joaogsma.adapters.proto
 
-import org.joaogsma.models.Color
-import org.joaogsma.models.proto.CacheProtos
+import org.joaogsma.entities.models.Color
+import org.joaogsma.entities.models.proto.CacheProtos
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 

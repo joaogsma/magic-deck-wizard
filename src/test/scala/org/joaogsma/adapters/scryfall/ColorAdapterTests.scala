@@ -1,6 +1,6 @@
 package org.joaogsma.adapters.scryfall
 
-import org.joaogsma.models.Color
+import org.joaogsma.entities.models.Color
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
@@ -15,16 +15,17 @@ class ColorAdapterTests extends AnyWordSpec with Matchers {
         val inputCombinations: Seq[Seq[String]] = (1 to 5)
             .flatMap("WUBRG".combinations)
             .map(_.map(_.toString))
-        val expectedCombinations: Seq[Seq[Color]] = (1 to 5).flatMap(colors.combinations)
+        val expectedCombinations: Seq[Set[Color]] =
+            (1 to 5).flatMap(colors.combinations).map(_.toSet)
 
-        val resultCombinations = inputCombinations.map(ColorAdapter.parseToSequence)
+        val resultCombinations = inputCombinations.map(ColorAdapter.parseToSet)
         resultCombinations should contain theSameElementsInOrderAs expectedCombinations
       }
     }
 
     "applied to an empty sequence" should {
       "return an empty sequence" in {
-        ColorAdapter.parseToSequence(Seq.empty) shouldBe empty
+        ColorAdapter.parseToSet(Seq.empty) shouldBe empty
       }
     }
 
@@ -36,9 +37,10 @@ class ColorAdapterTests extends AnyWordSpec with Matchers {
             .flatMap("WUBRG".combinations)
             .map(_.map(_.toString))
             .map(combination => combination ++ randomSubset(combination))
-        val expectedCombinations: Seq[Seq[Color]] = (1 to 5).flatMap(colors.combinations)
+        val expectedCombinations: Seq[Set[Color]] =
+            (1 to 5).flatMap(colors.combinations).map(_.toSet)
 
-        val resultCombinations = inputCombinations.map(ColorAdapter.parseToSequence)
+        val resultCombinations = inputCombinations.map(ColorAdapter.parseToSet)
         resultCombinations should contain theSameElementsInOrderAs expectedCombinations
       }
     }

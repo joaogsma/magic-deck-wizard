@@ -1,4 +1,4 @@
-package org.joaogsma.models
+package org.joaogsma.entities.models
 
 sealed trait Type
 
