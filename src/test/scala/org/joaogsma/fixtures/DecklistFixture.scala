@@ -1,12 +1,18 @@
 package org.joaogsma.fixtures
 
-import org.joaogsma.entities.models.{Card, Color, CompleteDeckEntry, Mana, Type}
+import org.joaogsma.entities.models.{Card, Color, Comment, CompleteDeckEntry, DeckEntry, DecklistEntry, EmptyLine, Mana, Type}
 
-object CompleteDeckEntryFixture {
-  def build: CompleteDeckEntry = buildSeq.head
+object DecklistFixture {
+  def buildInitial: Seq[DecklistEntry] =
+    buildFinal
+        .map {
+          case de: CompleteDeckEntry => DeckEntry(de.count, de.card.name, de.tags)
+          case de => de
+        }
 
-  def buildSeq: Seq[CompleteDeckEntry] =
+  def buildFinal: Seq[DecklistEntry] =
       Seq(
+        Comment("This is an initial comment"),
         CompleteDeckEntry(
           4,
           Card(
@@ -16,6 +22,7 @@ object CompleteDeckEntryFixture {
             Set(Type.Sorcery),
             3.0),
           Set("ramp")),
+        EmptyLine,
         CompleteDeckEntry(
           4,
           Card(
@@ -25,6 +32,7 @@ object CompleteDeckEntryFixture {
             Set(Type.Creature, Type.Artifact),
             4.0),
           Set("ramp", "draw")),
+        EmptyLine,
         CompleteDeckEntry(
           3,
           Card(
@@ -33,5 +41,6 @@ object CompleteDeckEntryFixture {
             Set(Color.Black),
             Set(Type.Instant),
             2.0),
-          Set("removal")))
+          Set("removal")),
+        Comment("This is a final comment"))
 }
